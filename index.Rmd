@@ -1,0 +1,11 @@
+---
+title: "Welcome!"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## About my Portfolio
+
+Hi, my name is Troy Ascher. I also commonly use the handle LeeTroyJenkins online.

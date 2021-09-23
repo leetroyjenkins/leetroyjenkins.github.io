@@ -1,0 +1,40 @@
+name: "Portfolio"
+navbar:
+  title: "Troy Ascher Portfolio"
+  left:
+
+    - text: "RStudio"
+      menu:
+        - text: "Foundations of Analytics Project"
+          href: CS544_FinalProject_Ascher_Rmarkdown.html
+        - text: "Working with APIs"
+          href: Unemployment_API_Notebook.html
+        - text: "ETL Example"
+        - text: "Sampling Methods"
+        - text: "R for Data Science Assignments"
+          menu:
+            - text: "Overview"
+              href: rfordatascience.nb.html
+            - text: "Data Transformation - Ch 5"
+              href: rfdschapter5.nb.html
+    - text: "Python"
+      menu:
+        - text: "Doogie Howser Project"
+    - text: "SQL"
+      menu:
+        - text: "Health and Wellness Tracker"
+    - text: "About Me"
+      href: aboutme.nb.html
+
+  right: 
+    - icon: fa-envelope fa-lg
+      href: mailto:<ascher.troy@gmail.com>
+    - icon: fa-github fa-lg
+      href: http://github.com/leetroyjenkins/
+output:
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    theme: darkly
