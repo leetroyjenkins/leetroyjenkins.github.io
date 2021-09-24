@@ -6,20 +6,10 @@ title: "Welcome to my Portfolio!"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Hi, my name is Troy Ascher. I'm currently doing a master's degree from in Computer Information Systems with a Business Intelligence and Database Management specialization at Boston University. I'll graduate in May of 2022 and I'm looking for a challenging and interseting job that involves data analysis and business intelligence. To assist employers with seeing my skillset I've built this website. Welcome!
+Hi, my name is Troy Ascher. I'm currently doing a master's degree from in Computer Information Systems with a Business Intelligence and Database Management specialization at Boston University. I'll graduate in May of 2022 and I'm looking for a challenging and interesting job that involves data analysis and business intelligence. To assist employers with evaluating my skill-set I've built this website. Welcome!
 
-I built this website using RStudio and used Github for hosting.
+On this page I've highlighted some visualizations that I've done in RStudio. You can click on the images to view the projects they are from, or use the menu at the top of the page to navigate.
 
-My portfolio has three main sections: R projects, Python projects, and SQL projects.
+[![](images/Preview-all-Data-1.png "US Unemployment Rate by Month")](Unemployment_API_Notebook.html)
 
-### R Projects
-
-The R Projects highlight projects that I've done for school, projects that I've done for fun, and some assignments that I've done as I work through Wickham et al.'s R for Data Science.
-
-### Python Projects
-
-My python projects highlight projects that I've done for fun and or for school.
-
-### SQL Projects
-
-The SQL projects highlight the MS SQL Server projects that I've done as a part of my Master of Science program at Boston University.
+This website was generated using RMarkdown in RStudio and Github for web hosting.

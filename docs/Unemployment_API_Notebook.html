@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Bureau of Labor Statistics API</title>
+
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    RStudio
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="CS544_FinalProject_Ascher_Rmarkdown.html">Analytics Project for Boston University</a>
+    </li>
+    <li>
+      <a href="Unemployment_API_Notebook.html">Working with APIs</a>
+    </li>
+    <li class="dropdown-header">ETL Example</li>
+    <li class="dropdown-header">Sampling Methods</li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">R for Data Science Assignments</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="rfordatascience.html">Overview</a>
+        </li>
+        <li>
+          <a href="rfdschapter5.html">Data Transformation - Ch 5</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Python
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Doogie Howser Project</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    SQL
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Health and Wellness Tracker</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Resume
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Resume.html">Resume</a>
+    </li>
+    <li>
+      <a href="aboutme.html">About me</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:&lt;ascher.troy@gmail.com&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://github.com/leetroyjenkins/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Bureau of Labor Statistics API</h1>
+
+</div>
+
+
+<div id="overview" class="section level1">
+<h1>Overview</h1>
+<p>This is the first post in a series highlighting the learning process I’m going through with R. I start by installing an API, then I use the API to download data from the US Bureau of Labor Statistics website, and finish by doing two simple scatterplots using ggplot2. My code can be viewed by clicking the Code/Hide button.</p>
+<div id="data-source" class="section level2">
+<h2>Data Source</h2>
+<p>In this post I’m using labor data from the <a href="https://www.bls.gov" title="Bureau of Labor Statistics">US Bureau of Labor Statistics website</a>.</p>
+<p>Instructions on the API are found <a href="https://www.bls.gov/developers/api_r.htm" title="API Instructions">here</a>.</p>
+<p>Assistance finding the series numbers (the identifiers for each dataset the API pulls) are available <a href="https://www.bls.gov/developers/api_r.htm" title="Serial Codes">here</a>.</p>
+</div>
+</div>
+<div id="api-installation" class="section level1">
+<h1>API Installation</h1>
+<p>The Bureau of Labor Statistics provides an API for a few different programming languages, R being one of them.</p>
+<p>To use the API I first had to install the API library from github using this code:</p>
+<p><code>install_github("mikeasilva/blsAPI")</code></p>
+<p>After that I loaded the <code>blsAPI</code> library along with the <code>httr</code> and <code>jsonlite</code> libraries which are for working with json files that APIs use to structure the data when it is returned.</p>
+<pre class="r"><code># Install API tools: https://www.bls.gov/developers/api_r.htm
+library(devtools)
+# Initially I installed this API for pulling from the labor
+# statistics website, but this code only needed to be run once.
+#+ install_github(&quot;mikeasilva/blsAPI&quot;)
+
+library(blsAPI) # Contains the blsAPI function. 
+library(httr) # Needed for working with APIs.
+library(jsonlite) # Needed for working with APIs.</code></pre>
+</div>
+<div id="importing-api-codes" class="section level1">
+<h1>Importing API Codes</h1>
+<p>After installing and attaching the API I downloaded the serial numbers for unemployment data in the USA and saved them locally so I could <code>paste()</code> the identifiers together to obtain the data I wanted.</p>
+<pre class="r"><code># Import the area type codes.
+area_type_codes &lt;- read.csv(&quot;https://download.bls.gov/pub/time.series/la/la.area_type&quot;, colClasses = &quot;character&quot;, sep = &quot;\t&quot;)
+
+# Import the area codes.
+area_codes &lt;- read.csv(&quot;https://download.bls.gov/pub/time.series/la/la.area&quot;, colClasses = &quot;character&quot;, sep = &quot;\t&quot;)
+
+# Import the measure codes.
+measure_codes &lt;- read.csv(&quot;https://download.bls.gov/pub/time.series/la/la.measure&quot;, colClasses = &quot;character&quot;, sep = &quot;\t&quot;)</code></pre>
+<p>Each series code used by the API is assembled in the following fashion.</p>
+<pre><code>                      1         2
+             12345678901234567890
+Series ID    LAUCN281070000000003
+Positions    Value            Field Name
+1-2          LA               Prefix
+3            U                Seasonal Adjustment Code
+4-18         CN2810700000000  Area Code
+19-20        03               Measure Code</code></pre>
+<p>To use the API I had to <a href="https://data.bls.gov/registrationEngine/" title="Register for BLS API V. 2">register</a> for an API key. Since I knew I would be posting my code online I didn’t want to post my personal API key in the code. To take care of this, I saved my key into another file in my environment and I used <code>source()</code> to open that file and load the key to the <code>my_bls_key</code> variable.</p>
+<pre class="r"><code># Get API key from a filed saved in my project.
+my_bls_key &lt;- &quot;x&quot; # This variable will be over-ridden by the source file which also has a variable named &#39;my_bls_key&#39; that contains my API key.
+source(&quot;C:/Users/troya/OneDrive/R/Unemployment/BLSAPIKey.R&quot;)</code></pre>
+</div>
+<div id="using-the-api" class="section level1">
+<h1>Using the API</h1>
+<p>After saving the codes, I used them to generate the serial numbers for the data I desire.</p>
+<p>Using the API I can only pull 50 datasets at a time. I may want more than that if I want to compare data for each state along with Washington D.C. and Puerto Rico so I use a loop that pulls as many serials as I want at a time in blocks of up to 50.</p>
+<pre class="r"><code># Make a dataframe to save data to.
+results &lt;- data.frame()
+
+# Make a dataframe to save all desired serial numbers to.
+all_serials &lt;- NA
+
+# Load list to all_codes.
+# all_serials &lt;- area_codes$area_code[area_codes$area_type_code == &#39;A&#39;]
+all_serials &lt;- area_codes$area_code
+all_serials &lt;- paste(&#39;LAU&#39;,all_serials, &#39;03&#39;, sep=&#39;&#39;)
+
+# Calculate how many groups of 50 the list of codes will divide into. 
+iterations &lt;- ceiling(length(all_serials)/50)
+
+# Create a dataframe with 50 rows and n number of columns where
+# n is the number from the variable &quot;iterations&quot;.
+serials_df &lt;- data.frame(matrix(NA,nrow = 50, ncol = iterations))
+
+
+# Fill the dataframe with the codes that should be pulled. 
+count_start &lt;- 1
+count_end &lt;- 50
+for (i in seq(1:iterations)){
+  serials_df[,i] &lt;- all_serials[count_start:count_end]
+  count_start &lt;- count_start + 50
+  count_end &lt;- count_end + 50
+}
+
+# Loop through the numbers in the dataframe of codes, run the api on them, and rbind them into a dataset. 
+
+#data_df &lt;- data.frame()
+data_ls &lt;- list()
+
+for (i in 1:iterations) {
+  payload &lt;- list(&#39;seriesid&#39;= serials_df[,i]
+                ,&#39;startyear&#39;=&#39;2010&#39;
+                ,&#39;endyear&#39;=&#39;2021&#39;
+                ,&#39;registrationKey&#39;=my_bls_key)
+  response &lt;- blsAPI(payload, 2, TRUE)
+  response$iteration &lt;- i
+  data_ls[[i]] &lt;- response # Add the data to the list.
+}
+
+# Bind together all the values in data_ls.
+results &lt;- bind_rows(data_ls)
+results &lt;- remove_missing(results) # Remove NAs
+
+# Add a date column to use as the x-axis variable. 
+results$the_date &lt;- as.Date(paste(results$periodName, &#39;1&#39;, results$year, sep = &#39;/&#39;), format = &#39;%B/%d/ %Y&#39;)
+
+# Change &quot;value&quot; column to numeric.
+results$value &lt;- as.double(results$value)</code></pre>
+</div>
+<div id="unemployment-tibble" class="section level1">
+<h1>Unemployment Tibble</h1>
+<p>These are the first six rows of the tibble (dataframe) that contain the unemployment data.</p>
+<pre class="r"><code>head(results)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["year"],"name":[1],"type":["chr"],"align":["left"]},{"label":["period"],"name":[2],"type":["chr"],"align":["left"]},{"label":["periodName"],"name":[3],"type":["chr"],"align":["left"]},{"label":["value"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["seriesID"],"name":[5],"type":["chr"],"align":["left"]},{"label":["iteration"],"name":[6],"type":["int"],"align":["right"]},{"label":["the_date"],"name":[7],"type":["date"],"align":["right"]}],"data":[{"1":"2021","2":"M08","3":"August","4":"3.4","5":"LAUST010000000000003","6":"1","7":"2021-08-01","_rn_":"1"},{"1":"2021","2":"M07","3":"July","4":"3.4","5":"LAUST010000000000003","6":"1","7":"2021-07-01","_rn_":"2"},{"1":"2021","2":"M06","3":"June","4":"3.7","5":"LAUST010000000000003","6":"1","7":"2021-06-01","_rn_":"3"},{"1":"2021","2":"M05","3":"May","4":"2.9","5":"LAUST010000000000003","6":"1","7":"2021-05-01","_rn_":"4"},{"1":"2021","2":"M04","3":"April","4":"2.9","5":"LAUST010000000000003","6":"1","7":"2021-04-01","_rn_":"5"},{"1":"2021","2":"M03","3":"March","4":"3.4","5":"LAUST010000000000003","6":"1","7":"2021-03-01","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="graph-examples" class="section level1">
+<h1>Graph Examples</h1>
+<p>At this point, I have succesfully used the API to obtain ten years worth of unemployment data in the <code>results</code> tibble. Before I finish, I’d like to add two graphs of the data using the ggplot function.</p>
+<div id="all-unemployment-data" class="section level2">
+<h2>All Unemployment Data</h2>
+<p>This graph uses <code>geom_point</code> in ggplot2 to show all ten years of unemployment rates in the US and PR. Each point represents the unemployment rate for a month for a state or territory of the United States. The blue line is a trend line created using ggplot2’s <code>geom_smooth()</code> function. One interesting data point is towards the beginning of 2020 when the unemployment rate jumped after the COVID-19 pandemic started to affect businesses in the US.</p>
+<pre class="r"><code>all_unemployment_data_graph &lt;- ggplot(filter(results)) +
+  geom_point(
+    mapping = aes(x = the_date , y = value),
+    position = &quot;jitter&quot;,
+    shape = 20,
+    size = .5
+  ) +
+  ylab(&quot;Unemployment Rate&quot;) +
+  scale_x_date(name = &quot;Date&quot;,
+               date_labels = &quot;%Y&quot;,
+               date_breaks = &quot;2 years&quot;) +
+  labs(title = &quot;Unemployment rates for all US territories, plotted by month&quot;) +
+  geom_smooth(mapping = aes(x = the_date, y = value))
+
+plot(all_unemployment_data_graph)</code></pre>
+<div class="figure">
+<img src="Unemployment_API_Notebook_files/figure-html/Preview-all-Data-1.png" alt="US Monthly Unemployment Rate, 2010 - 2021." width="672" />
+<p class="caption">
+US Monthly Unemployment Rate, 2010 - 2021.
+</p>
+</div>
+</div>
+<div id="alabama-unemployment-data" class="section level2">
+<h2>Alabama Unemployment Data</h2>
+<p>This graph is similar in shape to the previous graph but only shows the unemployment rates in Alabama. Another observation is the range on the y-axis is much smaller than the previous graph. The highest point for the Alabama graph is just above 12.5.</p>
+<pre class="r"><code>Alabama_data &lt;- ggplot(filter(results, results$seriesID == serials_df$X1[1])) +
+  geom_point(mapping = aes(x = the_date, y = value)) +
+  geom_smooth(mapping = aes(x = the_date, y = value))+
+  xlab(&quot;Date&quot;) +
+  scale_x_date(name = &quot;Date&quot;,
+               date_labels = &quot;%Y&quot;,
+               date_breaks = &quot;2 years&quot;)
+
+plot(Alabama_data)</code></pre>
+<div class="figure">
+<img src="Unemployment_API_Notebook_files/figure-html/Searching-for-Correlation-1.png" alt="Alabama Monthly Unemployment Rate, 2010 - 2021." width="672" />
+<p class="caption">
+Alabama Monthly Unemployment Rate, 2010 - 2021.
+</p>
+</div>
+</div>
+</div>
+<div id="little-lessons-learned" class="section level1">
+<h1>Little Lessons Learned</h1>
+<p>This section highlights some of the details that I learned while starting this project. Every project has unexpected obstacles. I’m hoping that by writing down the methods that I learned to circumvent or overcome those obstacles that I will remember them in the long-run. <br></p>
+<div id="combining-multiple-data-frames-into-one." class="section level4">
+<h4>Combining multiple data frames into one.</h4>
+<p>I learned that it takes less processing to save all the dataframes into a list within a loop, then to use <code>bind_rows()</code> outside of the loop to combine them versus using <code>rbind()</code> within the loop to append each dataset to the existing dataframe. <br></p>
+</div>
+<div id="ggplot" class="section level4">
+<h4>ggplot</h4>
+<p>I learned that <code>xlab()</code> and <code>ylab()</code> can be called outside of aes(). <br></p>
+</div>
+<div id="source" class="section level4">
+<h4>source()</h4>
+<p>I learned how to use <code>source()</code> to call variables from other files. When <code>source()</code> is called, it runs the code saved in the source file. Any variables in the source file are saved into the global environment. <br></p>
+</div>
+<div id="dates-on-a-ggplot-axis" class="section level4">
+<h4>Dates on a ggplot axis</h4>
+<p>I learned that instead of using <code>scale_x_continuous</code> or <code>scale_x_discrete</code> I should use <code>scale_x_date</code> when a ggplot graph has the date on the x axis. Breaks, labels, and minor breaks can be controlled using <code>date_breaks</code>, <code>date_labels</code>, and <code>date_minor_breaks</code> respectively.</p>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>This post highlighted my first successful attempt to use an API to pull data from an external data soure. I also created two simple plots using ggplot2. Future posts will demonstrate the analysis of the unemployment data obtained.</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

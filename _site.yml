@@ -6,7 +6,7 @@ navbar:
 
     - text: "RStudio"
       menu:
-        - text: "Foundations of Analytics Project"
+        - text: "Analytics Project for Boston University"
           href: CS544_FinalProject_Ascher_Rmarkdown.html
         - text: "Working with APIs"
           href: Unemployment_API_Notebook.html
@@ -42,4 +42,4 @@ output:
     # toc: true
     # toc_float: true
     # toc_depth: 3
-    theme: darkly
+    theme: yeti
