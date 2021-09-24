@@ -1,6 +1,7 @@
-name: "Portfolio"
+name: "Troy Ascher's Portfolio"
+output_dir: docs
 navbar:
-  title: "Troy Ascher Portfolio"
+  title: "Home"
   left:
 
     - text: "RStudio"
@@ -34,7 +35,7 @@ navbar:
 output:
   html_document:
     code_folding: hide
-    toc: true
-    toc_float: true
-    toc_depth: 3
+    # toc: true
+    # toc_float: true
+    # toc_depth: 3
     theme: darkly
