@@ -1,10 +1,13 @@
 ---
 title: "Chapter 5 Data visualization"
 ---
-
+```{r}
 {r}
 library(nycflights13)
 library(tidyverse)
+```
+
+
 
 
 nycflights13::flights
