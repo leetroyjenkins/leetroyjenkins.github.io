@@ -27,7 +27,7 @@ navbar:
     - text: "Resume"
       menu: 
         - text: "Resume"
-          href: TroyAscherMS.pdf
+          href: Resume.html
         - text: "About me"
           href: aboutme.html
 
