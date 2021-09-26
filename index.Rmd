@@ -6,10 +6,14 @@ title: "Welcome to my Portfolio!"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Hi, my name is Troy Ascher. I'm currently doing a master's degree from in Computer Information Systems with a Business Intelligence and Database Management specialization at Boston University. I'll graduate in May of 2022 and I'm looking for a challenging and interesting job that involves data analysis and business intelligence. To assist employers with evaluating my skill-set I've built this website. Welcome!
+Here are some visualizations that I've done in RStudio. You can click on the images to view the projects they are from, or use the menu at the top of the page to navigate.
 
-On this page I've highlighted some visualizations that I've done in RStudio. You can click on the images to view the projects they are from, or use the menu at the top of the page to navigate.
 
-[![](images/Preview-all-Data-1.png "US Unemployment Rate by Month")](Unemployment_API_Notebook.html)
+```{r building-graphics-page, echo=FALSE, out.width="49%", out.height="20%",fig.cap="US Unemployment Data Examples",fig.show='hold',fig.align='center'}
+
+knitr::include_graphics(c("images/Preview-all-Data-1.png", "images/Preview-all-Data-1.png"))
+
+```
+![images/Preview-all-Data-1.png](images/Preview-all-Data-1.png) ![images/Preview-all-Data-21.png](images/Preview-all-Data-1.png) 
 
 This website was generated using RMarkdown in RStudio and Github for web hosting.
