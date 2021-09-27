@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 	warning = FALSE,
 	tidy = FALSE,
 	cache = TRUE,
-	fig.height = 6
+	fig.height = 5
 )
 ```
 
@@ -539,9 +539,9 @@ weather.bp2 <- barplot(
   horiz = TRUE,
   las = 1,
   xlim = c(0,40000),
-  main = "Count of cloudy, clear, and hazy days.",
-  sub = "where % is > 1",
-  xlab = "Frequency of Conditions",
+  main = "Beijing, 2017 Sky Conditions",
+  sub = "",
+  xlab = "Count of Significant Conditions",
   col = rev(brewer.pal(n=3, "PuBu"))
     #wes_palette(wes.colors[19], 3, type = "discrete")
 )
@@ -559,14 +559,15 @@ subset(weather.df$Freq, weather.df$percent > 1) %>%
     ), "%", sep = ""),
     col = rev(brewer.pal(n=3, "PuBu")),
       #wes_palette(wes.colors[16], 3, type = "discrete"),
-    main = "% of sky conditions."
+    main = ""
   )
 legend(
   x = 'topleft',
   legend = subset(weather.df$Var1, weather.df$percent > 1),
-  fill =  brewer.pal(n=3, "PuBu")
+  fill =  rev(brewer.pal(n=3, "PuBu"))
     #wes_palette(wes.colors[16], 3, type = "discrete")
 )
+
 par(def.par)
 ```
 
@@ -601,7 +602,7 @@ for (i in unique(cn.atmos$season)){
   )
 }
 mtext("Sky Conditions",outer = TRUE, side = 1, line = 1)
-mtext("Sky Conditions by occurence, by season", side = 3, line = 1, cex = 1.5, outer = TRUE)
+mtext("Beijing Sky Conditions by occurence, by season, 2017", side = 3, line = 1, cex = 1.5, outer = TRUE)
 par(def.par)
 
 ```
@@ -634,8 +635,8 @@ for (i in unique(cn.atmos$season)){
          cex = .7
   )
 }
-mtext("Beijing Sky Conditions",outer = TRUE, side = 1, line = 1)
-mtext("Beijing Sky Conditions by occurence, by season, excluding Clear days", side = 3, line = 1, cex = 1.5, outer = TRUE)
+mtext("Excluding clear days",outer = TRUE, side = 1, line = 1)
+mtext("Count of 2017 Beijing Sky Conditions", side = 3, line = 1, cex = 1.5, outer = TRUE)
 par(def.par)
 ```
 These plots demonstrate that other than clear days haze is the condition that most often occurs in Beijing throughout the year.  
@@ -772,8 +773,7 @@ boxplot(
     "Nov",
     "Dec"
   ),
-  col = rev(brewer.pal(n=12, "Set3")),
-    #wes_palette(wes.colors[7], 12, type = "continuous"),
+  col = wes_palette(wes.colors[7], 12, type = "continuous"),
   las = 1,
   main = "Boxplots of AQI, by season."
 )
@@ -794,8 +794,7 @@ boxplot(
   cn.atmos$SO2,
   cn.atmos$AQI,
   horizontal = TRUE,
-  col = rev(brewer.pal(n=7, "Set3")), 
-    #rev(wes_palette(wes.colors[8], 7, type = "continuous")),
+  col = rev(wes_palette(wes.colors[8], 7, type = "continuous")),
   names = c("PM2.5", "PM10", "NO2", "CO", "O3", "SO2", "AQI"),
   las = 1,
   main = "Boxplots of Air Pollutants",
@@ -821,8 +820,7 @@ for (i in unique(cn.atmos$season)){
     subset(cn.atmos$O3, cn.atmos$season == i),
     subset(cn.atmos$SO2, cn.atmos$season == i),
     horizontal = TRUE,
-    col = rev(brewer.pal(n=7, "Set3")),
-      #rev(wes_palette(wes.colors[8], 7, type = "continuous")),
+    col = rev(wes_palette(wes.colors[8], 7, type = "continuous")),
     names = c("AQI", "PM2.5", "PM10", "NO2", "CO", "O3", "SO2"),
     las = 1,
     main = i

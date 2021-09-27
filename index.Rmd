@@ -6,14 +6,18 @@ title: "Welcome to my Portfolio!"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Here are some visualizations that I've done in RStudio. You can click on the images to view the projects they are from, or use the menu at the top of the page to navigate.
 
 
-```{r building-graphics-page, echo=FALSE, out.width="49%", out.height="20%",fig.cap="US Unemployment Data Examples",fig.show='hold',fig.align='center'}
 
-knitr::include_graphics(c("images/Preview-all-Data-1.png", "images/Preview-all-Data-1.png"))
+```{r building-graphics-page-row-1, echo=FALSE, out.width="49%", out.height="20%",fig.cap="",fig.show='hold',fig.align='center'}
+
+knitr::include_graphics(c("CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/barchart-of-significant-weather-1.png", "CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/hist-of-aqi-levels-1.png"))
 
 ```
-![images/Preview-all-Data-1.png](images/Preview-all-Data-1.png) ![images/Preview-all-Data-21.png](images/Preview-all-Data-1.png) 
+```{r building-graphics-page-row-2, echo=FALSE, out.width="49%", out.height="20%",fig.cap="",fig.show='hold',fig.align='center'}
+
+knitr::include_graphics(c("images/Preview-all-Data-1.png", "CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/pollution-rose-2.png"))
+```
+
 
 This website was generated using RMarkdown in RStudio and Github for web hosting.

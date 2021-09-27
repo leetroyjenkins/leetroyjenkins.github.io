@@ -895,9 +895,9 @@ weather.bp2 &lt;- barplot(
   horiz = TRUE,
   las = 1,
   xlim = c(0,40000),
-  main = &quot;Count of cloudy, clear, and hazy days.&quot;,
-  sub = &quot;where % is &gt; 1&quot;,
-  xlab = &quot;Frequency of Conditions&quot;,
+  main = &quot;Beijing, 2017 Sky Conditions&quot;,
+  sub = &quot;&quot;,
+  xlab = &quot;Count of Significant Conditions&quot;,
   col = rev(brewer.pal(n=3, &quot;PuBu&quot;))
     #wes_palette(wes.colors[19], 3, type = &quot;discrete&quot;)
 )
@@ -915,12 +915,12 @@ subset(weather.df$Freq, weather.df$percent &gt; 1) %&gt;%
     ), &quot;%&quot;, sep = &quot;&quot;),
     col = rev(brewer.pal(n=3, &quot;PuBu&quot;)),
       #wes_palette(wes.colors[16], 3, type = &quot;discrete&quot;),
-    main = &quot;% of sky conditions.&quot;
+    main = &quot;&quot;
   )
 legend(
   x = &#39;topleft&#39;,
   legend = subset(weather.df$Var1, weather.df$percent &gt; 1),
-  fill =  brewer.pal(n=3, &quot;PuBu&quot;)
+  fill =  rev(brewer.pal(n=3, &quot;PuBu&quot;))
     #wes_palette(wes.colors[16], 3, type = &quot;discrete&quot;)
 )</code></pre>
 <p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/barchart-of-significant-weather-1.png" width="672" /></p>
@@ -954,7 +954,7 @@ for (i in unique(cn.atmos$season)){
   )
 }
 mtext(&quot;Sky Conditions&quot;,outer = TRUE, side = 1, line = 1)
-mtext(&quot;Sky Conditions by occurence, by season&quot;, side = 3, line = 1, cex = 1.5, outer = TRUE)</code></pre>
+mtext(&quot;Beijing Sky Conditions by occurence, by season, 2017&quot;, side = 3, line = 1, cex = 1.5, outer = TRUE)</code></pre>
 <p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/sky-conditions-by-season-1.png" width="672" /></p>
 <pre class="r"><code>par(def.par)</code></pre>
 <p>This data shows that Fall and Summer have the highest count of Clear observations. Snow only occurs during the winter, and Fog has a much higher occurrence during the summer and fall then during the winter or spring. What if we only look at days that are not clear?</p>
@@ -983,8 +983,8 @@ for (i in unique(cn.atmos$season)){
          cex = .7
   )
 }
-mtext(&quot;Beijing Sky Conditions&quot;,outer = TRUE, side = 1, line = 1)
-mtext(&quot;Beijing Sky Conditions by occurence, by season, excluding Clear days&quot;, side = 3, line = 1, cex = 1.5, outer = TRUE)</code></pre>
+mtext(&quot;Excluding clear days&quot;,outer = TRUE, side = 1, line = 1)
+mtext(&quot;Count of 2017 Beijing Sky Conditions&quot;, side = 3, line = 1, cex = 1.5, outer = TRUE)</code></pre>
 <p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/conditions-by-season-excluding-clear-days-1.png" width="672" /></p>
 <pre class="r"><code>par(def.par)</code></pre>
 <p>These plots demonstrate that other than clear days haze is the condition that most often occurs in Beijing throughout the year.</p>
@@ -1109,8 +1109,7 @@ legend(x = &quot;topright&quot;,
     &quot;Nov&quot;,
     &quot;Dec&quot;
   ),
-  col = rev(brewer.pal(n=12, &quot;Set3&quot;)),
-    #wes_palette(wes.colors[7], 12, type = &quot;continuous&quot;),
+  col = wes_palette(wes.colors[7], 12, type = &quot;continuous&quot;),
   las = 1,
   main = &quot;Boxplots of AQI, by season.&quot;
 )</code></pre>
@@ -1128,8 +1127,7 @@ legend(x = &quot;topright&quot;,
   cn.atmos$SO2,
   cn.atmos$AQI,
   horizontal = TRUE,
-  col = rev(brewer.pal(n=7, &quot;Set3&quot;)), 
-    #rev(wes_palette(wes.colors[8], 7, type = &quot;continuous&quot;)),
+  col = rev(wes_palette(wes.colors[8], 7, type = &quot;continuous&quot;)),
   names = c(&quot;PM2.5&quot;, &quot;PM10&quot;, &quot;NO2&quot;, &quot;CO&quot;, &quot;O3&quot;, &quot;SO2&quot;, &quot;AQI&quot;),
   las = 1,
   main = &quot;Boxplots of Air Pollutants&quot;,
@@ -1153,8 +1151,7 @@ for (i in unique(cn.atmos$season)){
     subset(cn.atmos$O3, cn.atmos$season == i),
     subset(cn.atmos$SO2, cn.atmos$season == i),
     horizontal = TRUE,
-    col = rev(brewer.pal(n=7, &quot;Set3&quot;)),
-      #rev(wes_palette(wes.colors[8], 7, type = &quot;continuous&quot;)),
+    col = rev(wes_palette(wes.colors[8], 7, type = &quot;continuous&quot;)),
     names = c(&quot;AQI&quot;, &quot;PM2.5&quot;, &quot;PM10&quot;, &quot;NO2&quot;, &quot;CO&quot;, &quot;O3&quot;, &quot;SO2&quot;),
     las = 1,
     main = i
