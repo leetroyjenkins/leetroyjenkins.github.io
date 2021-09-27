@@ -45,3 +45,6 @@ output:
     # toc_float: true
     # toc_depth: 3
     theme: yeti
+    output:
+    includes:
+      after_body: footer.html
