@@ -6,7 +6,7 @@ title: "About Me"
 
 ## China
 In 2017 I quit my job so I could return to school full-time. I was accepted to The University of Liverpool and moved to China to study international business and Chinese.
-```{r about-me-China, echo=FALSE, out.width="32%", out.height="20%",fig.cap="Gardens in Suzhou, Hotpot, and the top rated restaruant in Xi'an.",fig.show='hold',fig.align='center'}
+```{r about-me-China, echo=FALSE, out.width="32%", out.height="20%",fig.cap="Gardens in Suzhou, Hotpot, and the top rated dianping restaurant in Xi'an.",fig.show='hold',fig.align='center'}
 
 knitr::include_graphics(c("images/suzhou-park.jpg","images/hotpot.jpg","images/troychina.jpg"))
 
