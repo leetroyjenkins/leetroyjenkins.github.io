@@ -44,4 +44,4 @@ knitr::include_graphics(c("images/Preview-all-Data-1.png"))
 ```
 ##
 
-*This website was built using RMarkdown in RStudio and Github for web hosting.*
+
