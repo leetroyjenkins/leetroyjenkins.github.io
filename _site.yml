@@ -25,11 +25,9 @@ navbar:
       menu:
         - text: "Health and Wellness Tracker"
     - text: "Resume"
-      menu: 
-        - text: "Resume"
-          href: Resume.html
-        - text: "About me"
-          href: aboutme.html
+      href: Resume.html
+    - text: "About me"
+      href: aboutme.html
 
   right: 
     - icon: fa-envelope fa-lg

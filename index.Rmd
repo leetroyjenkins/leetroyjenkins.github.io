@@ -22,6 +22,7 @@ knitr::include_graphics(c("CS544_FinalProject_Ascher_Rmarkdown_files/figure-html
 
 ```
 ### Beijing AQI
+These visualizations are from a project I did as part of Master's in Computer Information Systems from Boston University. View the whole project [HERE.](CS544_FinalProject_Ascher_Rmarkdown.html "Boston University MS CIS Project")
 ```{r home-page-AQI-row-2, echo=FALSE, out.width="49%", out.height="20%",fig.cap="Beijing AQI Distribution, 2017, by month and season",fig.show='hold',fig.align='center'}
 
 knitr::include_graphics(c("CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/aqi-monthly-distribution-1.png", "CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/aqi-seasonal-distribution-1.png"))
@@ -29,6 +30,7 @@ knitr::include_graphics(c("CS544_FinalProject_Ascher_Rmarkdown_files/figure-html
 ```
 
 ### Beijing AQI & Wind
+These visualizations are from a project I did as part of Master's in Computer Information Systems from Boston University. View the whole project [HERE.](CS544_FinalProject_Ascher_Rmarkdown.html "Boston University MS CIS Project")
 ```{r home-page-AQI-row-3, echo=FALSE, out.width="49%", out.height="20%",fig.cap="Beijing AQI Data from 2017 using US EPA color coding system",fig.show='hold',fig.align='center'}
 
 knitr::include_graphics(c("CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/hist-of-aqi-levels-1.png", "CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/pollution-rose-2.png"))
