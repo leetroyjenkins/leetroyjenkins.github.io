@@ -2,6 +2,7 @@
 title: "About Me"
 ---
 
+
 I'm from Minneapolis but currently live in China.
 
 ![](images/troychina.jpg "DinnerInChina"){width="700"}
@@ -25,3 +26,4 @@ In 2020 I graduated with a international business and Chinese language degree fr
 I'm doing a master's degree from in Computer Information Systems with a Business Intelligence and Database Management specialization at Boston University. I'll graduate in May of 2022 and I'm looking for a challenging and interesting job that involves data analysis and business intelligence.
 
 ![](images/bostonuniversity.jpg "BU"){width="700"}
+

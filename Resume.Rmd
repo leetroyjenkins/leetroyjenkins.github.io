@@ -2,6 +2,8 @@
 title: "Resume"
 ---
 
-[![](images/TroyAscherMSResume10241024_1.png "Resume Page 1"){width="700"}](TroyAscherMSResume.pdf)
 
-[![](images/TroyAscherMSResume10241024_2.png "Resume Page 2"){width="700"}](TroyAscherMSResume.pdf)
+![](images/TroyAscherMS10241024_1.png "TroyAscherResumePage1"){width="600"}
+
+![](images/TroyAscherMS10241024_2.png "TroyAscherResumepage2"){width="600"}
+
