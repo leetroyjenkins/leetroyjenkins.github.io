@@ -15,7 +15,8 @@ knitr::opts_chunk$set(
 	message = FALSE,
 	warning = FALSE,
 	tidy = FALSE,
-	cache = TRUE
+	cache = TRUE,
+	fig.height = 5
 )
 ```
 
@@ -32,6 +33,10 @@ library(openair)
 # Color pallette "WesAnderson"
 library(wesanderson)
 wes.colors <- names(wes_palettes)
+
+# Color pallette to use instead of WesAnderson pallette
+library(RColorBrewer)
+colorbrew <- row.names(RColorBrewer::brewer.pal.info)
 
 # For using subplots
 library(plotly)
@@ -121,13 +126,17 @@ The observations included in the datasets are:
 MEP (pollutant) data:
 
 ```{r pollution-columns-names, echo=TRUE}
-names(wd_beijing_17_18_aq.csv)
+for (i in names(wd_beijing_17_18_aq.csv)) {
+  print(i)
+}
 ```
 
 NOAA (weather) data:
 
 ```{r weather-column-names, echo=TRUE}
-names(wd_beijing_17_18_meo.csv)
+for (i in names(wd_beijing_17_18_meo.csv)) {
+  print(i)
+}
 ```
 
 ### Data Manipulation
@@ -172,16 +181,18 @@ Merge datasets into one frame based on shared station Ids.
     raw.air <-
       subset(wd_beijing_17_18_aq.csv,
              wd_beijing_17_18_aq.csv$stationId %in% temp.names$x)
-    unique(raw.air$stationId)
+    for (i in unique(raw.air$stationId)) {
+      print(i)
+    }
 
     raw.meo <-
       subset(wd_beijing_17_18_meo.csv,
              wd_beijing_17_18_meo.csv$station_id %in% temp.names$x)
-    unique(raw.meo$station_id)
+
 
 
     # Remove the original dataframes and unnecessary objects.
-    remove(wd_beijing_17_18_aq.csv, wd_beijing_17_18_meo.csv, aq.names, meo.names, temp.names, i)
+    remove(aq.names, meo.names, temp.names, i)
 
 
     # Check that the unique values match.
@@ -467,7 +478,7 @@ Merge datasets into one frame based on shared station Ids.
 9.  The final tibble.
 
     ```{r data-manipulation-step-9}
-    cn.atmos
+    head(cn.atmos)
 
     ```
 
@@ -487,7 +498,8 @@ cn.atmos$weather %>% table()
 weather.tb <- cn.atmos$weather %>% table()
 weather.bp <- weather.tb %>% barplot(
   las = 1 ,
-  col = wes_palette(wes.colors[11], 7, type = "continuous"),
+  col = brewer.pal(n=7, "PuBu"),
+    #wes_palette(wes.colors[14], 7, type = "continuous"),
   ylim = c(0, 40000),
   main = "Recorded Sky Conditions in Beijing",
   sub = "Across nine weather stations"
@@ -527,15 +539,17 @@ weather.bp2 <- barplot(
   horiz = TRUE,
   las = 1,
   xlim = c(0,40000),
-  main = "Count of sky conditions.",
-  sub = "where % is > 1",
-  xlab = "Frequency of Conditions",
-  col = wes_palette(wes.colors[2], 3, type = "discrete")
+  main = "Beijing, 2017 Sky Conditions",
+  sub = "",
+  xlab = "Count of Significant Conditions",
+  col = rev(brewer.pal(n=3, "PuBu"))
+    #wes_palette(wes.colors[19], 3, type = "discrete")
 )
 legend(x = "topright",
        title = "Count",
        legend = rev(weather.df2$Freq), 
-       fill = rev(wes_palette(wes.colors[2], 3, type = "discrete"))
+       fill = rev(brewer.pal(n=3, "PuBu"))
+         #rev(wes_palette(wes.colors[16], 3, type = "discrete"))
        )
 par(mar = c(2,2,1,0))
 subset(weather.df$Freq, weather.df$percent > 1) %>%
@@ -543,20 +557,23 @@ subset(weather.df$Freq, weather.df$percent > 1) %>%
     labels = paste(round(
       subset(weather.df$percent, weather.df$percent > 1)
     ), "%", sep = ""),
-    col = wes_palette(wes.colors[2], 3, type = "discrete"),
-    main = "% of sky conditions."
+    col = rev(brewer.pal(n=3, "PuBu")),
+      #wes_palette(wes.colors[16], 3, type = "discrete"),
+    main = ""
   )
 legend(
   x = 'topleft',
   legend = subset(weather.df$Var1, weather.df$percent > 1),
-  fill =  wes_palette(wes.colors[2], 3, type = "discrete")
+  fill =  rev(brewer.pal(n=3, "PuBu"))
+    #wes_palette(wes.colors[16], 3, type = "discrete")
 )
+
 par(def.par)
 ```
 
 Next, weather conditions are compared by season to see what seasonal differences occur.
 
-```{r}
+```{r sky-conditions-by-season}
 # by season
 
 par(oma = c(3,0,3,2))
@@ -572,23 +589,57 @@ for (i in unique(cn.atmos$season)){
     beside = TRUE,
     # main = i,
     las = 2,
-    col = wes_palette(wes.colors[2], 5, type = "discrete"),
+    col = rev(brewer.pal(n=5, "PuBu")),
+      #wes_palette(wes.colors[2], 5, type = "discrete"),
     main = i
   )
   legend(x = "topright",
          title = "Count",
          legend = table(subset(cn.atmos$weather, cn.atmos$season == i)), 
-         fill = wes_palette(wes.colors[2], 5, type = "discrete"),
+         fill = rev(brewer.pal(n=5, "PuBu")),
+           #wes_palette(wes.colors[2], 5, type = "discrete"),
          cex = .7
   )
 }
 mtext("Sky Conditions",outer = TRUE, side = 1, line = 1)
-mtext("Sky Conditions by %, by season", side = 3, line = 1, cex = 1.5, outer = TRUE)
+mtext("Beijing Sky Conditions by occurence, by season, 2017", side = 3, line = 1, cex = 1.5, outer = TRUE)
 par(def.par)
 
 ```
 
-This data shows that Fall and Summer have the highest count of Clear observations. Snow only occurs during the winter, and Fog has a much higher occurrence during the summer and fall then during the winter or spring.
+This data shows that Fall and Summer have the highest count of Clear observations. Snow only occurs during the winter, and Fog has a much higher occurrence during the summer and fall then during the winter or spring. What if we only look at days that are not clear?
+
+```{r conditions-by-season-excluding-clear-days}
+par(oma = c(3,0,3,2))
+par(mar = c(3,5,2,0))
+par(mfrow = c(2, 2))
+
+
+for (i in unique(cn.atmos$season)){
+  barplot(
+    height = table(subset(cn.atmos$weather, cn.atmos$season == i & !cn.atmos$weather == 'Clear')),
+    xlim = c(0, 3000),
+    horiz = TRUE,
+    beside = TRUE,
+    # main = i,
+    las = 2,
+    col = rev(brewer.pal(n=4, "PuBu")),
+      #wes_palette(wes.colors[2], 5, type = "discrete"),
+    main = i
+  )
+  legend(x = "topright",
+         title = "Count",
+         legend = table(subset(cn.atmos$weather, cn.atmos$season == i & !cn.atmos$weather == 'Clear')), 
+         fill = rev(brewer.pal(n=4, "PuBu")),
+           #wes_palette(wes.colors[2], 5, type = "discrete"),
+         cex = .7
+  )
+}
+mtext("Excluding clear days",outer = TRUE, side = 1, line = 1)
+mtext("Count of 2017 Beijing Sky Conditions", side = 3, line = 1, cex = 1.5, outer = TRUE)
+par(def.par)
+```
+These plots demonstrate that other than clear days haze is the condition that most often occurs in Beijing throughout the year.  
 
 ## Analysis on AQI
 
@@ -684,7 +735,9 @@ boxplot(cn.atmos$AQI,
         names = c("2017", "Summer", "Fall", "Winter", "Spring"),
         las = 1,
         main = "Boxplots of AQI, by season.",
-        col = wes_palette(wes.colors[7], 5, type = "continuous"))
+        col = #rev(brewer.pal(n=5, "PuBu"))
+          wes_palette(wes.colors[7], 5, type = "continuous")
+)
 
 
 ```
@@ -863,7 +916,8 @@ for (i in four.samples) {
   hist(
     xbar,
     main = paste("Sample size,", i),
-    col = wes_palette(wes.colors[7], 4, type = "continuous"),
+    col = brewer.pal(n=12, "PuBu"),
+      #wes_palette(wes.colors[7], 4, type = "continuous"),
     probability = TRUE,
     las = 1, 
     xlab = paste("Mean =",round(mean(xbar), 3), sep = " "),
@@ -909,7 +963,8 @@ par(mar = c(5,5,2,2))
 hist(
   aqi.srswor$AQI,
   las = 1,
-  col = wes_palette(wes.colors[4], 4, type = "continuous"),
+  col = rev(brewer.pal(n=16, "BuPu")),
+    #wes_palette(wes.colors[4], 4, type = "continuous"),
   main = "SRSWOR",
   probability = TRUE,
   xlab = paste("Sample size", sample.size, sep = " "),
@@ -940,7 +995,8 @@ par(mar = c(5, 5, 2, 2))
 hist(
   aqi.syst.samp$AQI,
   las = 1,
-  col = wes_palette(wes.colors[4], 4, type = "continuous"),
+  col = rev(brewer.pal(n=16, "BuPu")),
+    #wes_palette(wes.colors[4], 4, type = "continuous"),
   main = "Systematic Sampling",
   probability = TRUE,
   xlab = paste("Sample size", n, sep = " "),
@@ -986,7 +1042,8 @@ hist(
   aqi.strata.sample$AQI,
   probability = TRUE,
   las = 1,
-  col = wes_palette(wes.colors[4], 4, type = "continuous"),
+  col = rev(brewer.pal(n=16, "BuPu")),
+    #wes_palette(wes.colors[4], 4, type = "continuous"),
   xlab = paste("Sample size", sample.size, sep = " "),
   main = "Stratified",
   xlim = c(0, 500),
@@ -1006,7 +1063,8 @@ par(mfrow = c(2,2), oma = c(3,3,3,1), mar = c(2,3,1,1))
 simple <- hist(
   aqi.srswor$AQI,
   las = 1,
-  col = wes_palette(wes.colors[4], 4, type = "continuous"),
+  col = rev(brewer.pal(n=16, "BuPu")),
+    #wes_palette(wes.colors[4], 4, type = "continuous"),
   main = "SRSWOR",
   probability = TRUE,
   xlab = paste("Sample size", sample.size, sep = " "),
@@ -1016,7 +1074,8 @@ simple <- hist(
 )
 syst <- hist(aqi.syst.samp$AQI,
              las = 1,
-             col = wes_palette(wes.colors[4], 4, type = "continuous"),
+             col = rev(brewer.pal(n=16, "BuPu")),
+    #wes_palette(wes.colors[4], 4, type = "continuous"),
              main = "Systematic Sampling",
              probability = TRUE,
              xlab = "",
@@ -1028,7 +1087,8 @@ syst <- hist(aqi.syst.samp$AQI,
 strat <- hist(aqi.strata.sample$AQI,
               probability = TRUE,
               las = 1,
-              col = wes_palette(wes.colors[4], 4, type = "continuous"),
+              col = rev(brewer.pal(n=16, "BuPu")),
+    #wes_palette(wes.colors[4], 4, type = "continuous"),
               xlab = "",
               ylab = "",
               main = "Stratified",
@@ -1041,7 +1101,8 @@ hist(cn.atmos$AQI,
      main = "Population",
      ylab = "",
      xlab = "",
-     col = wes_palette(wes.colors[4], 4, type = "continuous"),
+     col = rev(brewer.pal(n=16, "BuPu")),
+    #wes_palette(wes.colors[4], 4, type = "continuous"),
      las = 1,
      xlim = c(0, 500),
      ylim = c(0, .02)
@@ -1128,7 +1189,7 @@ Looking at these charts we can observe that there is the most purple in the wint
 
 ## Known Issues and Recommendations
 
-Data integrity in China is an unknown. This data was provided by the government, but validating the findings with independent readings was outside of the scope of this project. A study in 2016 by Liang et al. , suggests that official AQI counts in China have a range of reliability.
+Data integrity in China is an unknown. A study in 2016 by Liang et al. , suggests that official AQI counts in China have a range of reliability.
 
 According to Reuters (2018), PM2.5 levels for 2017 in Beijing fell by 39.6% from their 2016 values. Without data for the surrounding year, it is not possible to say if this was a trend, or an anomaly. A data-set that allows year-over-year changes should be analyzed to see if this trend continued.Overall,
 
@@ -1137,7 +1198,7 @@ According to Reuters (2018), PM2.5 levels for 2017 in Beijing fell by 39.6% from
 Overall, this analysis has shown that in 2017 Beijing experienced mostly clear sky conditions, with haze and fog the other major weather conditions present. The observed occurrence of rain or other conditions was less than 1%. Around 53% of recorded AQI levels were in the "Moderate" range, with the other 47% being "Unhealthy for Some" or worse. AQI levels had the highest mean in the Spring, but the most extreme observations were recorded during the Winter. Sampling on the data demonstrated the validity of the Central Limit Theorem, and various sampling techniques were shown to follow the distribution of the population data. Finally, wind strength was shown to be the strongest from the NW throughout the year, with correlation to AQI levels unknown.
 
 # Appendix A
-
+###Project Requirements
 |                                                                                           | **Example 1**             | **Example 2**       |              **Example 3**              |
 |-------------------------------------------------------------------------------------------|---------------------------|---------------------|:---------------------------------------:|
 | Do the analysis for at least one categorical variable as in Module 3                      | Weather Conditions        |                     |                                         |

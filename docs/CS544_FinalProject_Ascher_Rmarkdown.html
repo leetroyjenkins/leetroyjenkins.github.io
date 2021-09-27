@@ -441,6 +441,10 @@ library(openair)
 library(wesanderson)
 wes.colors &lt;- names(wes_palettes)
 
+# Color pallette to use instead of WesAnderson pallette
+library(RColorBrewer)
+colorbrew &lt;- row.names(RColorBrewer::brewer.pal.info)
+
 # For using subplots
 library(plotly)
 
@@ -510,14 +514,31 @@ remove(var.names)</code></pre>
 <p>The data is from two data-sets from Harvard’s Dataverse in the form of a study by Wang (2019). The data was provided by the Ministry of Environmental Protection (MEP) of China and the National Oceanic and Atmospheric Administration (NOAA). The data-sets include 311010 hourly observations from pollution monitoring stations in Beijing, and 158047 hourly observations from pollution monitoring stations.</p>
 <p>The observations included in the datasets are:</p>
 <p>MEP (pollutant) data:</p>
-<pre class="r"><code>names(wd_beijing_17_18_aq.csv)</code></pre>
-<pre><code>## [1] &quot;stationId&quot; &quot;utc_time&quot;  &quot;PM2.5&quot;     &quot;PM10&quot;      &quot;NO2&quot;       &quot;CO&quot;       
-## [7] &quot;O3&quot;        &quot;SO2&quot;</code></pre>
+<pre class="r"><code>for (i in names(wd_beijing_17_18_aq.csv)) {
+  print(i)
+}</code></pre>
+<pre><code>## [1] &quot;stationId&quot;
+## [1] &quot;utc_time&quot;
+## [1] &quot;PM2.5&quot;
+## [1] &quot;PM10&quot;
+## [1] &quot;NO2&quot;
+## [1] &quot;CO&quot;
+## [1] &quot;O3&quot;
+## [1] &quot;SO2&quot;</code></pre>
 <p>NOAA (weather) data:</p>
-<pre class="r"><code>names(wd_beijing_17_18_meo.csv)</code></pre>
-<pre><code>##  [1] &quot;station_id&quot;     &quot;longitude&quot;      &quot;latitude&quot;       &quot;utc_time&quot;      
-##  [5] &quot;temperature&quot;    &quot;pressure&quot;       &quot;humidity&quot;       &quot;wind_direction&quot;
-##  [9] &quot;wind_speed&quot;     &quot;weather&quot;</code></pre>
+<pre class="r"><code>for (i in names(wd_beijing_17_18_meo.csv)) {
+  print(i)
+}</code></pre>
+<pre><code>## [1] &quot;station_id&quot;
+## [1] &quot;longitude&quot;
+## [1] &quot;latitude&quot;
+## [1] &quot;utc_time&quot;
+## [1] &quot;temperature&quot;
+## [1] &quot;pressure&quot;
+## [1] &quot;humidity&quot;
+## [1] &quot;wind_direction&quot;
+## [1] &quot;wind_speed&quot;
+## [1] &quot;weather&quot;</code></pre>
 </div>
 <div id="data-manipulation" class="section level3" number="1.2.2">
 <h3 number="1.2.2"><span class="header-section-number">1.2.2</span> Data Manipulation</h3>
@@ -556,17 +577,26 @@ temp.names &lt;- subset(temp.names, temp.names$x == temp.names$y)
 raw.air &lt;-
   subset(wd_beijing_17_18_aq.csv,
          wd_beijing_17_18_aq.csv$stationId %in% temp.names$x)
-unique(raw.air$stationId)</code></pre>
-<pre><code>## [1] &quot;daxing&quot;    &quot;fangshan&quot;  &quot;huairou&quot;   &quot;mentougou&quot; &quot;miyun&quot;     &quot;pingchang&quot;
-## [7] &quot;pinggu&quot;    &quot;shunyi&quot;    &quot;tongzhou&quot;</code></pre>
+for (i in unique(raw.air$stationId)) {
+  print(i)
+}</code></pre>
+<pre><code>## [1] &quot;daxing&quot;
+## [1] &quot;fangshan&quot;
+## [1] &quot;huairou&quot;
+## [1] &quot;mentougou&quot;
+## [1] &quot;miyun&quot;
+## [1] &quot;pingchang&quot;
+## [1] &quot;pinggu&quot;
+## [1] &quot;shunyi&quot;
+## [1] &quot;tongzhou&quot;</code></pre>
 <pre class="r"><code>raw.meo &lt;-
   subset(wd_beijing_17_18_meo.csv,
          wd_beijing_17_18_meo.csv$station_id %in% temp.names$x)
-unique(raw.meo$station_id)</code></pre>
-<pre><code>## [1] &quot;shunyi&quot;    &quot;miyun&quot;     &quot;huairou&quot;   &quot;pinggu&quot;    &quot;tongzhou&quot;  &quot;pingchang&quot;
-## [7] &quot;mentougou&quot; &quot;daxing&quot;    &quot;fangshan&quot;</code></pre>
-<pre class="r"><code># Remove the original dataframes and unnecessary objects.
-remove(wd_beijing_17_18_aq.csv, wd_beijing_17_18_meo.csv, aq.names, meo.names, temp.names, i)
+
+
+
+# Remove the original dataframes and unnecessary objects.
+remove(aq.names, meo.names, temp.names, i)
 
 
 # Check that the unique values match.
@@ -801,24 +831,20 @@ cn.atmos$weather[cn.atmos$weather == &quot;Sunny/clear&quot;] &lt;- &quot;Clear&
 #Change AQI to double to use in calculations.
 cn.atmos$AQI &lt;- as.double(cn.atmos$AQI)</code></pre></li>
 <li><p>The final tibble.</p>
-<pre class="r"><code>cn.atmos</code></pre>
-<pre><code>## # A tibble: 46,372 x 22
-##    PKID  stationId date                PM2.5  PM10   NO2    CO    O3   SO2
-##    &lt;chr&gt; &lt;chr&gt;     &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 daxi~ daxing    2017-01-30 16:00:00   179    84    16    13    61    20
-##  2 daxi~ daxing    2017-01-30 17:00:00   183    88    17    14    60    28
-##  3 daxi~ daxing    2017-01-30 18:00:00   184    86    16    15    60    30
-##  4 daxi~ daxing    2017-01-30 19:00:00   187    88    17    16    59    27
-##  5 daxi~ daxing    2017-01-30 22:00:00   186    85    15    18    58    16
-##  6 daxi~ daxing    2017-01-30 23:00:00   188    87    20    18    56    16
-##  7 daxi~ daxing    2017-01-31 02:00:00   186    87    17    19    59    24
-##  8 daxi~ daxing    2017-01-31 05:00:00   169    71    12    12    66    18
-##  9 daxi~ daxing    2017-01-31 07:00:00   162    65    13     1    67    15
-## 10 daxi~ daxing    2017-01-31 08:00:00   158    65    13     9    68    14
-## # ... with 46,362 more rows, and 13 more variables: temperature &lt;dbl&gt;,
-## #   pressure &lt;dbl&gt;, humidity &lt;int&gt;, wind_direction &lt;dbl&gt;, wind_speed &lt;dbl&gt;,
-## #   weather &lt;chr&gt;, AQI &lt;dbl&gt;, day_date &lt;chr&gt;, year &lt;chr&gt;, month &lt;chr&gt;,
-## #   day &lt;chr&gt;, aqi_level &lt;chr&gt;, season &lt;chr&gt;</code></pre></li>
+<pre class="r"><code>head(cn.atmos)</code></pre>
+<pre><code>## # A tibble: 6 x 22
+##   PKID         stationId date                PM2.5  PM10   NO2    CO    O3   SO2
+##   &lt;chr&gt;        &lt;chr&gt;     &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 daxing_2017~ daxing    2017-01-30 16:00:00   179    84    16    13    61    20
+## 2 daxing_2017~ daxing    2017-01-30 17:00:00   183    88    17    14    60    28
+## 3 daxing_2017~ daxing    2017-01-30 18:00:00   184    86    16    15    60    30
+## 4 daxing_2017~ daxing    2017-01-30 19:00:00   187    88    17    16    59    27
+## 5 daxing_2017~ daxing    2017-01-30 22:00:00   186    85    15    18    58    16
+## 6 daxing_2017~ daxing    2017-01-30 23:00:00   188    87    20    18    56    16
+## # ... with 13 more variables: temperature &lt;dbl&gt;, pressure &lt;dbl&gt;,
+## #   humidity &lt;int&gt;, wind_direction &lt;dbl&gt;, wind_speed &lt;dbl&gt;, weather &lt;chr&gt;,
+## #   AQI &lt;dbl&gt;, day_date &lt;chr&gt;, year &lt;chr&gt;, month &lt;chr&gt;, day &lt;chr&gt;,
+## #   aqi_level &lt;chr&gt;, season &lt;chr&gt;</code></pre></li>
 </ol>
 </div>
 </div>
@@ -838,7 +864,8 @@ cn.atmos$weather %&gt;% table()</code></pre>
 weather.tb &lt;- cn.atmos$weather %&gt;% table()
 weather.bp &lt;- weather.tb %&gt;% barplot(
   las = 1 ,
-  col = wes_palette(wes.colors[11], 7, type = &quot;continuous&quot;),
+  col = brewer.pal(n=7, &quot;PuBu&quot;),
+    #wes_palette(wes.colors[14], 7, type = &quot;continuous&quot;),
   ylim = c(0, 40000),
   main = &quot;Recorded Sky Conditions in Beijing&quot;,
   sub = &quot;Across nine weather stations&quot;
@@ -868,15 +895,17 @@ weather.bp2 &lt;- barplot(
   horiz = TRUE,
   las = 1,
   xlim = c(0,40000),
-  main = &quot;Count of sky conditions.&quot;,
-  sub = &quot;where % is &gt; 1&quot;,
-  xlab = &quot;Frequency of Conditions&quot;,
-  col = wes_palette(wes.colors[2], 3, type = &quot;discrete&quot;)
+  main = &quot;Beijing, 2017 Sky Conditions&quot;,
+  sub = &quot;&quot;,
+  xlab = &quot;Count of Significant Conditions&quot;,
+  col = rev(brewer.pal(n=3, &quot;PuBu&quot;))
+    #wes_palette(wes.colors[19], 3, type = &quot;discrete&quot;)
 )
 legend(x = &quot;topright&quot;,
        title = &quot;Count&quot;,
        legend = rev(weather.df2$Freq), 
-       fill = rev(wes_palette(wes.colors[2], 3, type = &quot;discrete&quot;))
+       fill = rev(brewer.pal(n=3, &quot;PuBu&quot;))
+         #rev(wes_palette(wes.colors[16], 3, type = &quot;discrete&quot;))
        )
 par(mar = c(2,2,1,0))
 subset(weather.df$Freq, weather.df$percent &gt; 1) %&gt;%
@@ -884,13 +913,15 @@ subset(weather.df$Freq, weather.df$percent &gt; 1) %&gt;%
     labels = paste(round(
       subset(weather.df$percent, weather.df$percent &gt; 1)
     ), &quot;%&quot;, sep = &quot;&quot;),
-    col = wes_palette(wes.colors[2], 3, type = &quot;discrete&quot;),
-    main = &quot;% of sky conditions.&quot;
+    col = rev(brewer.pal(n=3, &quot;PuBu&quot;)),
+      #wes_palette(wes.colors[16], 3, type = &quot;discrete&quot;),
+    main = &quot;&quot;
   )
 legend(
   x = &#39;topleft&#39;,
   legend = subset(weather.df$Var1, weather.df$percent &gt; 1),
-  fill =  wes_palette(wes.colors[2], 3, type = &quot;discrete&quot;)
+  fill =  rev(brewer.pal(n=3, &quot;PuBu&quot;))
+    #wes_palette(wes.colors[16], 3, type = &quot;discrete&quot;)
 )</code></pre>
 <p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/barchart-of-significant-weather-1.png" width="672" /></p>
 <pre class="r"><code>par(def.par)</code></pre>
@@ -910,21 +941,53 @@ for (i in unique(cn.atmos$season)){
     beside = TRUE,
     # main = i,
     las = 2,
-    col = wes_palette(wes.colors[2], 5, type = &quot;discrete&quot;),
+    col = rev(brewer.pal(n=5, &quot;PuBu&quot;)),
+      #wes_palette(wes.colors[2], 5, type = &quot;discrete&quot;),
     main = i
   )
   legend(x = &quot;topright&quot;,
          title = &quot;Count&quot;,
          legend = table(subset(cn.atmos$weather, cn.atmos$season == i)), 
-         fill = wes_palette(wes.colors[2], 5, type = &quot;discrete&quot;),
+         fill = rev(brewer.pal(n=5, &quot;PuBu&quot;)),
+           #wes_palette(wes.colors[2], 5, type = &quot;discrete&quot;),
          cex = .7
   )
 }
 mtext(&quot;Sky Conditions&quot;,outer = TRUE, side = 1, line = 1)
-mtext(&quot;Sky Conditions by %, by season&quot;, side = 3, line = 1, cex = 1.5, outer = TRUE)</code></pre>
-<p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+mtext(&quot;Beijing Sky Conditions by occurence, by season, 2017&quot;, side = 3, line = 1, cex = 1.5, outer = TRUE)</code></pre>
+<p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/sky-conditions-by-season-1.png" width="672" /></p>
 <pre class="r"><code>par(def.par)</code></pre>
-<p>This data shows that Fall and Summer have the highest count of Clear observations. Snow only occurs during the winter, and Fog has a much higher occurrence during the summer and fall then during the winter or spring.</p>
+<p>This data shows that Fall and Summer have the highest count of Clear observations. Snow only occurs during the winter, and Fog has a much higher occurrence during the summer and fall then during the winter or spring. What if we only look at days that are not clear?</p>
+<pre class="r"><code>par(oma = c(3,0,3,2))
+par(mar = c(3,5,2,0))
+par(mfrow = c(2, 2))
+
+
+for (i in unique(cn.atmos$season)){
+  barplot(
+    height = table(subset(cn.atmos$weather, cn.atmos$season == i &amp; !cn.atmos$weather == &#39;Clear&#39;)),
+    xlim = c(0, 3000),
+    horiz = TRUE,
+    beside = TRUE,
+    # main = i,
+    las = 2,
+    col = rev(brewer.pal(n=4, &quot;PuBu&quot;)),
+      #wes_palette(wes.colors[2], 5, type = &quot;discrete&quot;),
+    main = i
+  )
+  legend(x = &quot;topright&quot;,
+         title = &quot;Count&quot;,
+         legend = table(subset(cn.atmos$weather, cn.atmos$season == i &amp; !cn.atmos$weather == &#39;Clear&#39;)), 
+         fill = rev(brewer.pal(n=4, &quot;PuBu&quot;)),
+           #wes_palette(wes.colors[2], 5, type = &quot;discrete&quot;),
+         cex = .7
+  )
+}
+mtext(&quot;Excluding clear days&quot;,outer = TRUE, side = 1, line = 1)
+mtext(&quot;Count of 2017 Beijing Sky Conditions&quot;, side = 3, line = 1, cex = 1.5, outer = TRUE)</code></pre>
+<p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/conditions-by-season-excluding-clear-days-1.png" width="672" /></p>
+<pre class="r"><code>par(def.par)</code></pre>
+<p>These plots demonstrate that other than clear days haze is the condition that most often occurs in Beijing throughout the year.</p>
 </div>
 <div id="analysis-on-aqi" class="section level2" number="2.2">
 <h2 number="2.2"><span class="header-section-number">2.2</span> Analysis on AQI</h2>
@@ -1013,7 +1076,9 @@ legend(x = &quot;topright&quot;,
         names = c(&quot;2017&quot;, &quot;Summer&quot;, &quot;Fall&quot;, &quot;Winter&quot;, &quot;Spring&quot;),
         las = 1,
         main = &quot;Boxplots of AQI, by season.&quot;,
-        col = wes_palette(wes.colors[7], 5, type = &quot;continuous&quot;))</code></pre>
+        col = #rev(brewer.pal(n=5, &quot;PuBu&quot;))
+          wes_palette(wes.colors[7], 5, type = &quot;continuous&quot;)
+)</code></pre>
 <p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/aqi-seasonal-distribution-1.png" width="672" /></p>
 <p>Further deconstruction of the data into monthly sets allows us to see that February and December had the most outlier to the right. While January had no outliers, but the highest median. The two groups of March, April, and May, as well as October, November, and December have a fairly close distribution, respectively. It’s possible that factors that effect AQI such as climate, traffic, or business cycles remained the same during these periods.</p>
 <pre class="r"><code>boxplot(
@@ -1203,7 +1268,8 @@ for (i in four.samples) {
   hist(
     xbar,
     main = paste(&quot;Sample size,&quot;, i),
-    col = wes_palette(wes.colors[7], 4, type = &quot;continuous&quot;),
+    col = brewer.pal(n=12, &quot;PuBu&quot;),
+      #wes_palette(wes.colors[7], 4, type = &quot;continuous&quot;),
     probability = TRUE,
     las = 1, 
     xlab = paste(&quot;Mean =&quot;,round(mean(xbar), 3), sep = &quot; &quot;),
@@ -1273,7 +1339,8 @@ par(mar = c(5,5,2,2))
 hist(
   aqi.srswor$AQI,
   las = 1,
-  col = wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
+  col = rev(brewer.pal(n=16, &quot;BuPu&quot;)),
+    #wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
   main = &quot;SRSWOR&quot;,
   probability = TRUE,
   xlab = paste(&quot;Sample size&quot;, sample.size, sep = &quot; &quot;),
@@ -1303,7 +1370,8 @@ par(mar = c(5, 5, 2, 2))
 hist(
   aqi.syst.samp$AQI,
   las = 1,
-  col = wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
+  col = rev(brewer.pal(n=16, &quot;BuPu&quot;)),
+    #wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
   main = &quot;Systematic Sampling&quot;,
   probability = TRUE,
   xlab = paste(&quot;Sample size&quot;, n, sep = &quot; &quot;),
@@ -1361,7 +1429,8 @@ hist(
   aqi.strata.sample$AQI,
   probability = TRUE,
   las = 1,
-  col = wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
+  col = rev(brewer.pal(n=16, &quot;BuPu&quot;)),
+    #wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
   xlab = paste(&quot;Sample size&quot;, sample.size, sep = &quot; &quot;),
   main = &quot;Stratified&quot;,
   xlim = c(0, 500),
@@ -1379,7 +1448,8 @@ par(mfrow = c(2,2), oma = c(3,3,3,1), mar = c(2,3,1,1))
 simple &lt;- hist(
   aqi.srswor$AQI,
   las = 1,
-  col = wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
+  col = rev(brewer.pal(n=16, &quot;BuPu&quot;)),
+    #wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
   main = &quot;SRSWOR&quot;,
   probability = TRUE,
   xlab = paste(&quot;Sample size&quot;, sample.size, sep = &quot; &quot;),
@@ -1389,7 +1459,8 @@ simple &lt;- hist(
 )
 syst &lt;- hist(aqi.syst.samp$AQI,
              las = 1,
-             col = wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
+             col = rev(brewer.pal(n=16, &quot;BuPu&quot;)),
+    #wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
              main = &quot;Systematic Sampling&quot;,
              probability = TRUE,
              xlab = &quot;&quot;,
@@ -1401,7 +1472,8 @@ syst &lt;- hist(aqi.syst.samp$AQI,
 strat &lt;- hist(aqi.strata.sample$AQI,
               probability = TRUE,
               las = 1,
-              col = wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
+              col = rev(brewer.pal(n=16, &quot;BuPu&quot;)),
+    #wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
               xlab = &quot;&quot;,
               ylab = &quot;&quot;,
               main = &quot;Stratified&quot;,
@@ -1414,7 +1486,8 @@ hist(cn.atmos$AQI,
      main = &quot;Population&quot;,
      ylab = &quot;&quot;,
      xlab = &quot;&quot;,
-     col = wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
+     col = rev(brewer.pal(n=16, &quot;BuPu&quot;)),
+    #wes_palette(wes.colors[4], 4, type = &quot;continuous&quot;),
      las = 1,
      xlim = c(0, 500),
      ylim = c(0, .02)
@@ -1457,7 +1530,7 @@ print(pol.Winter, split = c(2, 2, 2, 2), newpage = FALSE)</code></pre>
 <h1 number="3"><span class="header-section-number">3</span> Conclusion</h1>
 <div id="known-issues-and-recommendations" class="section level2" number="3.1">
 <h2 number="3.1"><span class="header-section-number">3.1</span> Known Issues and Recommendations</h2>
-<p>Data integrity in China is an unknown. This data was provided by the government, but validating the findings with independent readings was outside of the scope of this project. A study in 2016 by Liang et al. , suggests that official AQI counts in China have a range of reliability.</p>
+<p>Data integrity in China is an unknown. A study in 2016 by Liang et al. , suggests that official AQI counts in China have a range of reliability.</p>
 <p>According to Reuters (2018), PM2.5 levels for 2017 in Beijing fell by 39.6% from their 2016 values. Without data for the surrounding year, it is not possible to say if this was a trend, or an anomaly. A data-set that allows year-over-year changes should be analyzed to see if this trend continued.Overall,</p>
 </div>
 <div id="summary" class="section level2" number="3.2">
@@ -1467,66 +1540,7 @@ print(pol.Winter, split = c(2, 2, 2, 2), newpage = FALSE)</code></pre>
 </div>
 <div id="appendix-a" class="section level1" number="4">
 <h1 number="4"><span class="header-section-number">4</span> Appendix A</h1>
-<table>
-<colgroup>
-<col width="50%" />
-<col width="15%" />
-<col width="11%" />
-<col width="22%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th><strong>Example 1</strong></th>
-<th><strong>Example 2</strong></th>
-<th align="center"><strong>Example 3</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Do the analysis for at least one categorical variable as in Module 3</td>
-<td>Weather Conditions</td>
-<td></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td>Do the analysis for at least one numerical data as in Module 3</td>
-<td>AQI</td>
-<td>Pollutants</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td>Do the analysis as in Module 3 on at least one set of two+ variables</td>
-<td>Weather &amp; Season</td>
-<td>AQI &amp; Pollutants</td>
-<td align="center">AQI &amp; Sky Conditions</td>
-</tr>
-<tr class="even">
-<td>Pick a variable with numerical data and examine the distribution</td>
-<td>AQI</td>
-<td>AQI &amp; Pollutants</td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td>Draw random samples of the data and compare to the central limit theory for that variable</td>
-<td>AQI Central Limit Theorem</td>
-<td></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td>Show how different sampling methods can be used.</td>
-<td>SRSWOR</td>
-<td>Systematic Sampling</td>
-<td align="center">Stratified Sampling</td>
-</tr>
-<tr class="odd">
-<td>Any feature not mentioned above.</td>
-<td>OpenAir “windRose”</td>
-<td>Rmarkdown</td>
-<td align="center">Correlation and linear regression line.</td>
-</tr>
-</tbody>
-</table>
+<p>###Project Requirements | | <strong>Example 1</strong> | <strong>Example 2</strong> | <strong>Example 3</strong> | |——————————————————————————————-|—————————|———————|:—————————————:| | Do the analysis for at least one categorical variable as in Module 3 | Weather Conditions | | | | Do the analysis for at least one numerical data as in Module 3 | AQI | Pollutants | | | Do the analysis as in Module 3 on at least one set of two+ variables | Weather &amp; Season | AQI &amp; Pollutants | AQI &amp; Sky Conditions | | Pick a variable with numerical data and examine the distribution | AQI | AQI &amp; Pollutants | | | Draw random samples of the data and compare to the central limit theory for that variable | AQI Central Limit Theorem | | | | Show how different sampling methods can be used. | SRSWOR | Systematic Sampling | Stratified Sampling | | Any feature not mentioned above. | OpenAir “windRose” | Rmarkdown | Correlation and linear regression line. |</p>
 </div>
 <div id="bibliography" class="section level1" number="5">
 <h1 number="5"><span class="header-section-number">5</span> Bibliography</h1>
