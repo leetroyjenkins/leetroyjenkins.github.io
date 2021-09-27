@@ -3,27 +3,23 @@ title: "About Me"
 ---
 
 
-I'm from Minneapolis but currently live in China.
 
-![](images/troychina.jpg "DinnerInChina"){width="700"}
+```{r about-me-pics-row-1, echo=FALSE, out.width="32%", out.height="20%",fig.cap="I'm from Minneapolis but currently live in China, and I love to bike.",fig.show='hold',fig.align='center'}
 
-I love to bike.
+knitr::include_graphics(c("images/troychina.jpg","images/troybike.jpg", "images/canadabiking.jpg"))
 
-![](images/troybike.jpg "Starting a trip to Canada."){width="700"}
+```
+-----
+```{r about-me-pics-row-2, echo=FALSE, out.width="32%", out.height="20%",fig.cap="I also play guitar and recently graduated from Liverpool University in China (Xi'an Jiaotong - Liverpool University).",fig.show='hold',fig.align='center'}
 
-![](images/canadabiking.jpg "Arriving in Canada."){width="700"}
+knitr::include_graphics(c("images/troyguitar.jpg","images/graduation.jpg", "images/xjtlu.jpg"))
 
-I play guitar.
+```
 
-![](images/troyguitar.jpg "Me and my Guitar")
-
-In 2020 I graduated with a international business and Chinese language degree from The University of Liverpool (Xi'an Jiaotong - Liverpool University) in China.
-
-![](images/graduation.jpg "Gradutation Photo"){width="700"}
-
-![](images/xjtlu.jpg "XJTLU Shield"){width="700"}
-
+-------
 I'm doing a master's degree from in Computer Information Systems with a Business Intelligence and Database Management specialization at Boston University. I'll graduate in May of 2022 and I'm looking for a challenging and interesting job that involves data analysis and business intelligence.
 
-![](images/bostonuniversity.jpg "BU"){width="700"}
+```{r about-me-pics-row-3, echo=FALSE, out.width="32%", out.height="20%",fig.cap="",fig.show='hold',fig.align='center'}
 
+knitr::include_graphics(c("images/bostonuniversity.jpg"))
+```
