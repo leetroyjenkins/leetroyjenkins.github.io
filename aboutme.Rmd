@@ -2,24 +2,35 @@
 title: "About Me"
 ---
 
+# {.tabset .tabset-fade}
 
+## China
+In 2017 I quit my job so I could return to school full-time. I was accepted to The University of Liverpool and moved to China to study international business and Chinese.
+```{r about-me-China, echo=FALSE, out.width="32%", out.height="20%",fig.cap="Gardens in Suzhou, Hotpot, and the top rated restaruant in Xi'an.",fig.show='hold',fig.align='center'}
 
-```{r about-me-pics-row-1, echo=FALSE, out.width="32%", out.height="20%",fig.cap="I'm from Minneapolis but currently live in China, and I love to bike.",fig.show='hold',fig.align='center'}
-
-knitr::include_graphics(c("images/troychina.jpg","images/troybike.jpg", "images/canadabiking.jpg"))
-
-```
------
-```{r about-me-pics-row-2, echo=FALSE, out.width="32%", out.height="20%",fig.cap="I also play guitar and recently graduated from Liverpool University in China (Xi'an Jiaotong - Liverpool University).",fig.show='hold',fig.align='center'}
-
-knitr::include_graphics(c("images/troyguitar.jpg","images/graduation.jpg", "images/xjtlu.jpg"))
+knitr::include_graphics(c("images/suzhou-park.jpg","images/hotpot.jpg","images/troychina.jpg"))
 
 ```
+## XJTLU
+In 2020 I graduated with two degrees, one from Liverpool and one from Xi'an Jiaotong - Liverpool University.
+```{r about-me-XJTLU, echo=FALSE, out.width="32%", out.height="20%",fig.cap="Graduation, the Xi'an Jiaotong - Liverpool Shield",fig.show='hold',fig.align='center'}
 
--------
-I'm doing a master's degree from in Computer Information Systems with a Business Intelligence and Database Management specialization at Boston University. I'll graduate in May of 2022 and I'm looking for a challenging and interesting job that involves data analysis and business intelligence.
-
-```{r about-me-pics-row-3, echo=FALSE, out.width="32%", out.height="20%",fig.cap="",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("images/graduation.jpg", "images/xjtlu.jpg"))
+```
+## Ms in Information Systems
+Currently, I'm doing a master's degree from in Computer Information Systems with a Business Intelligence and Database Management specialization at Boston University. I'll graduate in May, 2022 and I'm looking for opportunities that involve data analysis and business intelligence.
+```{r about-me-pics-row-3, echo=FALSE, out.width="32%", out.height="20%",fig.cap="Boston University",fig.show='hold',fig.align='center'}
 
 knitr::include_graphics(c("images/bostonuniversity.jpg"))
 ```
+
+## Free Time
+In my free time I play guitar, bike, and roast coffee.
+```{r about-me-pics-row-2, echo=FALSE, out.width="32%", out.height="20%",fig.cap="In 2017 I rode a solo, self-supported bicycyle camping trip from Minneapolis to Canada. It was amazing.",fig.show='hold',fig.align='center'}
+
+knitr::include_graphics(c("images/troyguitar.jpg","images/coffee.jpg","images/superior-biking.jpg", "images/canadabiking.jpg"))
+
+```
+
+
+#
