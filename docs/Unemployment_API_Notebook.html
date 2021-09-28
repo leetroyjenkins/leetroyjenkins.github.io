@@ -441,7 +441,7 @@ div.tocify {
 library(devtools)
 # Initially I installed this API for pulling from the labor
 # statistics website, but this code only needed to be run once.
-#+ install_github(&quot;mikeasilva/blsAPI&quot;)
+# + install_github(&quot;mikeasilva/blsAPI&quot;)
 
 library(blsAPI) # Contains the blsAPI function. 
 library(httr) # Needed for working with APIs.
@@ -470,7 +470,7 @@ Positions    Value            Field Name
 <p>To use the API I had to <a href="https://data.bls.gov/registrationEngine/" title="Register for BLS API V. 2">register</a> for an API key. Since I knew I would be posting my code online I didn’t want to post my personal API key in the code. To take care of this, I saved my key into another file in my environment and I used <code>source()</code> to open that file and load the key to the <code>my_bls_key</code> variable.</p>
 <pre class="r"><code># Get API key from a filed saved in my project.
 my_bls_key &lt;- &quot;x&quot; # This variable will be over-ridden by the source file which also has a variable named &#39;my_bls_key&#39; that contains my API key.
-source(&quot;C:/Users/troya/OneDrive/R/Unemployment/BLSAPIKey.R&quot;)</code></pre>
+source(&quot;C:/Users/Home/OneDrive/R/Unemployment/BLSAPIKey.R&quot;)</code></pre>
 </div>
 <div id="using-the-api" class="section level1">
 <h1>Using the API</h1>
@@ -541,7 +541,7 @@ results$value &lt;- as.double(results$value)</code></pre>
 </div>
 <div id="graph-examples" class="section level1">
 <h1>Graph Examples</h1>
-<p>At this point, I have succesfully used the API to obtain ten years worth of unemployment data in the <code>results</code> tibble. Before I finish, I’d like to add two graphs of the data using the ggplot function.</p>
+<p>At this point, I have successfully used the API to obtain ten years worth of unemployment data in the <code>results</code> tibble. Before I finish, I’d like to add two graphs of the data using the ggplot function.</p>
 <div id="all-unemployment-data" class="section level2">
 <h2>All Unemployment Data</h2>
 <p>This graph uses <code>geom_point</code> in ggplot2 to show all ten years of unemployment rates in the US and PR. Each point represents the unemployment rate for a month for a state or territory of the United States. The blue line is a trend line created using ggplot2’s <code>geom_smooth()</code> function. One interesting data point is towards the beginning of 2020 when the unemployment rate jumped after the COVID-19 pandemic started to affect businesses in the US.</p>
@@ -550,10 +550,10 @@ results$value &lt;- as.double(results$value)</code></pre>
     mapping = aes(x = the_date , y = value),
     position = &quot;jitter&quot;,
     shape = 20,
-    size = .5
+    size = .1
   ) +
   ylab(&quot;Unemployment Rate&quot;) +
-  scale_x_date(name = &quot;Date&quot;,
+  scale_x_date(name = &quot;Reporting Period&quot;,
                date_labels = &quot;%Y&quot;,
                date_breaks = &quot;2 years&quot;) +
   labs(title = &quot;Unemployment rates for all US territories, plotted by month&quot;) +
@@ -561,7 +561,7 @@ results$value &lt;- as.double(results$value)</code></pre>
 
 plot(all_unemployment_data_graph)</code></pre>
 <div class="figure">
-<img src="Unemployment_API_Notebook_files/figure-html/Preview-all-Data-1.png" alt="US Monthly Unemployment Rate, 2010 - 2021." width="672" />
+<img src="Unemployment_API_Notebook_files/figure-html/All-US-Territories-Unemployment-1.png" alt="US Monthly Unemployment Rate, 2010 - 2021." width="672" />
 <p class="caption">
 US Monthly Unemployment Rate, 2010 - 2021.
 </p>
@@ -576,11 +576,12 @@ US Monthly Unemployment Rate, 2010 - 2021.
   xlab(&quot;Date&quot;) +
   scale_x_date(name = &quot;Date&quot;,
                date_labels = &quot;%Y&quot;,
-               date_breaks = &quot;2 years&quot;)
+               date_breaks = &quot;2 years&quot;) +
+  labs(title = &quot;Unemployment Rate for Alabama, plotted by Month&quot;)
 
 plot(Alabama_data)</code></pre>
 <div class="figure">
-<img src="Unemployment_API_Notebook_files/figure-html/Searching-for-Correlation-1.png" alt="Alabama Monthly Unemployment Rate, 2010 - 2021." width="672" />
+<img src="Unemployment_API_Notebook_files/figure-html/Alabama-Unemployment-Data-1.png" alt="Alabama Monthly Unemployment Rate, 2010 - 2021." width="672" />
 <p class="caption">
 Alabama Monthly Unemployment Rate, 2010 - 2021.
 </p>

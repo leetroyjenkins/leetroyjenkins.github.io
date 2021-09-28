@@ -1,5 +1,8 @@
 ---
 title: "Chapter 5 Data visualization"
+output:
+  html_document:
+    code_folding: hide
 ---
 ```{r}
 {r}

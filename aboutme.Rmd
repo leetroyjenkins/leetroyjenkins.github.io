@@ -2,35 +2,54 @@
 title: "About Me"
 ---
 
-# {.tabset .tabset-fade}
+#  {.tabset .tabset-fade}
 
 ## China
-In 2017 I quit my job so I could return to school full-time. I was accepted to The University of Liverpool and moved to China to study international business and Chinese.
+
+In 2017, I put my career as an HRIS analyst on hold to attend school full-time. I was accepted to the University of Liverpool and moved from Minneapolis, MN to Liverpool's campus in Suzhou, China.
+
 ```{r about-me-China, echo=FALSE, out.width="32%", out.height="20%",fig.cap="Gardens in Suzhou, Hotpot, and the top rated dianping restaurant in Xi'an.",fig.show='hold',fig.align='center'}
 
 knitr::include_graphics(c("images/suzhou-park.jpg","images/hotpot.jpg","images/troychina.jpg"))
 
 ```
+
 ## XJTLU
-In 2020 I graduated with two degrees, one from Liverpool and one from Xi'an Jiaotong - Liverpool University.
+
+In 2020, I graduated with a bachelor of science in international business and Chinese language from University of Liverpool.
+
 ```{r about-me-XJTLU, echo=FALSE, out.width="32%", out.height="20%",fig.cap="Graduation, the Xi'an Jiaotong - Liverpool Shield",fig.show='hold',fig.align='center'}
 
 knitr::include_graphics(c("images/graduation.jpg", "images/xjtlu.jpg"))
 ```
-## Ms in Information Systems
-Currently, I'm doing a master's degree from in Computer Information Systems with a Business Intelligence and Database Management specialization at Boston University. I'll graduate in May, 2022 and I'm looking for opportunities that involve data analysis and business intelligence.
+
+## MS in Information Systems
+
+In May, 2022 I will graduate from Boston University with a master's degree in Computer Information Systems. My specialization is Business Intelligence and Database Management and I'm looking forward to starting a career in data analysis.
+
 ```{r about-me-pics-row-3, echo=FALSE, out.width="32%", out.height="20%",fig.cap="Boston University",fig.show='hold',fig.align='center'}
 
 knitr::include_graphics(c("images/bostonuniversity.jpg"))
 ```
 
 ## Free Time
-In my free time I play guitar, bike, and roast coffee.
-```{r about-me-pics-row-2, echo=FALSE, out.width="32%", out.height="20%",fig.cap="In 2017 I rode a solo, self-supported bicycyle camping trip from Minneapolis to Canada. It was amazing.",fig.show='hold',fig.align='center'}
+
+In my free time I play guitar, bike, roast coffee, and work on side projects in RStudio or PyCharm.
+
+```{r about-me-pics-row-2, echo=FALSE, out.width="32%", out.height="20%",fig.cap="Guitar, my coffee, and cycling.",fig.show='hold',fig.align='center'}
 
 knitr::include_graphics(c("images/troyguitar.jpg","images/coffee.jpg","images/superior-biking.jpg", "images/canadabiking.jpg"))
 
 ```
 
+## Contact Me
 
-#
+Please don't hesitate to contact me if you are a fellow data-enthusiast, coffee lover, cyclist, or potential employer. I enjoy making new connections with people from around the world.
+
+Email: [ascher.troy\@gmail.com](mailto:ascher.troy@gmail.com "Troy's Email")
+
+Github: [leetroyjenkins](https://github.com/leetroyjenkins "Troy's Github")
+
+Linkedin: [linkedin.com/in/troy-ascher](http://www.linkedin.com/in/troy-ascher)
+
+# 

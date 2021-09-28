@@ -1,5 +1,8 @@
 ---
 title: "R for Data Science Assignments"
+output:
+  html_document:
+    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
@@ -10,7 +13,7 @@ This section highlights my work as I go through Hadley Wickham and Garrett Grole
 
 The page was created in RStudio using an R notebook.
 
-[![R for Data Science on Amazon](rfdsimage.png "R for Data Science")](https://www.amazon.com/R-Data-Science-Hadley-Wickham/dp/1491910399/ref=as_li_ss_tl?ie=UTF8&qid=1469550189&sr=8-1&keywords=R+for+data+science&linkCode=sl1&tag=devtools-20&linkId=6fe0069f9605cf847ed96c191f4e84dd)
+[![R for Data Science on Amazon](images/rfdsimage.png "R for Data Science")](https://www.amazon.com/R-Data-Science-Hadley-Wickham/dp/1491910399/ref=as_li_ss_tl?ie=UTF8&qid=1469550189&sr=8-1&keywords=R+for+data+science&linkCode=sl1&tag=devtools-20&linkId=6fe0069f9605cf847ed96c191f4e84dd)
 
 This page is hosted on Github.
 

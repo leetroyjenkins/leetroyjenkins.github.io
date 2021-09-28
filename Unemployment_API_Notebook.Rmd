@@ -55,7 +55,7 @@ After that I loaded the `blsAPI` library along with the `httr` and `jsonlite` li
 library(devtools)
 # Initially I installed this API for pulling from the labor
 # statistics website, but this code only needed to be run once.
-#+ install_github("mikeasilva/blsAPI")
+# + install_github("mikeasilva/blsAPI")
 
 library(blsAPI) # Contains the blsAPI function. 
 library(httr) # Needed for working with APIs.
@@ -94,7 +94,7 @@ To use the API I had to [register](https://data.bls.gov/registrationEngine/ "Reg
 
 # Get API key from a filed saved in my project.
 my_bls_key <- "x" # This variable will be over-ridden by the source file which also has a variable named 'my_bls_key' that contains my API key.
-source("C:/Users/troya/OneDrive/R/Unemployment/BLSAPIKey.R")
+source("C:/Users/Home/OneDrive/R/Unemployment/BLSAPIKey.R")
 ```
 
 # Using the API
@@ -168,22 +168,22 @@ head(results)
 
 # Graph Examples
 
-At this point, I have succesfully used the API to obtain ten years worth of unemployment data in the `results` tibble. Before I finish, I'd like to add two graphs of the data using the ggplot function.
+At this point, I have successfully used the API to obtain ten years worth of unemployment data in the `results` tibble. Before I finish, I'd like to add two graphs of the data using the ggplot function.
 
 ## All Unemployment Data
 
 This graph uses `geom_point` in ggplot2 to show all ten years of unemployment rates in the US and PR. Each point represents the unemployment rate for a month for a state or territory of the United States. The blue line is a trend line created using ggplot2's `geom_smooth()` function. One interesting data point is towards the beginning of 2020 when the unemployment rate jumped after the COVID-19 pandemic started to affect businesses in the US.
 
-```{r Preview-all-Data, fig.cap="US Monthly Unemployment Rate, 2010 - 2021."}
+```{r All-US-Territories-Unemployment, fig.cap="US Monthly Unemployment Rate, 2010 - 2021."}
 all_unemployment_data_graph <- ggplot(filter(results)) +
   geom_point(
     mapping = aes(x = the_date , y = value),
     position = "jitter",
     shape = 20,
-    size = .5
+    size = .1
   ) +
   ylab("Unemployment Rate") +
-  scale_x_date(name = "Date",
+  scale_x_date(name = "Reporting Period",
                date_labels = "%Y",
                date_breaks = "2 years") +
   labs(title = "Unemployment rates for all US territories, plotted by month") +
@@ -197,7 +197,7 @@ plot(all_unemployment_data_graph)
 
 This graph is similar in shape to the previous graph but only shows the unemployment rates in Alabama. Another observation is the range on the y-axis is much smaller than the previous graph. The highest point for the Alabama graph is just above 12.5.
 
-```{r Searching-for-Correlation, fig.cap="Alabama Monthly Unemployment Rate, 2010 - 2021."}
+```{r Alabama-Unemployment-Data, fig.cap="Alabama Monthly Unemployment Rate, 2010 - 2021."}
 
 
 Alabama_data <- ggplot(filter(results, results$seriesID == serials_df$X1[1])) +
@@ -206,7 +206,8 @@ Alabama_data <- ggplot(filter(results, results$seriesID == serials_df$X1[1])) +
   xlab("Date") +
   scale_x_date(name = "Date",
                date_labels = "%Y",
-               date_breaks = "2 years")
+               date_breaks = "2 years") +
+  labs(title = "Unemployment Rate for Alabama, plotted by Month")
 
 plot(Alabama_data)
   
@@ -234,4 +235,4 @@ I learned that instead of using `scale_x_continuous` or `scale_x_discrete` I sho
 
 # Conclusion
 
-This post highlighted my first successful attempt to use an API to pull data from an external data soure. I also created two simple plots using ggplot2. Future posts will demonstrate the analysis of the unemployment data obtained.
+This post highlighted my first successful attempt to use an API to pull data from an external data soure. I also created two simple plots using ggplot2. Future posts will demonstrate the analysis of the unemployment data obtained.\n\n
