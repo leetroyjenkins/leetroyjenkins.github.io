@@ -5,7 +5,7 @@ title: "Resume"
 # {.tabset .tabset-pill .tabset-fade}
 
 ## Page 1
-```{r troy-resume-page-1, fig.link="TroyAscherMSResume.pdf",  echo=FALSE, fig.align='left', out.width="100%"}
+```{r troy-resume-page-1, fig.link="TroyAscherMSResumeWebsite.pdf",  echo=FALSE, fig.align='left', out.width="100%"}
 
 knitr::include_graphics("images/TroyAscherMS10241024_1.png")
 
@@ -13,7 +13,7 @@ knitr::include_graphics("images/TroyAscherMS10241024_1.png")
 
 
 ## Page 2
-```{r troy-resume-page-2, fig.link="TroyAscherMSResume.pdf", echo=FALSE, fig.align='left', out.width="100%"}
+```{r troy-resume-page-2, fig.link="TroyAscherMSResumeWebsite.pdf", echo=FALSE, fig.align='left', out.width="100%"}
 
 knitr::include_graphics("images/TroyAscherMS10241024_2.png")
 ```
