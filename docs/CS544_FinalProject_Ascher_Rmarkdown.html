@@ -13,8 +13,8 @@
 
 <title>Analysis of Beijing Weather and Pollution, 2017</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -1102,7 +1102,7 @@ legend(x = &quot;topright&quot;,
   ),
   col = wes_palette(wes.colors[7], 12, type = &quot;continuous&quot;),
   las = 1,
-  main = &quot;Boxplots of AQI, by season.&quot;
+  main = &quot;Boxplots of AQI, by month.&quot;
 )</code></pre>
 <p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/aqi-monthly-distribution-1.png" width="672" /></p>
 </div>
@@ -1202,7 +1202,7 @@ par(oma=c(3,3,3,3), mar = c(3,4,1,1))
 plot(cn.atmos$AQI, 
      cn.atmos$PM2.5, 
      pch = 20,
-     col = wes_palette(wes.colors[7], 1, type = &quot;continuous&quot;),
+     col =rev(brewer.pal(n=1, &quot;PuBu&quot;)), #wes_palette(wes.colors[7], 1, type = &quot;continuous&quot;),
      xlab = &quot;&quot;,
      ylab = &quot;PM2.5&quot;,
      las = 1

@@ -775,7 +775,7 @@ boxplot(
   ),
   col = wes_palette(wes.colors[7], 12, type = "continuous"),
   las = 1,
-  main = "Boxplots of AQI, by season."
+  main = "Boxplots of AQI, by month."
 )
 
 ```
@@ -868,7 +868,7 @@ par(oma=c(3,3,3,3), mar = c(3,4,1,1))
 plot(cn.atmos$AQI, 
      cn.atmos$PM2.5, 
      pch = 20,
-     col = wes_palette(wes.colors[7], 1, type = "continuous"),
+     col =rev(brewer.pal(n=1, "PuBu")), #wes_palette(wes.colors[7], 1, type = "continuous"),
      xlab = "",
      ylab = "PM2.5",
      las = 1

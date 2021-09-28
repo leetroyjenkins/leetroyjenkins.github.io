@@ -12,6 +12,14 @@ I am Troy Ascher and this is my Portfolio. On this page I have images from proje
 -------
  
 ## Projects {.tabset .tabset-fade}
+
+### Beijing AQI
+These visualizations are from a project I did as part of Master's in Computer Information Systems from Boston University. View the whole project [HERE.](CS544_FinalProject_Ascher_Rmarkdown.html "Boston University MS CIS Project")
+```{r home-page-AQI-row-2, echo=FALSE, out.width="49%", out.height="20%",fig.cap="Beijing AQI Distribution, 2017, by month and season",fig.show='hold',fig.align='center'}
+
+knitr::include_graphics(c("CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/aqi-monthly-distribution-1.png", "CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/aqi-and-pollutant-by-season-1.png", "CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/plots-aqi-to-pm-1.png"))
+
+```
  
 ### Beijing Weather
 These visualizations are from a project I did as part of Master's in Computer Information Systems from Boston University. View the whole project [HERE.](CS544_FinalProject_Ascher_Rmarkdown.html "Boston University MS CIS Project")
@@ -19,13 +27,6 @@ These visualizations are from a project I did as part of Master's in Computer In
 ```{r home-page-AQI-row-1, echo=FALSE, out.width="49%", out.height="20%",fig.cap="Beijing weather conditions, including and excluding clear days",fig.show='hold',fig.align='center'}
 
 knitr::include_graphics(c("CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/barchart-of-significant-weather-1.png","CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/conditions-by-season-excluding-clear-days-1.png"))
-
-```
-### Beijing AQI
-These visualizations are from a project I did as part of Master's in Computer Information Systems from Boston University. View the whole project [HERE.](CS544_FinalProject_Ascher_Rmarkdown.html "Boston University MS CIS Project")
-```{r home-page-AQI-row-2, echo=FALSE, out.width="49%", out.height="20%",fig.cap="Beijing AQI Distribution, 2017, by month and season",fig.show='hold',fig.align='center'}
-
-knitr::include_graphics(c("CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/aqi-monthly-distribution-1.png", "CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/aqi-seasonal-distribution-1.png"))
 
 ```
 
