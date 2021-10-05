@@ -2,7 +2,11 @@
 title: "Doogie Howser Project"
 output:
   html_document:
-    code_folding: hide
+    toc: yes
+    toc_float: yes
+    toc_depth: '3'
+    df_print: paged
+    number_sections: no
 ---
 
 ```{r setup, include=FALSE}

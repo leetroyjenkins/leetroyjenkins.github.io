@@ -3,6 +3,11 @@ title: "Health and Wellness Tracker"
 output:
   html_document:
     code_folding: hide
+    toc: yes
+    toc_float: yes
+    toc_depth: '3'
+    df_print: paged
+    number_sections: no
 ---
 
 ```{r setup, include=FALSE}
@@ -128,15 +133,15 @@ Since account sub-types are overlap, Doctor’s can create a researcher account 
 ### Entity-Relationship-Diagram
 Here is the ERD for my database. I used crow's-foot, but I've since come to prefer UML notation. 
 
-```{r ERD, echo=FALSE, fig.align='left', out.width="100%", fig.height=70, fig.link="images/physicalERD.jpg"}
-knitr::include_graphics("images/ERD.png")
+```{r ERD, echo=FALSE, fig.align='left', out.width="100%", fig.height=70, fig.link="images/Conceptual.jpg"}
+knitr::include_graphics("images/Conceptual.png")
 ```
 
 ### Physical ERD
 Here is the full physical ERD for the DBMS. The database has been normalized to BCNF. 
 
-```{r Physical-ERD,  echo=FALSE, fig.align='left', fig.height=70, fig.link="images/physicalERD.jpg"}
-knitr::include_graphics("images/PhysicalERD.png")
+```{r Physical-ERD,  echo=FALSE, fig.align='left', fig.height=100, fig.link="images/DBMS Physical.jpg"}
+knitr::include_graphics("images/DBMS Physical.png")
 ```
 
 # SQL
