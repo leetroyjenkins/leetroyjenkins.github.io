@@ -21,9 +21,11 @@ navbar:
     - text: "Python"
       menu:
         - text: "Doogie Howser Project"
+          href: DoogieHowserProject.html
     - text: "SQL"
       menu:
         - text: "Health and Wellness Tracker"
+          href: HealthandWellnessTracker.html
     - text: "Resume"
       href: Resume.html
     - text: "About me"

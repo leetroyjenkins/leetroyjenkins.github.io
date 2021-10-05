@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Doogie Howser Project</title>
+
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    RStudio
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="CS544_FinalProject_Ascher_Rmarkdown.html">Analytics Project for Boston University</a>
+    </li>
+    <li>
+      <a href="Unemployment_API_Notebook.html">Working with APIs</a>
+    </li>
+    <li class="dropdown-header">ETL Example</li>
+    <li class="dropdown-header">Sampling Methods</li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">R for Data Science Assignments</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="rfordatascience.html">Overview</a>
+        </li>
+        <li>
+          <a href="rfdschapter5.html">Data Transformation - Ch 5</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Python
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="DoogieHowserProject.html">Doogie Howser Project</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    SQL
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="HealthandWellnessTracker.html">Health and Wellness Tracker</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Resume.html">Resume</a>
+</li>
+<li>
+  <a href="aboutme.html">About me</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:&lt;ascher.troy@gmail.com&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://github.com/leetroyjenkins/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/troy-ascher/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Doogie Howser Project</h1>
+
+</div>
+
+
+<p>This is the first program that I built in Python. It is a journaling application with the functionality to also save health and wellness data. I expanded on this idea with a SQL database for another class. Please see below for an example of my coding and commenting technique. Click “Code/Hide” to view or hide the code.</p>
+<div id="main-program" class="section level3">
+<h3>Main Program</h3>
+<p>This is the main portion of code where I load the custom class I made (Likert class), user IO, and data is saved into the user’s directory.</p>
+<pre class="python"><code># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Doogie Howser Program
+This program takes the place of physical journal I am filling out to track
+difference aspects of my physical, mental, and spiritual health. The program
+will allow me to track data and easily analyze it. It will also save journal
+entries
+
+&quot;&quot;&quot;
+import datetime
+import os
+import getpass
+import csv
+from likert_class import *
+from my_functions import *
+
+
+
+if __name__ == &quot;__main__&quot;:
+
+    # Returns a list with formatted dates and times.
+    time_list = format_time()
+
+    # Used for a program greeting. Returns the proper salutation based
+    # on the current time. 
+    greeting_time = return_salutation(time_list[4])
+    print(f&quot;\nGood {greeting_time}! Welcome to the Doogie Howser Program.&quot;)
+
+    journal_file_path = os.path.join(&#39;Doogie Howser Program&#39;, &#39;Journal&#39;, \
+                                     time_list[2], time_list[3])
+    data_file_path = os.path.join(&#39;Doogie Howser Program&#39;, &#39;Data&#39;)
+
+    # Make_directory creates the directotries if they do not exist already.
+    make_directory(journal_file_path)
+    make_directory(data_file_path)
+
+    # This is a menu for the program that allows users to navigate
+    # to the part of the program they want to use.
+    switch_dict = {&#39;journal_switch&#39;: False, &#39;data_gate&#39;: False, \
+                   &#39;search_gate&#39;: False, &#39;run_program&#39;: True}
+    while switch_dict[&#39;run_program&#39;] == True:
+        switch_dict = main_menu()
+
+        # ========================= CSV CODE =============================
+
+        # Creates a CSV and saves it in the current year&#39;s directory, or adds 
+        # to the existing CSV. First the variables from the CSV need to be 
+        # created. This is a good candidate for a function.
+
+        while switch_dict[&#39;data_gate&#39;] == True:
+            # switch_dict = {&#39;journal_switch&#39;: False, &#39;data_gate&#39;: False, \
+            #        &#39;search_gate&#39;: False, &#39;run_program&#39;: True}
+            print(&quot;&gt;\n&gt;\n&gt;\n&gt;\n&gt;\n\n&lt;&lt;&lt;DATA ENTRY&gt;&gt;&gt;\n&quot;)
+
+            daily_data_csv = os.path.join(&#39;{}_daily_data&#39;.\
+                                          format(getpass.getuser()))
+            data_file_name = os.path.join(data_file_path, &#39;{}&#39;.\
+                                          format(daily_data_csv))
+
+            # Returns a list with formatted dates and times.
+            time_list = format_time()
+
+            # Makes a list with a nested dictionary to use 
+            # in exporting to CSV
+            daily_data_set = {&#39;todays_date&#39;: None, \
+                              &#39;time&#39;: None, \
+                              &#39;weight_kg&#39;: None, \
+                              &#39;weight_lbs&#39;: None, \
+                              &#39;bedtime&#39;: None, \
+                              &#39;wakeup&#39;: None, \
+                              &#39;hours_of_sleep&#39;: None, \
+                              &#39;rested_likert_scale&#39;: None, \
+                              &#39;yesterday_excercise&#39;: None, \
+                              &#39;today_excercise&#39;: None, \
+                              &#39;excercise_type&#39;: None, \
+                              &#39;excercise_duration&#39;: None, \
+                              &#39;mental_health_yesterday&#39;: None, \
+                              &#39;mental_health_today&#39;: None, \
+                              &#39;physical_health_yesterday&#39;: None, \
+                              &#39;physical_health_today&#39;: None, \
+                              &#39;sickness_yesterday&#39;: None, \
+                              &#39;sickness_today&#39;: None, \
+                              &#39;meditation_yesterday&#39;: None, \
+                              &#39;meditation_today&#39;: None
+                              }
+
+            # Asks user if they want to enter data.
+            try:
+                entry_gate = &#39;&#39;
+                while entry_gate != &#39;Y&#39; and entry_gate != &#39;N&#39;:
+                    entry_gate = input(f&quot;Good {greeting_time}! Would you like to &quot; \
+                                       &quot;enter data for today? Enter Y or N: &quot;)
+                    entry_gate = entry_gate.capitalize()
+            except IOError:
+                print(&quot;IOError: Please enter Y or N&quot;)
+
+            assert entry_gate in {&#39;Y&#39;, &#39;N&#39;}, &quot;entry_gate incorrectly formatted&quot;
+
+            # Creates a dictionary to use as a gate for each data point that
+            # needs to be collected.
+
+            if entry_gate == &#39;N&#39;:
+                print(&quot;Okay. Have a great day!&quot;)
+
+                # exit data entry loop
+                print(&quot;\nReturning to the main menu.\n&quot;)
+                data_gate = False
+                break
+
+            # if entry_gate == &#39;Y&#39;:
+
+            gate_dict = {&#39;weight_gate&#39;: False, &#39;weight_unit_gate&#39;: False, \
+                         &#39;bedtime_gate&#39;: False, \
+                         &#39;wakeup_gate&#39;: False, &#39;sleep_gate&#39;: False, \
+                         &#39;gate_yest_ex&#39;: False, &#39;gate_ex_type&#39;: False, \
+                         &#39;men_health_gate&#39;: False, \
+                         &#39;men_health_gate1&#39;: False, \
+                         &#39;today_ex_gate&#39;: False, \
+                         &#39;gate_ex_hours&#39;: False, \
+                         &#39;yes_phy_health&#39;: False, \
+                         &#39;yesterday_sick&#39;: False, \
+                         &#39;today_phy_health&#39;: False, \
+                         &#39;today_sick&#39;: False, \
+                         &#39;yes_med&#39;: False, \
+                         &#39;today_med&#39;: False \
+                         }
+
+            # Returns a list with formatted dates and times.
+            time_list = format_time()
+
+            daily_data_set[&#39;time&#39;] = time_list[0]
+            daily_data_set[&#39;todays_date&#39;] = datetime.date.today()
+
+            while gate_dict[&#39;weight_gate&#39;] == False:
+
+                try:
+                    local_weight = float(input(&#39;\nEnter your weight: &#39;))
+                    gate_dict[&#39;weight_gate&#39;] = True
+
+                except ValueError:
+                    print(&quot;\nEnter weight as a float or integer&quot;)
+
+            while gate_dict[&#39;weight_unit_gate&#39;] == False:
+
+                try:
+                    weight_unit = input(&quot;\nDid you enter pounds (lbs) or &quot; \
+                                        &quot;kilograms (kgs)? &quot;)
+                    weight_unit = weight_unit.upper()
+
+                except ValueError:
+                    print((&quot;Enter LBS or KG&quot;))
+
+                # Converts units to metric or imperial. Saves both.     
+                if weight_unit in {&#39;POUNDS&#39;, &#39;LBS&#39;, &#39;LB&#39;}:
+                    daily_data_set[&#39;weight_lbs&#39;] = local_weight
+
+                    # Converts pounds to kilograms.
+                    daily_data_set[&#39;weight_kg&#39;] = \
+                        pounds_to_kilograms(local_weight)
+                    # round(local_weight * .453592, 1)
+                    gate_dict[&#39;weight_unit_gate&#39;] = True
+
+                if weight_unit in {&#39;KILOGRAMS&#39;, &#39;KGS&#39;, &#39;KG&#39;}:
+                    daily_data_set[&#39;weight_kg&#39;] = local_weight
+                    daily_data_set[&#39;weight_lbs&#39;] = \
+                        kilograms_to_pounds(local_weight)
+                    # round(local_weight / .453592, 1)
+                    gate_dict[&#39;weight_unit_gate&#39;] = True
+
+                if weight_unit not in {&#39;KILOGRAMS&#39;, &#39;KGS&#39;, &#39;KG&#39;, \
+                                       &#39;POUNDS&#39;, &#39;LBS&#39;, &#39;LB&#39;}:
+                    print(&quot;input not valid. Enter a float for weight, and &quot; \
+                          &quot;KG or LBS for weight unit.&quot;)
+
+            # Pounds do not need decimals, removes the decimal.
+            daily_data_set[&#39;weight_lbs&#39;] = \
+                round(daily_data_set[&#39;weight_lbs&#39;])
+
+            while gate_dict[&#39;bedtime_gate&#39;] == False:
+
+                try:
+                    local_time = input(&quot;\nWhat time did you go to bed last &quot; \
+                                       &quot;night? \nEnter as HH:MM &quot;)
+
+                    # Returns a list with hour in the 0 index and minutes 
+                    # in the 1 index or with False in the 0 index and
+                    # an error message in the 1 index.
+                    bed_time = validate_time(local_time)
+
+                except ValueError:
+                    print(f&quot;{bed_time[1]}&quot;)
+
+                # Checks return value of validate_time function
+                if bed_time[0] != False:
+                    daily_data_set[&#39;bedtime&#39;] = local_time
+                    # Passes the validated time into the dict variable
+                    gate_dict[&#39;bedtime_gate&#39;] = True
+                else:
+                    print(bed_time[1])
+
+            while gate_dict[&#39;wakeup_gate&#39;] == False:
+                try:
+                    local_time = input(\
+                        &quot;\nWhat time did you wakeup this morning?&quot; \
+                        &quot; \nEnter in 24 hour time HH:MM &quot;)
+
+                    # Function returns a list with hour in the 0 index and 
+                    # minutes in the 1 index or with False and an error
+                    # message.
+                    wake_time = validate_time(local_time)
+                except ValueError:
+                    print(f&quot;{wake_time[1]}&quot;)
+
+                if wake_time[0] != False:
+                    daily_data_set[&#39;wakeup&#39;] = local_time
+                    # Passes the validated time into the CSV ready dict 
+                    # variable
+                    gate_dict[&#39;wakeup_gate&#39;] = True
+
+                # Prints an error.
+                else:
+                    print(wake_time[1])
+
+            while gate_dict[&#39;sleep_gate&#39;] == False:
+                # this function returns the hours of sleep with a float 
+                # rounded to 3 decimals
+
+                daily_data_set[&#39;hours_of_sleep&#39;] = \
+                    calculate_sleep(bed_time, wake_time)
+
+                try:
+                    temp_likert = int(input(&quot;\nHow rested do you feel? &quot; \
+                                            &quot;\nEnter a integer between &quot; \
+                                            &quot;1 and 7: &quot;))
+                    # Use of custom class &quot;Likert&quot;
+                    temp_likert = Likert(temp_likert, 7)
+                    gate_dict[&#39;sleep_gate&#39;] = True
+
+                except NotIntegerError:
+                    print(&quot;Value and maximum need to be integers.&quot;)
+
+                except InvalidRangeError:
+                    print(&quot;Values outside of range.&quot;)
+
+                except ValueError:
+                    print(&quot;Please input an integer&quot;)
+
+                if type(temp_likert) == Likert:
+                    daily_data_set[&#39;rested_likert_scale&#39;] = \
+                        temp_likert
+                    gate_dict[&#39;sleep_gate&#39;] = True
+                else:
+                    print(&#39;Please only enter integers in range 1 - 7&#39;)
+
+            while gate_dict[&#39;gate_yest_ex&#39;] == False:
+
+                try:
+                    temp_string = str(input(&quot;\nDid you excercise yesterday? &quot; \
+                                            &quot;\n Enter Y or N: &quot;))
+                    temp_string = temp_string.upper()
+
+                except ValueError:
+                    print(&quot;\nPlease input Y or N&quot;)
+
+                if temp_string == &#39;Y&#39;:
+                    daily_data_set[&#39;yesterday_excercise&#39;] = True
+                    gate_dict[&#39;gate_yest_ex&#39;] = True
+
+                elif temp_string == &#39;N&#39;:
+                    daily_data_set[&#39;yesterday_excercise&#39;] = False
+                    gate_dict[&#39;gate_yest_ex&#39;] = True
+
+                else:
+                    print(&quot;Invalid Entry. Please only enter &#39;Y&#39; or &#39;N&#39;&quot;)
+
+            while gate_dict[&#39;gate_ex_type&#39;] == False:
+                if daily_data_set[&#39;yesterday_excercise&#39;] == True:
+                    try:
+                        daily_data_set[&#39;excercise_type&#39;] = \
+                            input(&quot;\nWhat type of excercise? &quot;)
+                        gate_dict[&#39;gate_ex_type&#39;] = True
+
+                    except Exception:
+                        print(&#39;Input Error. PLease enter the excercise type.&#39;)
+
+                else:
+                    gate_dict[&#39;gate_ex_type&#39;] = True
+
+            while gate_dict[&#39;gate_ex_hours&#39;] == False:
+
+                if daily_data_set[&#39;yesterday_excercise&#39;] == True:
+
+                    try:
+                        daily_data_set[&#39;excercise_duration&#39;] = \
+                            float(input(\
+                                &quot;\nHow many hours did you excercise for? &quot;))
+                        gate_dict[&#39;gate_ex_hours&#39;] = True
+
+                    except ValueError:
+                        print(&#39;Please enter a number.&#39;)
+
+                else:
+                    gate_dict[&#39;gate_ex_hours&#39;] = True
+
+            while gate_dict[&#39;today_ex_gate&#39;] == False:
+
+                try:
+
+                    local_alpha = \
+                        input(&quot;\nWill you excercise today? \nEnter Y or N: &quot;)
+                    local_alpha = local_alpha.upper()
+
+                    if local_alpha == &#39;Y&#39;:
+                        daily_data_set[&#39;today_excercise&#39;] = True
+                        gate_dict[&#39;today_ex_gate&#39;] = True
+
+                    if local_alpha == &#39;N&#39;:
+                        daily_data_set[&#39;today_excercise&#39;] = False
+                        gate_dict[&#39;today_ex_gate&#39;] = True
+                    else:
+                        print(&#39;Please enter Y or N.&#39;)
+
+                except Exception:
+                    print(&quot;There is a problem with the value you entered.&quot;)
+
+            while gate_dict[&#39;men_health_gate&#39;] == False:
+
+                try:
+                    temp_likert = \
+                        int(input(&quot;\nHow was your mental health yesterday? &quot; \
+                                  &quot;\nEnter a integer between 1 and 7: &quot;))
+                    temp_likert = Likert(temp_likert, 7)
+                    daily_data_set[&#39;mental_health_yesterday&#39;] = temp_likert
+                    gate_dict[&#39;men_health_gate&#39;] = True
+                except NotIntegerError:
+                    print(&quot;Value and maximum need to be integers.&quot;)
+
+                except InvalidRangeError:
+                    print(&quot;Values outside of range.&quot;)
+
+                except ValueError:
+                    print(&quot;Please input an integer&quot;)
+
+                # if no errors switch to True
+
+            while gate_dict[&#39;men_health_gate1&#39;] == False:
+
+                try:
+                    temp_likert = int(input(\
+                        &quot;\nHow is your mental health today? &quot; \
+                        &quot;\nEnter a integer between 1 and 7: &quot;))
+                    temp_likert = Likert(temp_likert, 7)
+                    daily_data_set[&#39;mental_health_today&#39;] = temp_likert
+                    gate_dict[&#39;men_health_gate1&#39;] = True
+
+                except NotIntegerError:
+                    print(&quot;Value and maximum need to be integers.&quot;)
+
+                except InvalidRangeError:
+                    print(&quot;Values outside of range.&quot;)
+
+                except ValueError:
+                    print(&quot;Please input an integer&quot;)
+
+            while gate_dict[&#39;yes_phy_health&#39;] == False:
+
+                try:
+                    temp_likert = \
+                        int(input(\
+                            &quot;\nHow was your physical health yesterday? &quot; \
+                            &quot;\nEnter a integer between 1 and 7: &quot;))
+                    temp_likert = Likert(temp_likert, 7)
+                    daily_data_set[&#39;physical_health_yesterday&#39;] = temp_likert
+                    gate_dict[&#39;yes_phy_health&#39;] = True
+
+                except NotIntegerError:
+                    print(&quot;Value and maximum need to be integers.&quot;)
+
+                except InvalidRangeError:
+                    print(&quot;Values outside of range.&quot;)
+
+                except ValueError:
+                    print(&quot;Please input an integer&quot;)
+
+            while gate_dict[&#39;yesterday_sick&#39;] == False:
+                if daily_data_set[&#39;physical_health_yesterday&#39;] &lt;= 2:
+
+                    try:
+                        temp_string = \
+                            input(\
+                                &quot;\nWere you sick yesterday? \nEnter Y or N: &quot;)
+                        temp_string = temp_string.upper()
+
+                    except ValueError:
+                        print(&quot;Please input Y or N&quot;)
+
+                    if temp_string == &#39;Y&#39;:
+                        daily_data_set[&#39;sickness_yesterday&#39;] = True
+                        gate_dict[&#39;yesterday_sick&#39;] = True
+
+                    if temp_string == &#39;N&#39;:
+                        daily_data_set[&#39;sickness_yesterday&#39;] = False
+                        gate_dict[&#39;yesterday_sick&#39;] = True
+
+                    else:
+                        print(&quot;Please enter Y or N&quot;)
+
+                else:
+                    daily_data_set[&#39;sickness_yesterday&#39;] = False
+                    gate_dict[&#39;yesterday_sick&#39;] = True
+
+            while gate_dict[&#39;today_phy_health&#39;] == False:
+
+                try:
+                    temp_likert = \
+                        int(input(&quot;\nHow was your physical health today? &quot; \
+                                  &quot;\nEnter a integer between 1 and 7: &quot;))
+                    temp_likert = Likert(temp_likert)
+                    daily_data_set[&#39;physical_health_today&#39;] = temp_likert
+                    gate_dict[&#39;today_phy_health&#39;] = True
+
+                except NotIntegerError:
+                    print(&quot;Value and maximum need to be integers.&quot;)
+
+                except InvalidRangeError:
+                    print(&quot;Values outside of range.&quot;)
+
+                except ValueError:
+                    print(&quot;Please input an integer&quot;)
+
+            while gate_dict[&#39;today_sick&#39;] == False:
+                if daily_data_set[&#39;physical_health_today&#39;] &lt;= 2:
+
+                    try:
+                        temp_string = \
+                            input(&quot;\nAre you sick today? \nEnter Y or N: &quot;)
+                        temp_string = temp_string.upper()
+
+                    except ValueError:
+                        print(&quot;Please input Y or N&quot;)
+
+                    if temp_string == &#39;Y&#39;:
+                        daily_data_set[&#39;sickness_today&#39;] = True
+                        gate_dict[&#39;today_sick&#39;] = True
+
+                    if temp_string == &#39;N&#39;:
+                        daily_data_set[&#39;sickness_today&#39;] = False
+                        gate_dict[&#39;today_sick&#39;] = True
+
+                    else:
+                        print(&quot;Please enter Y or N&quot;)
+
+                else:
+                    daily_data_set[&#39;sickness_today&#39;] = False
+                    gate_dict[&#39;today_sick&#39;] = True
+
+            while gate_dict[&#39;yes_med&#39;] == False:
+
+                try:
+                    temp_string = \
+                        input(&quot;\nDid you meditate yesterday?&quot;)
+                    temp_string = temp_string.upper()
+                    # If Y then TRUE, else False.
+                except ValueError:
+                    print(&quot;Please input Y or N&quot;)
+
+                if temp_string == &#39;Y&#39;:
+                    daily_data_set[&#39;meditation_yesterday&#39;] = True
+                    gate_dict[&#39;yes_med&#39;] = True
+
+                if temp_string == &#39;N&#39;:
+                    daily_data_set[&#39;meditation_yesterday&#39;] = False
+                    gate_dict[&#39;yes_med&#39;] = True
+                else:
+                    print(&quot;Please enter Y or N&quot;)
+
+            while gate_dict[&#39;today_med&#39;] == False:
+
+                try:
+                    temp_string = \
+                        input(&quot;\nAre you going to meditate today?&quot;)
+                    temp_string = temp_string.upper()
+                    # If Y then TRUE, else False.
+                except ValueError:
+                    print(&quot;Please input Y or N&quot;)
+
+                if temp_string == &#39;Y&#39;:
+                    daily_data_set[&#39;meditation_today&#39;] = True
+                    gate_dict[&#39;today_med&#39;] = True
+
+                if temp_string == &#39;N&#39;:
+                    daily_data_set[&#39;meditation_today&#39;] = False
+                    gate_dict[&#39;today_med&#39;] = True
+
+                else:
+                    print(&quot;Please enter Y or N&quot;)
+            
+            
+            # This loop allows the user to use the public defined method from
+            # 
+            view_likert_gate = False
+            while view_likert_gate == False:
+                try:
+                    view_likert = input(&quot;\nEnter &#39;Y&#39; to view the likert &quot;\
+                                        &quot;scale for your mental health rating&quot;\
+                                            &quot;\ntoday or &quot;\
+                                            &quot;enter &#39;N&#39; to finish your entry: &quot;)
+                    view_likert = view_likert.upper()
+                
+                except ValueError:
+                    print(&quot;Please input Y or N&quot;)
+                
+                if view_likert == &#39;Y&#39;:
+                    print\
+                    (&quot;\n{}&quot;.format\
+                        (Likert.print_scale\
+                             (daily_data_set[&#39;mental_health_today&#39;])))
+
+                    view_likert_gate = True
+                
+                if view_likert == &#39;N&#39;:
+                    view_likert_gate = True
+                    
+                    
+                if view_likert == &#39;N&#39; and view_likert == &#39;Y&#39;:
+                    print(&quot;\nPlease enter Y or N&quot;)
+
+            print(&#39;\nThanks for entering your data today!&#39;)
+
+            # Saves dictionary keys as a list to be saved
+            # in the CSV file.
+            dds_csv_columns = return_keys(daily_data_set)
+
+            try:
+                data_file_exists = os.path.isfile(data_file_name)
+                # Checks if the file already exists
+                with open(data_file_name, &#39;a+&#39;, newline=&#39;\n&#39;) as csvfile:
+                    w = csv.writer(csvfile)
+                    if not data_file_exists:
+                        print(&quot;Data file does not exist&quot;)
+                        w.writerow(daily_data_set.keys())
+                        w.writerow(daily_data_set.values())
+                    if data_file_exists == True:
+                        w.writerow(daily_data_set.values())
+                        # writer.writerow(daily_data_set)
+                        # for data in daily_data_set:
+                        #     writer.writerow(data)
+                        print(&quot;...Saving Data&quot;)
+            except IOError:
+                print(&quot;I/O error&quot;)
+            # Run csv creation and writing function
+
+            # exit data entry loop
+            print(&quot;\nReturning to the main menu.\n&quot;)
+            switch_dict[&#39;data_gate&#39;] = False
+
+        # =================== End of CSV creation ========================</code></pre>
+</div>
+<div id="journal-function." class="section level3">
+<h3>Journal function.</h3>
+<p>This portion of code allows users to create a journal entry and then saves it into their program files.</p>
+<pre class="python"><code>       # ========================= Journal Code ==========================
+        # Creates a journal entry and saves it to a .txt file in a custom
+        # created directory
+
+        while switch_dict[&#39;journal_switch&#39;] == True:
+
+            print(&quot;&gt;\n&gt;\n&gt;\n&gt;\n&gt;\n&gt;\n&gt;\n\n&lt;&lt;&lt;JOURNAL&gt;&gt;&gt;&quot;)
+
+            journal_file_name = os.path.join\
+                (journal_file_path, &#39;{} {} journal.txt&#39; \
+                 .format(getpass.getuser(), time_list[3]))
+
+            journal_gate = False
+            while journal_gate == False:
+                journal_binary = str(input(\
+                    &quot;Would you like to make a journal entry &quot; \
+                    &quot;today? \nEnter Y or N: &quot;))
+
+                journal_binary = journal_binary.capitalize()
+                if journal_binary not in {&#39;Y&#39;, &#39;N&#39;}:
+                    print(&quot;Please only enter Y or N&quot;)
+
+                if journal_binary == &#39;Y&#39;:
+                    my_journal = journal_entry()
+                    journal_gate = True
+
+                if journal_binary == &#39;N&#39;:
+                    print(&quot;Shutting journal.&quot;)
+                    journal_gate = True
+
+            # Creates a file using username and current directory
+            if journal_binary == &#39;Y&#39;:
+                with open(journal_file_name, &quot;a+&quot;) as journal_file:
+                    current_time = datetime.datetime.now()
+                    journal_file.write(my_journal)
+                    print(&#39;\nSaving Journal&#39;)
+
+            # end journal program loop.
+            print(&quot;\nReturning to the main menu.\n&quot;)
+            switch_dict[&#39;journal_switch&#39;] = False</code></pre>
+</div>
+<div id="basic-search-function." class="section level3">
+<h3>Basic search function.</h3>
+<p>This section of code allows users to look at basic data from their saved files.</p>
+<pre class="python"><code>        # ===================Search Code=================================
+        # Allows user to view data from previous journal entries and
+
+        while switch_dict[&#39;search_gate&#39;] == True:
+
+            data_file_path = os.path.join(&#39;Doogie Howser Program&#39;, &#39;Data&#39;)
+            daily_data_csv = os.path.join(&#39;{}_daily_data&#39;.\
+                                          format(getpass.getuser()))
+            data_file_name = os.path.join(data_file_path, &#39;{}&#39;.\
+                                          format(daily_data_csv))
+
+            # print(&quot;The search function hasn&#39;t been written yet.&quot;)
+
+            go_to_gate = str(input(&quot;&gt;\n&gt;\n&gt;\n&gt;\n&gt;\n&gt;\n&gt;\n\n&lt;&lt;&lt;SEARCH MENU&gt;&gt;&gt;&quot; \
+                                   &quot;\nWhat would you like to do? \nEnter: &quot;\
+                    &quot;\n&#39;J&#39; to  see the most common words in your Journal &quot;\
+                    &quot;\n&#39;S&#39; to see the last day you were sick \n&#39;C&#39; to count&quot;\
+                    &quot; how many days you have been sick\n&#39;M&#39; to return to &quot;\
+                    &quot;the main menu \n_&quot;))
+
+            go_to_gate = go_to_gate.capitalize()
+
+            # searches for sick days not including the header.
+            if go_to_gate == &#39;S&#39; or go_to_gate == &#39;C&#39;:
+
+                try:
+                    data_file_exists = os.path.isfile(data_file_name)
+                    # Checks if the file already exists
+
+                    with open(data_file_name, &quot;r&quot;) as data_csv:
+                        workbook_reader = csv.reader(data_csv)
+                        search_data = []
+                        if not data_file_exists:
+                            print(&quot;Data file does not exist&quot;)
+                        for row in workbook_reader:
+                            search_data.append(row)
+
+                except IOError:
+                    print(&quot;I/O error&quot;)
+
+                # Returns the dates ser indicated they were sick.
+                days_sick = sick_dates(search_data)
+
+                days_sick = list(days_sick)
+
+                # Counts the number of dates in the days_sick set.
+                sick_count = counter(days_sick)
+
+                if go_to_gate == &#39;C&#39;:
+                    print(f&quot;\n\nYou have been sick {sick_count} days.&quot;)
+
+                    hit_enter_menu_return()
+
+                if go_to_gate == &#39;S&#39;:
+                    print(f&quot;\n\nYou were most recently sick on &quot;\
+                            f&quot;{max(days_sick)}&quot;)
+
+                    hit_enter_menu_return()
+
+            if go_to_gate == &#39;J&#39;:
+
+                journal_search_dir = os.path.join(&#39;Doogie Howser Program&#39;,\
+                                                  &#39;Journal&#39;)
+
+                entries = os.scandir(journal_search_dir)
+                for entry in entries:
+                    if os.path.isfile(os.path.join(journal_search_dir, entry)):
+                        print(entry)
+                        pass
+
+                # Make a list of all journal entries. each index in the list
+                # is a separate .txt file.
+                file_name_list = find_journal_entries(journal_search_dir)
+
+                for i in file_name_list:
+                    assert os.path.isfile(i), &quot;File does not exist.&quot;
+
+                word_list = str()
+
+                # Opens files and writes lines to a list.
+                for i in file_name_list:
+
+                    try:
+                        with open(i, &#39;r&#39;) as file:
+                            for line in file:
+                                file_data = file.read()
+                                clean_data = tidy_up_string(file_data)
+
+                            word_list = word_list + clean_data
+
+                    except IOError:
+                        print(&quot;I/O error&quot;)
+
+                # Removes &#39;\n&#39; characters and splits the list by word.
+                clean_list = strip_and_split(word_list)
+
+                # Creates a dict to use where the key is the word and 
+                # the value is how many times it appears.
+                count_dict = count_words(clean_list)
+
+                # Sorts count_dict by number of times each word is used.
+                sorted_count_list = sort_and_save_dict(count_dict)
+
+                # Prints the ten most used words from the journal.
+                most_used_words(sorted_count_list)
+
+                # Pauses the program until the user hits enter.
+                hit_enter_menu_return()
+
+            if go_to_gate == &#39;M&#39;:
+                print(&quot;\nReturning to the main menu.&quot;)
+                switch_dict[&#39;search_gate&#39;] = False
+
+    print(f&quot;\nExiting program. \nHave a good {greeting_time}.&quot;)</code></pre>
+</div>
+<div id="likert-class" class="section level3">
+<h3>Likert Class</h3>
+<p>This is the custom class I made (as a requirement of the project). Users can utilize the Likert class when collecting survey data that uses Likert scales. The scale is customizeable.</p>
+<pre class="python"><code>class Likert(int):
+    &quot;&quot;&quot;
+    This class is for objects that represent a Likert scale, which is a
+    scale of integers from min to max. It defaults to a scale from 1 - 7
+    &quot;&quot;&quot;
+
+    __scale_bottom = 1 # private attribute 
+
+    # For this program, the lowest value on on a Likert scale should always be 1.
+
+    def __init__(self, value=4, maximum=7):
+        &quot;&quot;&quot;
+        Initiliazes instances
+        &quot;&quot;&quot;
+
+        if not (isinstance(maximum, int)) or not (isinstance(value, int)):
+            raise NotIntegerError(&quot;Value and maximum need to be integers.&quot;)
+        
+        self.max_int = maximum # 1st public attribute
+        
+        if not (self.__scale_bottom &lt;= value &lt;= maximum):
+            raise InvalidRangeError(f&quot;Value should be from {self.__scale_bottom} to {self.max_int}&quot;)
+        
+        self.value_int = value # 2nd public attribute
+    
+
+    def __str__(self):
+        &quot;&quot;&quot;prints the name of the instance and range of the likert scale&quot;&quot;&quot;
+        return f&quot;This is the value {self.value_int} on a Likert&quot;\
+            f&quot; scale from {self.__scale_bottom} to {self.max_int}&quot;
+    
+    
+    def __repr__(self):
+        &quot;&quot;&quot; Official representation of Likert class.&quot;&quot;&quot;
+        return f&quot;Likert: {self.value_int}, scale: {self.__scale_bottom} -&gt; &quot;\
+            f&quot;{self.max_int}&quot;
+    
+    def __lt__(self, other):
+        &quot;&quot;&quot; allows comparison of self to an integer and only an 
+        integer.
+        &quot;&quot;&quot;
+        val_1 = int(self.value_int)
+        val_2 = int(other)
+        if val_1 &lt; val_2:
+          return True
+        else:
+          return False
+
+    def __le__(self, other):
+        
+        &quot;&quot;&quot; allows comparison of self to an integer and only an 
+        integer.
+        &quot;&quot;&quot;
+        val_1 = int(self.value_int)
+        val_2 = int(other)
+        if val_1 &lt;= val_2:
+            return True
+        else:
+            return False
+
+    def __set_scale_bottom(self, value): # The private method
+        &quot;&quot;&quot; 
+        A private method to change the scale bottom for a particular instance.
+        &quot;&quot;&quot;
+        
+        if not (isinstance(value, int)):
+            raise NotIntegerError(&quot;Value must be be integer.&quot;)
+            
+        self._Likert__scale_bottom = value
+        return f&quot;The scale bottom will be updated to {value} if method is run.&quot;
+
+    
+    def print_scale(self): # Required puiblic method. 
+        &quot;&quot;&quot;
+        A public method that takes the name of the instance and
+        prints the range of the likert scale for that instance by returning
+        the lowests value and the highest value
+
+        &quot;&quot;&quot;
+        return f&quot;The Likert scale is from {self.__scale_bottom} to {self.max_int}&quot;
+
+            
+class NotIntegerError(Exception):
+    &quot;&quot;&quot;
+    This is a custom exception for objects that are not integers.
+    &quot;&quot;&quot;
+    pass
+
+
+class InvalidRangeError(Exception):
+    &quot;&quot;&quot;
+    This is a custom exception for objects that are out of range.
+    &quot;&quot;&quot;
+    pass</code></pre>
+</div>
+
+<style>
+.footer {
+  width: 100%;
+  background-color: #333333;
+  color: white;
+  text-align: center;
+}
+</style>
+
+<div id="TroyAscherFooter" class="footer">
+
+      <div id="logos">
+        <a href="mailto:&lt;ascher.troy@gmail.com&gt;">
+          <span class="fa fa-envelope fa-lg" style="color: #FFFFFF;margin-right:1em;"></span>
+        </a>
+        <a href="http://github.com/leetroyjenkins/">
+          <span class="fa fa-github fa-lg" style="color: #FFFFFF;margin-right:1em;"></span>
+        </a>
+        <a href="https://www.linkedin.com/in/troy-ascher/">
+          <span class="fa fa-linkedin fa-lg" style="color: #FFFFFF;margin-right:1em;"></span>
+        </a>
+      </div>
+        <div class="footer">
+    <div id="build"><p style="font-size: x-small"><i>This website was built using RMarkdown in RStudio and Github for web hosting.</i></p></div>
+    </div>
+  </div>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Health and Wellness Tracker</title>
+
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    RStudio
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="CS544_FinalProject_Ascher_Rmarkdown.html">Analytics Project for Boston University</a>
+    </li>
+    <li>
+      <a href="Unemployment_API_Notebook.html">Working with APIs</a>
+    </li>
+    <li class="dropdown-header">ETL Example</li>
+    <li class="dropdown-header">Sampling Methods</li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">R for Data Science Assignments</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="rfordatascience.html">Overview</a>
+        </li>
+        <li>
+          <a href="rfdschapter5.html">Data Transformation - Ch 5</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Python
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="DoogieHowserProject.html">Doogie Howser Project</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    SQL
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="HealthandWellnessTracker.html">Health and Wellness Tracker</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Resume.html">Resume</a>
+</li>
+<li>
+  <a href="aboutme.html">About me</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:&lt;ascher.troy@gmail.com&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://github.com/leetroyjenkins/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/troy-ascher/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Health and Wellness Tracker</h1>
+
+</div>
+
+
+<p>This page highlights a database that I built in MS SQL Server to house a health and wellness database that patients can use to store custom built survey’s and that doctors can use to do research or to gain insight into their current patient’s health.</p>
+<p>Tools used: MS SQL Server, LucidApp</p>
+<div id="structural-database-rules-and-business-rules" class="section level3">
+<h3>Structural Database Rules and Business Rules</h3>
+<pre class="r"><code>Database Rules:
+
+
+1.  An account is one or more of three types: Doctor, Researcher, or Patient.
+
+ I decided that one of my target markets will be mental health doctors and their patients. To assist with this, I created account sub-types. Doctor’s will be able to read journals, trackers, and surveys of any account that they are assigned to on the JournalPermission table. I also created the researcher sub-type. Researchers will be able to access large amounts of survey and journal data. Patients are similar to the standard account, but contain a treatment start date and have a relationship that gives doctors and researchers permission to view their journal entries and/or other health and wellness information. 
+
+2.  Every Account can author multiple Journal entries; every Journal Entry is authored by one Account. 
+
+Each account (contingent on account type) can write multiple journal entries. Each journal entry must be associated with an account, and only one account can be the author of each entry.
+
+3.  Each Account can complete multiple Surveys; each Survey can be completed by one Account.
+
+This is straightforward. An account can complete many surveys over time, but each survey instance can only be associated with one account, on the physical ERD this is broken up into multiple tables since the answers to surveys are saved in the UserAnswers entity. 
+
+
+4.  Each survey contains survey questions; each question may be contained in multiple surveys.
+
+Each template will be associated with questions saved in the Questions entity. 
+
+5.  Each survey question may have many answers; each answer must have only one survey question.
+
+Answers will be saved in the SurveyAnswer table and will be associated with a particular survey instance, as well as an individual survey question (see RULE 8). 
+
+
+6.  Each survey saves survey answers; each survey answer is associated with a survey.
+
+Answers will be saved in the SurveyAnswer table and will be associated with a particular survey instance, as well as an individual survey question.
+
+7.  Each Question has one Question Type; each Question Type might be associated with many questions.
+
+Each question will have a type such as “free form”, “Likert Scale (1-7)”, “Likert Scale (1 -5 ), etc. These types will assist with storing answers correctly, and also with the UX design for the website. 
+
+8.  Each Question could have one unit of measure; each Unit of Measure could be associated with multiple Questions. 
+
+Each question will have a unit of measure so that during analysis the integrity of data can be ensured. Knowing the units (eg pounds vs kilograms) will allow researchers to easily convert data for uniformity. 
+
+9.  Each Question can have 1 Question Category; each Question category may belong to multiple Questions.
+
+Categories are for analysis and help to group questions. Categories could be “mental health”, “physical activity”, or anything else that question creator decides makes sense.
+
+10. Each user can record multiple entries in a food tracker; each food tracker entry is recorded by one user.
+
+Users will enter their daily food intake into the food tracker. Each entry will be associated with a user. 
+
+11. Each health tracker entry can have multiple food items; each food item can be included in multiple food tracker entries.
+
+The food tracker food items will be saved into a food items table so that food items can be searched and selected when the user completes tracker.
+
+12. Each health tracker entry can have multiple Exercise entries; each Exercise can be included in multiple health tracker entries.
+
+The exercise tracker activities will be saved into a exercise table so that exercises can be searched and selected when the user completes tracker.
+
+
+13. Each Researcher can be associated with multiple projects; each project may be associated with multiple researchers.
+
+Researchers can create “projects” that are associated with different survey templates. These projects will also have many patients associated with them which will allow the researchers to gather the same dataset from many different users.
+
+14. Each Research Project may be associated with multiple Surveys; each Survey may be associated with multiple Research Projects. 
+
+Survey projects can have many surveys associated with them. For instance, one project may have two different surveys that they give. One goes to a control group, the other goes to a group with different demographics. Likewise, since survey templates can be re-used, the survey template may be used in multiple projects.
+
+15. Each Research Project may be associated with multiple Patients; each Patient may be associated with multiple Research Projects. 
+
+Each Project will have one to many patients that are participants. Being a participant means that the researchers will have access to the patient’s surveys, journals, and food and exercise trackers.
+
+16. Each Doctor may have permission for multiple Patients; each Patient may give multiple Doctors permission.
+
+Doctor’s have multiple patients. Likewise, patients can have more than one doctor. When a relationship is present, the doctor will have access to their patient’s journal, and other health and wellness data. 
+
+17. Each WeightHistory record is associated with one Account; an Account may have multiple WeightHistory records.
+
+This is where changes to Answer.weight will be recorded. 
+
+
+Business Rules:
+
+1.  Users can change their Pseudonym up to three(3) times every rolling year.
+
+Historic pseudonyms will be tied to a user’s journal entries, so limiting the number of changes will keep the availability of popular names high, while also allowing users more than one attempt to make a change each year.
+
+2.  Users can save survey templates for themselves or they can mark them public and they can be shared. 
+
+Templates are a grouping of survey questions that can be used over and over. 
+
+3.  ‘Normal accounts and Patient account types can have from 1 to 15 questions on their survey templates.
+
+4.  ‘Researcher’ account types can have from 1 to 30 questions on their survey templates.
+
+5.  Normal accounts can only see their own survey answers.
+
+Answers to survey questions are stored so that users can easily access the data at a later date, but the data is only available for the answers that each user gives.
+
+6.  Researchers can see survey responses from any user that is a participant on a project they belong to. 
+
+
+7.  Users can see any journal entry marked “Public”.
+
+Users can search through and read public journal entries.
+
+8.  “Doctor” account types can see journals and survey data from any of their patients, unless it is marked “hidden” by the patient. 
+
+9.  Only Researchers can participate in Research Projects. 
+
+Since account sub-types are overlap, Doctor’s can create a researcher account to participate in projects.</code></pre>
+</div>
+<div id="entity-relationship-diagram" class="section level3">
+<h3>Entity-Relationship-Diagram</h3>
+<p>Here is the ERD for my database. I used crow’s-foot, but I’ve since come to prefer UML notation.</p>
+<p><a href="images/physicalERD.jpg" target="_blank"><img src="images/ERD.png" width="100%" style="display: block; margin: auto auto auto 0;" /></a></p>
+</div>
+<div id="physical-erd" class="section level3">
+<h3>Physical ERD</h3>
+<p>Here is the full physical ERD for the DBMS. The database has been normalized to BCNF.</p>
+<p><a href="images/physicalERD.jpg" target="_blank"><img src="images/physicalERD.png" width="462" style="display: block; margin: auto auto auto 0;" /></a></p>
+</div>
+<div id="sql" class="section level1">
+<h1>SQL</h1>
+<p>I’ve included my code for database creation.</p>
+<div id="table-creation" class="section level3">
+<h3>Table Creation</h3>
+<pre class="r"><code>-- TABLES
+
+--This is the account table, the &quot;heart&quot; of the ERD.
+CREATE TABLE Account(account_id DECIMAL(9) NOT NULL PRIMARY KEY 
+                    ,username VARCHAR(32) NOT NULL
+                    ,pseudonym VARCHAR(64) NOT NULL
+                    ,email_address VARCHAR(255) NOT NULL
+                    ,password VARCHAR(18) NOT NULL
+                    ,creation_date DATE
+                    ,birthdate DATE NOT NULL
+                    ,biological_sex char(1) NOT NULL
+                    ,user_weight DECIMAL(3) NOT NULL
+                    ,first_name VARCHAR(255) NOT NULL
+                    ,last_name VARCHAR(255) NOT NULL
+                    ,CONSTRAINT AK_username UNIQUE (username) -- username must be unique.
+                    ,CONSTRAINT AK_pseudonym UNIQUE (pseudonym) -- pseudonym must be unique.
+                    );
+
+CREATE TABLE WeightHistory (weight_change_id DECIMAL(15) NOT NULL PRIMARY KEY
+                             ,old_weight DECIMAL(3) NOT NULL
+                             ,new_weight DECIMAL(3) NOT NULL
+                             ,account_id DECIMAL(9) NOT NULL
+                             ,effective_date DATETIME NOT NULL
+                             ,FOREIGN KEY (account_id) REFERENCES Account(account_id)
+                             );
+
+
+CREATE TABLE Doctor (account_id DECIMAL(9) NOT NULL PRIMARY KEY 
+                    ,specialization VARCHAR(255)
+                    ,license_number VARCHAR(32) NOT NULL
+                    ,licensing_authority VARCHAR(64) NOT NULL
+                    ,license_exp_date DATE
+                    ,organization VARCHAR(255) 
+                    ,FOREIGN KEY (account_id) REFERENCES Account(account_id)
+                    );
+
+CREATE TABLE Patient (account_id DECIMAL(9) NOT NULL PRIMARY KEY 
+                     ,treatment_start DATE
+                     ,FOREIGN KEY (account_id) REFERENCES Account(account_id)
+                     );
+
+CREATE TABLE Researcher (account_id DECIMAL(9) NOT NULL PRIMARY KEY
+                        ,FOREIGN KEY (account_id) REFERENCES Account(account_id)
+                        ,organization VARCHAR(255) 
+                        );
+
+CREATE TABLE JournalEntry (entry_id DECIMAL(12) NOT NULL PRIMARY KEY
+                          ,account_id DECIMAL(9) NOT NULL
+                          ,entry_date DATE DEFAULT GETDATE() --defaults to current date unless overridden in application
+                          ,journal_entry TEXT NOT NULL
+                          ,journal_mood VARCHAR(32)
+                          ,journal_title VARCHAR(64) DEFAULT (GETDATE() + &#39; Entry&#39;)
+                          ,public_journal_entry DECIMAL(1) NOT NULL DEFAULT 0 -- Defaults to not public.
+                          ,hidden_journal_entry DECIMAL(1) NOT NULL DEFAULT 0 --  Defaults to not hidden.
+                          ,FOREIGN KEY (account_id) REFERENCES Account(account_id)
+                          );
+
+CREATE TABLE HealthTracker (health_tracker_id DECIMAL(12) NOT NULL PRIMARY KEY
+                         ,account_id DECIMAL(9) NOT NULL
+                         ,health_tracker_time DATE NOT NULL
+                         ,hidden_health_entry DECIMAL(1) NOT NULL DEFAULT 0 -- Defaults to not hidden.
+                         ,FOREIGN KEY (account_id) REFERENCES Account(account_id)
+                         );
+
+CREATE TABLE FoodItems(food_item_id DECIMAL(12) NOT NULL PRIMARY KEY
+                      ,food_name VARCHAR(64) NOT NULL
+                      ,food_description VARCHAR(255)
+                      ,calories DECIMAL(5)
+                      );
+
+CREATE TABLE ExerciseType(exercise_id DECIMAL(12) NOT NULL PRIMARY KEY
+                              ,exercise_name VARCHAR(64) NOT NULL
+                              ,exercise_description VARCHAR(255)
+                              );
+
+CREATE TABLE Survey (survey_id DECIMAL(12) NOT NULL PRIMARY KEY
+                    ,account_id DECIMAL(9) NOT NULL
+                    ,survey_name VARCHAR(32) NOT NULL
+                    ,survey_creation_date DATE NOT NULL
+                    ,public_survey DECIMAL(1) NOT NULL DEFAULT 0 -- Defaults to not public.
+                    ,FOREIGN KEY (account_id) REFERENCES Account(account_id)
+                    );
+
+CREATE TABLE UnitOfMeasure (unit_id DECIMAL(6) NOT NULL PRIMARY KEY
+                           ,unit_of_measure VARCHAR(32) NOT NULL
+                           ,unit_description VARCHAR(255)
+                           ,unit_abbreviation VARCHAR(32)
+                           );
+
+CREATE TABLE QuestionType (question_type_id DECIMAL(4) NOT NULL PRIMARY KEY
+                          ,question_type VARCHAR(64)
+                          ,answer_format VARCHAR(32)
+                          );
+
+CREATE TABLE QuestionCategory (question_cat_id DECIMAL(6) NOT NULL PRIMARY KEY
+                              ,question_category VARCHAR(64)
+                              );
+
+CREATE TABLE Questions(question_id DECIMAL(12) NOT NULL PRIMARY KEY
+                         ,question_text VARCHAR(255) NOT NULL
+                         ,question_type_id DECIMAL(4) NOT NULL
+                         ,question_cat_id DECIMAL(6)
+                         ,question_creation_date DATE NOT NULL
+                         ,unit_id DECIMAL(6)
+                         ,FOREIGN KEY (question_type_id) REFERENCES QuestionType(question_type_id)
+                         ,FOREIGN KEY (unit_id) REFERENCES UnitofMeasure(unit_id)
+                         ,FOREIGN KEY (question_cat_id) REFERENCES QuestionCategory(question_cat_id)
+                         );
+
+CREATE TABLE UserAnswers (answer_id DECIMAL(16) NOT NULL PRIMARY KEY
+                         ,survey_id DECIMAL(12) NOT NULL
+                         ,question_id DECIMAL(12) NOT NULL
+                         ,answer_text VARCHAR(255)
+                         ,answer_date DATE NOT NULL
+                         ,hidden_answer DECIMAL(1) NOT NULL
+                         ,FOREIGN KEY (survey_id) REFERENCES Survey(survey_id)
+                         ,FOREIGN KEY (question_id) REFERENCES Questions(question_id)
+                         );
+
+CREATE TABLE ResearchProject (project_id DECIMAL(9) NOT NULL PRIMARY KEY
+                             ,project_name VARCHAR(255) 
+                             ,project_start_date DATE NOT NULL
+                             ,project_active DECIMAL(1) NOT NULL
+                             );
+
+CREATE TABLE FoodTrackingBridge (food_bridge_id DECIMAL(15) NOT NULL PRIMARY KEY
+                                ,health_tracker_id DECIMAL(12) NOT NULL
+                                ,food_item_id DECIMAL(12) NOT NULL
+                                ,food_consume_time DATE NOT NULL
+                                ,portion_size DECIMAL(2,1) DEFAULT 1.0
+                                ,FOREIGN KEY (health_tracker_id) REFERENCES HealthTracker(health_tracker_id)
+                                ,FOREIGN KEY (food_item_id) REFERENCES FoodItems(food_item_id)
+                                );
+
+CREATE TABLE ExerciseBridge (exercise_bridge_id DECIMAL(15) NOT NULL PRIMARY KEY
+                                ,health_tracker_id DECIMAL(12) NOT NULL
+                                ,exercise_id DECIMAL(12) NOT NULL
+                                ,exercise_date DATETIME NOT NULL
+                                ,calories_burned DECIMAL(5) NOT NULL
+                                ,exercise_dur_min DECIMAL(5) NOT NULL
+                                ,exercise_instensity DECIMAL(1) DEFAULT 3
+                                ,FOREIGN KEY (health_tracker_id) REFERENCES HealthTracker(health_tracker_id)
+                                ,FOREIGN KEY (exercise_id) REFERENCES ExerciseType(exercise_id)
+                                );
+
+CREATE TABLE SurveyQuestionBridge (survey_question_bridge_id DECIMAL(15) NOT NULL PRIMARY KEY
+                                  ,survey_id DECIMAL(12) NOT NULL
+                                  ,question_id DECIMAL(12) NOT NULL
+                                  ,question_order DECIMAL(3) NOT NULL
+                                  ,FOREIGN KEY (survey_id) REFERENCES Survey(survey_id)
+                                  ,FOREIGN KEY (question_id) REFERENCES Questions(question_id)
+                                  );
+
+CREATE TABLE ProjectAccountBridge (proj_bridge_id DECIMAL(15) NOT NULL PRIMARY KEY
+                                  ,account_id DECIMAL(9) NOT NULL
+                                  ,project_id DECIMAL(9) NOT NULL
+                                  ,project_head DECIMAL(1) NOT NULL
+                                  ,FOREIGN KEY (account_id) REFERENCES Account(account_id)
+                                  ,FOREIGN KEY (project_id) REFERENCES ResearchProject(project_id)
+                                  );
+
+CREATE TABLE ResearchParticipantList (participant_list_id DECIMAL(15) NOT NULL PRIMARY KEY
+                                     ,project_id DECIMAL(9) NOT NULL
+                                     ,account_id DECIMAL(9) NOT NULL
+                                     ,FOREIGN KEY (project_id) REFERENCES ResearchProject(project_id)
+                                     ,FOREIGN KEY (account_id) REFERENCES Account(account_id)
+                                     );
+
+CREATE TABLE ProjectSurveyBridge (project_survey_id DECIMAL(15) PRIMARY KEY
+                                 ,project_id DECIMAL(9) NOT NULL
+                                 ,survey_id DECIMAL(12) NOT NULL
+                                 ,FOREIGN KEY (project_id) REFERENCES ResearchProject(project_id)
+                                 ,FOREIGN KEY (survey_id) REFERENCES Survey(survey_id)
+                                 );
+
+CREATE TABLE JournalPermission (journal_security_id DECIMAL(16) NOT NULL PRIMARY KEY
+                             ,account_id_doctor DECIMAL(9) NOT NULL
+                             ,account_id_patient DECIMAL(9) NOT NULL
+                             ,FOREIGN KEY (account_id_doctor) REFERENCES Doctor(account_id)
+                             ,FOREIGN KEY (account_id_patient) REFERENCES Patient(account_id)
+                             );
+
+CREATE TABLE ResearchPermission (research_security_id DECIMAL(16) NOT NULL PRIMARY KEY
+                             ,account_id_researcher DECIMAL(9) NOT NULL
+                             ,account_id_patient DECIMAL(9) NOT NULL
+                             ,FOREIGN KEY (account_id_researcher) REFERENCES Researcher(account_id)
+                             ,FOREIGN KEY (account_id_patient) REFERENCES Account(account_id)
+                             );
+GO</code></pre>
+</div>
+<div id="sequencing" class="section level3">
+<h3>Sequencing</h3>
+<pre class="r"><code>--SEQUENCES
+
+CREATE SEQUENCE account_id_seq START WITH 1;
+
+CREATE SEQUENCE weight_hist_seq START WITH 1;
+
+CREATE SEQUENCE journalentry_id_seq START WITH 1;
+
+CREATE SEQUENCE healthtracker_id_seq START WITH 1;
+
+CREATE SEQUENCE fooditems_id_seq START WITH 1;
+
+CREATE SEQUENCE exercise_id_seq START WITH 1;
+
+CREATE SEQUENCE survey_id_seq START WITH 1;
+
+CREATE SEQUENCE questions_id_seq START WITH 1;
+
+CREATE SEQUENCE question_cat_id_seq START WITH 1;
+
+CREATE SEQUENCE unitofmeasure_id_seq START WITH 1;
+
+CREATE SEQUENCE questiontype_id_seq START WITH 1;
+
+CREATE SEQUENCE useranswers_id_seq START WITH 1;
+
+CREATE SEQUENCE researchproject_id_seq START WITH 1;
+
+CREATE SEQUENCE exercise_bridge_id_seq START WITH 1;
+
+CREATE SEQUENCE foodtrackingbridge_id_seq START WITH 1;
+
+CREATE SEQUENCE surveyquestionbridge_id_seq START WITH 1;
+
+CREATE SEQUENCE projectaccountbridge_id_seq START WITH 1;
+
+CREATE SEQUENCE researchparticipantlist_id_seq START WITH 1;
+
+CREATE SEQUENCE projectsurveybridge_id_seq START WITH 1;
+
+CREATE SEQUENCE journalpermission_id_seq START WITH 1;
+
+CREATE SEQUENCE researchpermission_id_seq START WITH 1;
+
+GO</code></pre>
+</div>
+<div id="indexing" class="section level3">
+<h3>Indexing</h3>
+<pre class="r"><code>--INDEXES
+GO
+CREATE INDEX IX_Account_birthdate 
+ON Account(birthdate);
+
+CREATE INDEX IX_JournalEntry_journal_mood 
+ON JournalEntry(journal_mood);
+
+CREATE INDEX IX_JournalEntry_entry_date 
+ON JournalEntry(entry_date);
+
+CREATE INDEX IX_JournalPermission_account_id_doctor 
+ON JournalPermission(account_id_doctor);
+
+CREATE INDEX IX_JournalPermission_account_id_patient 
+ON JournalPermission(account_id_patient);
+
+CREATE INDEX IX_Doctor_account_id 
+ON Doctor(account_id);
+
+CREATE INDEX IX_HealthTracker_account_id 
+ON HealthTracker(account_id);
+
+CREATE INDEX IX_FoodTrackingBridge_food_item_id 
+ON FoodTrackingBridge(food_item_id);
+
+CREATE INDEX IX_FoodTrackingBridge_health_tracker_id 
+ON FoodTrackingBridge(health_tracker_id);
+
+CREATE INDEX IX_ExerciseBridge_exercise_id 
+ON ExerciseBridge(exercise_id);
+
+CREATE INDEX IX_ExerciseBridge_health_tracker_id 
+ON ExerciseBridge(health_tracker_id);
+
+CREATE INDEX IX_JournalEntry_account_id 
+ON JournalEntry(account_id);
+
+CREATE INDEX IX_Patient_account_id 
+ON Patient(account_id);
+
+CREATE INDEX IX_ProjectAccountBridge_account_id 
+ON ProjectAccountBridge(account_id);
+
+CREATE INDEX IX_ProjectAccountBridge_project_id 
+ON ProjectAccountBridge(project_id);
+
+CREATE INDEX IX_ProjectSurveyBridge_project_id 
+ON ProjectSurveyBridge(project_id);
+
+CREATE INDEX IX_ProjectSurveyBridge_survey_id 
+ON ProjectSurveyBridge(survey_id);
+
+CREATE INDEX IX_Questions_question_cat_id 
+ON Questions(question_cat_id);
+
+CREATE INDEX IX_Questions_question_type_id 
+ON Questions(question_type_id);
+
+CREATE INDEX IX_Questions_unit_id 
+ON Questions(unit_id);
+
+CREATE INDEX IX_Researcher_account_id 
+ON Researcher(account_id);
+
+CREATE INDEX IX_ResearchParticipantList_project_id 
+ON ResearchParticipantList(project_id);
+
+CREATE INDEX IX_ResearchParticipantList_account_id 
+ON ResearchParticipantList(account_id);
+
+CREATE INDEX IX_ResearchPermission_account_id_researcher 
+ON ResearchPermission(account_id_researcher);
+
+CREATE INDEX IX_ResearchPermission_account_id_participant 
+ON ResearchPermission(account_id_patient);
+
+CREATE INDEX IX_Survey_account_id 
+ON Survey(account_id);
+
+CREATE INDEX IX_SurveyQuestionBridge_question_id 
+ON SurveyQuestionBridge(question_id);
+
+CREATE INDEX IX_SurveyQuestionBridge_survey_id 
+ON SurveyQuestionBridge(survey_id);
+
+CREATE INDEX IX_UserAnswers_question_id 
+ON UserAnswers(question_id);
+
+CREATE INDEX IX_UserAnswers_survey_id 
+ON UserAnswers(survey_id);
+
+CREATE INDEX IX_WeightHistory_account_id 
+ON WeightHistory(account_id );</code></pre>
+</div>
+<div id="triggers" class="section level3">
+<h3>Triggers</h3>
+<pre class="r"><code>-- HISTORY TRIGGER
+
+GO
+
+CREATE TRIGGER WeightChangeTrigger
+ON Account
+AFTER UPDATE
+AS
+BEGIN
+    DECLARE @old_weight DECIMAL(3) = (SELECT user_weight FROM DELETED);
+    DECLARE @new_weight DECIMAL(3) = (SELECT user_weight FROM INSERTED);
+
+    IF (@old_weight != @new_weight)
+        INSERT INTO WeightHistory (weight_change_id
+                                    ,old_weight
+                                    ,new_weight
+                                    ,account_id
+                                    ,effective_date)
+        VALUES (NEXT VALUE FOR weight_hist_seq
+                ,@old_weight
+                ,@new_weight
+                ,(SELECT account_id FROM INSERTED)
+                ,GETDATE()
+                );
+END;
+GO</code></pre>
+</div>
+<div id="procedures" class="section level3">
+<h3>Procedures</h3>
+<pre class="r"><code>--STORED PROCEDURES
+--Replace this with your stored procedure definitions.
+
+-- Use Case 1: Account Creation for users.
+CREATE PROCEDURE CreateAccount @username VARCHAR(32)
+                                ,@email_address VARCHAR(255)
+                                ,@pseudonym VARCHAR(255)
+                                ,@password VARCHAR(18)
+                                ,@birthdate DATE
+                                ,@biological_sex CHAR(1)
+                                ,@user_weight DECIMAL(3)
+                                ,@first_name VARCHAR(255)
+                                ,@last_name VARCHAR(255)
+AS
+BEGIN
+    INSERT INTO Account(account_id
+                        ,username
+                        ,email_address
+                        ,pseudonym
+                        ,password
+                        ,creation_date
+                        ,birthdate
+                        ,biological_sex
+                        ,user_weight
+                        ,first_name
+                        ,last_name
+                        )
+    VALUES (NEXT VALUE FOR account_id_seq
+            ,@username
+            ,@email_address
+            ,@pseudonym
+            ,@password
+            ,GETDATE()
+            ,CAST (@birthdate AS DATE)
+            ,@biological_sex
+            ,@user_weight
+            ,@first_name
+            ,@last_name);
+END;
+GO
+-- Use Case 2: Account Creation for Doctors and Researchers.
+CREATE PROCEDURE CreateDoctorAccount @username VARCHAR(32)
+                                ,@email_address VARCHAR(255)
+                                ,@pseudonym VARCHAR(255)
+                                ,@password VARCHAR(18)
+                                ,@birthdate DATE
+                                ,@biological_sex CHAR(1)
+                                ,@user_weight DECIMAL(3)
+                                ,@first_name VARCHAR(255)
+                                ,@last_name VARCHAR(255)
+                                ,@organization VARCHAR(255)
+                                ,@specialization VARCHAR(255)
+                                ,@license_number VARCHAR(32)
+                                ,@licensing_authority VARCHAR(64)
+                                ,@license_exp_date DATE
+
+
+AS
+BEGIN
+
+    INSERT INTO Account(account_id, username, email_address, pseudonym, password, creation_date, birthdate, 
+                        biological_sex, user_weight, first_name, last_name)
+    VALUES (NEXT VALUE FOR account_id_seq, @username, @email_address, @pseudonym, @password, GETDATE(),
+            CAST (@birthdate AS DATE), @biological_sex, @user_weight, @first_name, @last_name);
+
+    INSERT INTO Doctor(account_id, organization, specialization, license_number, licensing_authority, license_exp_date) 
+    VALUES(CAST((SELECT Current_Value FROM SYS.Sequences WHERE name=&#39;account_id_seq&#39;)AS DECIMAL(9)), @organization, @specialization, @license_number, @licensing_authority,
+            CAST(@license_exp_date AS DATE));
+
+END;
+GO
+-- Use Case 3: Creating a Journal Entry
+CREATE PROCEDURE AddJournalEntry @account_id DECIMAL(9)
+                                ,@journal_entry TEXT
+                                ,@journal_mood VARCHAR(32)
+                                ,@journal_title VARCHAR(64)
+                                ,@public DECIMAL(1)
+                                ,@hidden DECIMAL(1)
+
+AS
+BEGIN
+    INSERT INTO JournalEntry(entry_id, account_id, entry_date, journal_entry, journal_mood, 
+                                journal_title, public_journal_entry, hidden_journal_entry)
+    VALUES(NEXT VALUE FOR journalentry_id_seq, @account_id, GETDATE(), @journal_entry, @journal_mood, @journal_title,
+            @public, @hidden);
+END;
+GO
+-- Other procedures for data insertion.
+
+-- 
+CREATE PROCEDURE CreateResearcherAccount @username VARCHAR(32)
+                                ,@email_address VARCHAR(255)
+                                ,@pseudonym VARCHAR(255)
+                                ,@password VARCHAR(18)
+                                ,@birthdate DATE
+                                ,@biological_sex CHAR(1)
+                                ,@user_weight DECIMAL(3)
+                                ,@first_name VARCHAR(255)
+                                ,@last_name VARCHAR(255)
+                                ,@organization VARCHAR(255)
+
+AS
+BEGIN
+
+    INSERT INTO Account(account_id, username, email_address, pseudonym, password, creation_date, birthdate, 
+                        biological_sex, user_weight, first_name, last_name)
+    VALUES (NEXT VALUE FOR account_id_seq, @username, @email_address, @pseudonym, @password, GETDATE(),
+            CAST (@birthdate AS DATE), @biological_sex, @user_weight, @first_name, @last_name);
+
+    INSERT INTO Researcher(account_id, organization) 
+    VALUES(CAST((SELECT Current_Value FROM SYS.Sequences WHERE name=&#39;account_id_seq&#39;)AS DECIMAL(9)), @organization);
+
+END;
+GO
+
+CREATE PROCEDURE CreatePatient @username VARCHAR(32)
+                                ,@email_address VARCHAR(255)
+                                ,@pseudonym VARCHAR(255)
+                                ,@password VARCHAR(18)
+                                ,@birthdate DATE
+                                ,@biological_sex CHAR(1)
+                                ,@user_weight DECIMAL(3)
+                                ,@first_name VARCHAR(255)
+                                ,@last_name VARCHAR(255)
+AS
+BEGIN
+
+    INSERT INTO Account(account_id, username, email_address, pseudonym, password, creation_date, birthdate, 
+                        biological_sex, user_weight, first_name, last_name)
+    VALUES (NEXT VALUE FOR account_id_seq, @username, @email_address, @pseudonym, @password, GETDATE(),
+            CAST (@birthdate AS DATE), @biological_sex, @user_weight, @first_name, @last_name);
+
+    INSERT INTO Patient(account_id, treatment_start) 
+    VALUES(CAST((SELECT Current_Value FROM SYS.Sequences WHERE name=&#39;account_id_seq&#39;)AS DECIMAL(9)), GETDATE());
+
+END;
+
+GO
+
+CREATE PROCEDURE CreateHealthTracker @account_id DECIMAL(9)
+                                    ,@hidden DECIMAL(1)
+AS
+BEGIN
+
+    INSERT INTO HealthTracker(health_tracker_id, account_id, health_tracker_time, hidden_health_entry)
+    VALUES (NEXT VALUE FOR healthtracker_id_seq, @account_id, GETDATE(), @hidden);
+
+END;
+
+GO
+
+CREATE PROCEDURE CreateFoodItems @food_name VARCHAR(64)
+                                    ,@food_description VARCHAR(255)
+                                    ,@calories DECIMAL(5)
+AS
+BEGIN
+
+    INSERT INTO FoodItems(food_item_id, food_name, food_description, calories)
+    VALUES (NEXT VALUE FOR fooditems_id_seq, @food_name, @food_description, @calories);
+
+
+END;
+
+GO
+
+CREATE PROCEDURE CreateExercise @exercise_name VARCHAR(64)
+                                    ,@exercise_description VARCHAR(255)
+AS
+BEGIN
+
+    INSERT INTO ExerciseType(exercise_id, exercise_name, exercise_description)
+    VALUES (NEXT VALUE FOR exercise_id_seq, @exercise_name, @exercise_description);
+
+END;
+
+GO
+
+CREATE PROCEDURE CreateResearchProject @project_name VARCHAR(255)
+                                    ,@start_date DATE
+                                    ,@active DECIMAL(1)
+AS
+BEGIN
+
+    INSERT INTO ResearchProject(project_id, project_name, project_start_date, project_active)
+    VALUES (NEXT VALUE FOR researchproject_id_seq, @project_name, CAST (@start_date AS DATE), @active);
+
+END;
+
+GO
+
+CREATE PROCEDURE CreateSurvey 
+                                    @account_id DECIMAL(9)
+                                    ,@survey_name VARCHAR(32)
+                                    ,@creation_date DATE
+                                    ,@public DECIMAL(1)
+AS
+BEGIN
+
+    INSERT INTO Survey(survey_id, account_id, survey_name, survey_creation_date, public_survey)
+    VALUES (NEXT VALUE FOR survey_id_seq, @account_id, @survey_name, CAST(@creation_date AS DATE), @public);
+
+END;
+
+GO
+
+
+
+CREATE PROCEDURE CreateQuestionCategory @question_category VARCHAR(64)
+AS
+BEGIN
+    INSERT INTO QuestionCategory(question_cat_id, question_category)
+    VALUES(NEXT VALUE FOR question_cat_id_seq, @question_category);
+
+END;
+
+GO
+
+CREATE PROCEDURE CreateQuestionType @answer_format VARCHAR(32)
+                                    ,@question_type VARCHAR(64)
+AS
+BEGIN
+    INSERT INTO QuestionType(question_type_id, question_type, answer_format)
+    VALUES(NEXT VALUE FOR questiontype_id_seq, @question_type, @answer_format);
+
+END;
+
+
+GO
+
+CREATE PROCEDURE CreateUnitofMeasure @measure VARCHAR(32)
+                                    ,@desc VARCHAR(255)
+                                    ,@abr VARCHAR(32)
+AS
+BEGIN
+    INSERT INTO UnitOfMeasure(unit_id, unit_of_measure, unit_description, unit_abbreviation)
+    VALUES(NEXT VALUE FOR unitofmeasure_id_seq, @measure, @desc, @abr);
+
+END;
+
+GO
+
+CREATE PROCEDURE CreateQuestions @question_text VARCHAR(255)
+                                ,@type DECIMAL(4)
+                                ,@category DECIMAL(6)
+                                ,@creation_date DATE
+                                ,@unit DECIMAL(6)
+
+AS
+BEGIN
+    INSERT INTO Questions(question_id, question_text, question_type_id, question_cat_id, question_creation_date, unit_id)
+    VALUES (NEXT VALUE FOR questions_id_seq, @question_text, @type, @category, CAST(@creation_date AS DATE), @unit);
+END;
+
+GO
+
+CREATE PROCEDURE CreateUserAnswers @survey_id DECIMAL(12)
+                                    ,@question_id DECIMAL(12)
+                                    ,@answer_text VARCHAR(255)
+                                    ,@answer_date DATE
+                                    ,@hidden DECIMAL(1)
+
+AS 
+BEGIN
+    INSERT INTO UserAnswers(answer_id, survey_id, question_id, answer_text, answer_date, hidden_answer)
+    VALUES(NEXT VALUE FOR useranswers_id_seq, @survey_id, @question_id, @answer_text, CAST(@answer_date AS DATE), @hidden)
+END;
+
+GO
+
+
+
+--QUERIES
+-- This query shows how many distinct accounts posted during a time period, divided up by day.
+SELECT COUNT(DISTINCT WeightHistory.account_id) AS Entries, FORMAT(WeightHistory.effective_date, &#39;M-d-yyyy&#39;) AS Date
+FROM WeightHistory
+WHERE WeightHistory.effective_date &gt; &#39;12/31/2019&#39; AND WeightHistory.effective_date &lt; &#39;2/1/2020&#39;
+GROUP BY WeightHistory.effective_date
+ORDER BY WeightHistory.effective_date;
+
+
+-- Query for question number 2, showing how many of each account type, and the total.
+
+SELECT (SELECT COUNT(Account.account_id)
+                FROM Account
+                WHERE Account.account_id NOT IN (SELECT Doctor.account_id
+                                                    FROM Doctor
+                                                    UNION
+                                                    SELECT Patient.account_id
+                                                    FROM Patient
+                                                    UNION
+                                                    SELECT Researcher.account_id
+                                                    FROM Researcher))  AS &#39;Standard Accounts&#39;
+        ,COUNT(Doctor.account_id) AS &#39;Doctor&#39;
+        ,COUNT(Patient.account_id) AS &#39;Patient&#39;
+        ,COUNT(Researcher.account_id) AS &#39;Researcher&#39;
+        ,COUNT(Account.account_id) AS &#39;Total Accounts&#39;
+FROM Account
+FULL JOIN Doctor ON Doctor.account_id = Account.account_id
+FULL JOIN Patient ON Patient.account_id = Account.account_id
+FULL JOIN Researcher ON Researcher.account_id = Account.account_id;
+
+-- Query #3, showing survey questions and answers grouped by survey template
+
+SELECT Survey.account_id
+        ,Survey.survey_id
+        ,Survey.survey_name
+        ,SurveyQuestionBridge.question_order AS &#39;Question #&#39;
+        ,Questions.question_text
+        ,UserAnswers.answer_text
+        ,QuestionType.question_type
+FROM UserAnswers
+JOIN Questions ON Questions.question_id = UserAnswers.question_id
+JOIN Survey ON Survey.survey_id = UserAnswers.survey_id
+JOIN SurveyQuestionBridge ON SurveyQuestionBridge.question_id = Questions.question_id
+JOIN QuestionType ON QuestionType.question_type_id = Questions.question_type_id
+ORDER BY Survey.account_id, Survey.survey_id, FORMAT(UserAnswers.answer_date, &#39;MM-DD-YYYY&#39;), SurveyQuestionBridge.question_order;
+
+-- Question #4 Creating a View for Doctors to use to read their patient&#39;s journals.
+GO
+
+CREATE OR ALTER VIEW PatientJournals 
+AS
+SELECT Account.last_name AS &#39;Patient&#39;
+        ,JournalEntry.entry_date
+        ,JournalEntry.journal_title
+        ,JournalEntry.journal_mood
+        ,JournalEntry.journal_entry
+FROM JournalEntry
+JOIN Account ON Account.account_id = JournalEntry.account_id
+WHERE JournalEntry.account_id IN (SELECT JournalPermission.account_id_patient
+                                        FROM JournalPermission
+                                        WHERE JournalPermission.account_id_doctor = 12)
+        AND JournalEntry.hidden_journal_entry = 0;
+
+GO</code></pre>
+</div>
+</div>
+
+<style>
+.footer {
+  width: 100%;
+  background-color: #333333;
+  color: white;
+  text-align: center;
+}
+</style>
+
+<div id="TroyAscherFooter" class="footer">
+
+      <div id="logos">
+        <a href="mailto:&lt;ascher.troy@gmail.com&gt;">
+          <span class="fa fa-envelope fa-lg" style="color: #FFFFFF;margin-right:1em;"></span>
+        </a>
+        <a href="http://github.com/leetroyjenkins/">
+          <span class="fa fa-github fa-lg" style="color: #FFFFFF;margin-right:1em;"></span>
+        </a>
+        <a href="https://www.linkedin.com/in/troy-ascher/">
+          <span class="fa fa-linkedin fa-lg" style="color: #FFFFFF;margin-right:1em;"></span>
+        </a>
+      </div>
+        <div class="footer">
+    <div id="build"><p style="font-size: x-small"><i>This website was built using RMarkdown in RStudio and Github for web hosting.</i></p></div>
+    </div>
+  </div>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
