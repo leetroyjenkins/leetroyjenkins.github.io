@@ -16,8 +16,7 @@ navbar:
           menu:
             - text: "Overview"
               href: rfordatascience.html
-            - text: "Data Transformation - Ch 5"
-              href: 
+
     - text: "Python"
       menu:
         - text: "Doogie Howser Project"
