@@ -1,4 +1,3 @@
-base
 tidyverse
 ggplot2
 tibble
@@ -13,3 +12,4 @@ devtools
 blsAPI
 httr
 jsonlite
+nycflights13

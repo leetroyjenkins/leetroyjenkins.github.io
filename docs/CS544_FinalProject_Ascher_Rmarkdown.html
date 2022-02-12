@@ -13,8 +13,8 @@
 
 <title>Analysis of Beijing Weather and Pollution, 2017</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -344,9 +344,6 @@ div.tocify {
         <li>
           <a href="rfordatascience.html">Overview</a>
         </li>
-        <li>
-          <a href="rfdschapter5.html">Data Transformation - Ch 5</a>
-        </li>
       </ul>
     </li>
   </ul>
@@ -446,9 +443,9 @@ library(plotly)
 # For strata sampling
 library (sampling)</code></pre>
 <div id="introduction" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Introduction</h1>
+<h1><span class="header-section-number">1</span> Introduction</h1>
 <div id="outline" class="section level2" number="1.1">
-<h2 number="1.1"><span class="header-section-number">1.1</span> Outline</h2>
+<h2><span class="header-section-number">1.1</span> Outline</h2>
 <p>This analysis is done on pollution and weather information in Beijing. This data was chosen to investigate sky conditions and the levels of pollutants in Beijing to see if there is correlation between meteorological conditions and the levels of pollution.</p>
 <p>This presentation will:</p>
 <ul>
@@ -462,17 +459,17 @@ library (sampling)</code></pre>
 </ul>
 </div>
 <div id="dataset" class="section level2" number="1.2">
-<h2 number="1.2"><span class="header-section-number">1.2</span> Dataset</h2>
+<h2><span class="header-section-number">1.2</span> Dataset</h2>
 <pre class="r"><code>def.par &lt;- par()
 scipen &lt;- 10
 # Grabs the names of the CSV files. 
 local.files &lt;-
   list.files(
-    &quot;C:/Users/troya/OneDrive/R/CS544_FinalProject_Ascher/Datasets/Dataverse/&quot;
+    &quot;C:/Users/home/OneDrive/R/CS544_FinalProject_Ascher/Datasets/Dataverse/&quot;
   )
 
 local.dir &lt;-
-  &quot;C:/Users/troya/OneDrive/R/CS544_FinalProject_Ascher/Datasets/Dataverse/&quot;
+  &quot;C:/Users/home/OneDrive/R/CS544_FinalProject_Ascher/Datasets/Dataverse/&quot;
 
 
 # Create variables names
@@ -505,7 +502,7 @@ for (i in seq(1, length(var.names))){
 # Remove unnecessary objects.
 remove(var.names)</code></pre>
 <div id="source" class="section level3" number="1.2.1">
-<h3 number="1.2.1"><span class="header-section-number">1.2.1</span> Source</h3>
+<h3><span class="header-section-number">1.2.1</span> Source</h3>
 <p>The data is from two data-sets from Harvard’s Dataverse in the form of a study by Wang (2019). The data was provided by the Ministry of Environmental Protection (MEP) of China and the National Oceanic and Atmospheric Administration (NOAA). The data-sets include 311010 hourly observations from pollution monitoring stations in Beijing, and 158047 hourly observations from pollution monitoring stations.</p>
 <p>The observations included in the datasets are:</p>
 <p>MEP (pollutant) data:</p>
@@ -536,7 +533,7 @@ remove(var.names)</code></pre>
 ## [1] &quot;weather&quot;</code></pre>
 </div>
 <div id="data-manipulation" class="section level3" number="1.2.2">
-<h3 number="1.2.2"><span class="header-section-number">1.2.2</span> Data Manipulation</h3>
+<h3><span class="header-section-number">1.2.2</span> Data Manipulation</h3>
 <p>The following steps were taken to combine the data.</p>
 <p>Merge datasets into one frame based on shared station Ids.</p>
 <ol style="list-style-type: decimal">
@@ -845,9 +842,9 @@ cn.atmos$AQI &lt;- as.double(cn.atmos$AQI)</code></pre></li>
 </div>
 </div>
 <div id="analysis" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Analysis</h1>
+<h1><span class="header-section-number">2</span> Analysis</h1>
 <div id="sky-conditions" class="section level2" number="2.1">
-<h2 number="2.1"><span class="header-section-number">2.1</span> Sky Conditions</h2>
+<h2><span class="header-section-number">2.1</span> Sky Conditions</h2>
 <p>Initial analysis of the data shows that there are seven unique conditions recorded by the NOAA over the one year observation period.</p>
 <pre class="r"><code># Table of weather conditions.
 cn.atmos$weather %&gt;% table()</code></pre>
@@ -985,9 +982,9 @@ mtext(&quot;Count of 2017 Beijing Sky Conditions&quot;, side = 3, line = 1, cex 
 <p>These plots demonstrate that other than clear days haze is the condition that most often occurs in Beijing throughout the year.</p>
 </div>
 <div id="analysis-on-aqi" class="section level2" number="2.2">
-<h2 number="2.2"><span class="header-section-number">2.2</span> Analysis on AQI</h2>
+<h2><span class="header-section-number">2.2</span> Analysis on AQI</h2>
 <div id="what-is-aqi" class="section level3" number="2.2.1">
-<h3 number="2.2.1"><span class="header-section-number">2.2.1</span> What is AQI?</h3>
+<h3><span class="header-section-number">2.2.1</span> What is AQI?</h3>
 <p>The Air Quality Index (AQI) is the Environmental Protection Agency’s (EPA) index on air quality. It takes the measurement for six common pollutants and calculates a index based on the levels of the pollutants (AirNow.gov, n.d.).</p>
 <p>The pollutants are:</p>
 <ul>
@@ -1009,7 +1006,7 @@ mtext(&quot;Count of 2017 Beijing Sky Conditions&quot;, side = 3, line = 1, cex 
 ## 6          Hazardous 301  500 Maroon</code></pre>
 </div>
 <div id="aqi-counts" class="section level3" number="2.2.2">
-<h3 number="2.2.2"><span class="header-section-number">2.2.2</span> AQI Counts</h3>
+<h3><span class="header-section-number">2.2.2</span> AQI Counts</h3>
 <p>The following table shows a count of the AQI levels by category across all observations and a histogram of the distribution.</p>
 <pre class="r"><code>table(cn.atmos$aqi_level)</code></pre>
 <pre><code>## 
@@ -1056,7 +1053,7 @@ legend(x = &quot;topright&quot;,
 </div>
 </div>
 <div id="aqi-distribution" class="section level2" number="2.3">
-<h2 number="2.3"><span class="header-section-number">2.3</span> AQI Distribution</h2>
+<h2><span class="header-section-number">2.3</span> AQI Distribution</h2>
 <p>Using the summary function shows that the mean of all of the AQI values is 114.2. It also shows that the max value is 500, which is the max value allowed on the US AQI scale. While the spread between the Max and the Min values is 448, the difference between the 3rd quartile and the 1st quartile is is less than 100. In addition, the difference between the 3rd quartile and the Min value is 155. This reinforces that the data is positively skewed.</p>
 <pre class="r"><code>summary(cn.atmos$AQI)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -1111,7 +1108,7 @@ legend(x = &quot;topright&quot;,
 <p><img src="CS544_FinalProject_Ascher_Rmarkdown_files/figure-html/aqi-monthly-distribution-1.png" width="672" /></p>
 </div>
 <div id="aqi-pollutant-distribution" class="section level2" number="2.4">
-<h2 number="2.4"><span class="header-section-number">2.4</span> AQI &amp; Pollutant Distribution</h2>
+<h2><span class="header-section-number">2.4</span> AQI &amp; Pollutant Distribution</h2>
 <p>The distribution of AQI can be compared with the distribution of the pollutants measured in the dataset.</p>
 <pre class="r"><code>boxplot(
   cn.atmos$PM2.5,
@@ -1132,7 +1129,7 @@ legend(x = &quot;topright&quot;,
 <p>One observation is that the distribution of the AQI and PM2.5 are similar. An assertion could be made that there is correlation between AQI and PM2.5.</p>
 </div>
 <div id="distribution-by-season" class="section level2" number="2.5">
-<h2 number="2.5"><span class="header-section-number">2.5</span> Distribution by Season</h2>
+<h2><span class="header-section-number">2.5</span> Distribution by Season</h2>
 <pre class="r"><code>par(oma=c(3,3,3,3))
 par(mfrow = c(2,2))
 par(mar = c(2,4,2,1))
@@ -1158,7 +1155,7 @@ mtext(&quot;Levels of pollutants, by season&quot;, side = 3, line = 1, cex = 1.5
 <pre class="r"><code>par(def.par)</code></pre>
 <p>Parsing the data by season reveals that PM2.5 and AQI have a similar distribution throughout the year.</p>
 <div id="aqi-and-correlation-with-pollutants" class="section level3" number="2.5.1">
-<h3 number="2.5.1"><span class="header-section-number">2.5.1</span> AQI and Correlation with Pollutants</h3>
+<h3><span class="header-section-number">2.5.1</span> AQI and Correlation with Pollutants</h3>
 <p>Examining the relationship between the pollutant variables and AQI by using Pearson’s correlation coefficient returns a value of 0.969 for AQI to PM2.5. This indicates correlation.</p>
 <pre class="r"><code>cor(cn.atmos$AQI, cn.atmos$PM2.5, method = &quot;pearson&quot;)
 cor(cn.atmos$AQI, cn.atmos$PM10, method = &quot;pearson&quot;)
@@ -1219,7 +1216,7 @@ mtext(&quot;Plot of AQI and PM2.5 levels&quot;, side = 3, line = 1, cex = 1.5, o
 </div>
 </div>
 <div id="aqi-and-the-central-limit-theorem" class="section level2" number="2.6">
-<h2 number="2.6"><span class="header-section-number">2.6</span> AQI and the Central Limit Theorem</h2>
+<h2><span class="header-section-number">2.6</span> AQI and the Central Limit Theorem</h2>
 <p>The central limit theorem says that when many samples are taken that the means of the sample will be normally distributed around the mean. As more trials are run, the mean of the distribution will become closer to the mean of the population (University of California, Berkeley, n.d.).</p>
 <table>
 <thead>
@@ -1317,10 +1314,10 @@ mtext(&quot;AQI&quot;, side = 1, line = 1, cex = 1, outer = TRUE)</code></pre>
 </table>
 </div>
 <div id="additional-sampling-methods" class="section level2" number="2.7">
-<h2 number="2.7"><span class="header-section-number">2.7</span> Additional Sampling Methods</h2>
+<h2><span class="header-section-number">2.7</span> Additional Sampling Methods</h2>
 <p>The following section utilizes different sample methods on the AQI data to demonstrate the effectiveness of sampling in determining the distribution of a population. A sample size of 500 was used for these calculations.</p>
 <div id="simple-random-sampling-without-replacement" class="section level3" number="2.7.1">
-<h3 number="2.7.1"><span class="header-section-number">2.7.1</span> Simple Random Sampling without Replacement</h3>
+<h3><span class="header-section-number">2.7.1</span> Simple Random Sampling without Replacement</h3>
 <pre class="r"><code># SRSWOR
 sample.size &lt;- 500
 
@@ -1347,7 +1344,7 @@ hist(
 <pre class="r"><code>par(def.par)</code></pre>
 </div>
 <div id="systematic-sampling" class="section level3" number="2.7.2">
-<h3 number="2.7.2"><span class="header-section-number">2.7.2</span> Systematic Sampling</h3>
+<h3><span class="header-section-number">2.7.2</span> Systematic Sampling</h3>
 <pre class="r"><code># Systematic Sampling
 
 N &lt;- nrow(cn.atmos)
@@ -1378,7 +1375,7 @@ hist(
 <pre class="r"><code>par(def.par)</code></pre>
 </div>
 <div id="stratified-sampling" class="section level3" number="2.7.3">
-<h3 number="2.7.3"><span class="header-section-number">2.7.3</span> Stratified Sampling</h3>
+<h3><span class="header-section-number">2.7.3</span> Stratified Sampling</h3>
 <pre class="r"><code># Stratified Sampling
 
 cn.atmos.ord &lt;- as.data.frame(cn.atmos[order(cn.atmos$aqi_level),])
@@ -1436,7 +1433,7 @@ hist(
 <pre class="r"><code>par(def.par)</code></pre>
 </div>
 <div id="comparing" class="section level3" number="2.7.4">
-<h3 number="2.7.4"><span class="header-section-number">2.7.4</span> Comparing</h3>
+<h3><span class="header-section-number">2.7.4</span> Comparing</h3>
 <pre class="r"><code># Compare the population and the three sample types
 
 par(mfrow = c(2,2), oma = c(3,3,3,1), mar = c(2,3,1,1))
@@ -1497,11 +1494,11 @@ mtext(&quot;AQI&quot;, side = 1, line = 1, cex = 1, outer = TRUE)</code></pre>
 </div>
 </div>
 <div id="aqi-by-wind-direction" class="section level2" number="2.8">
-<h2 number="2.8"><span class="header-section-number">2.8</span> AQI by Wind Direction</h2>
+<h2><span class="header-section-number">2.8</span> AQI by Wind Direction</h2>
 <p>It is outside of the scope of this project to analyze the correlation between every variable, but one relationship that is examined is the relationship between the wind direction, wind strength, and AQI. Beijing controls pollution levels by moving pollution-producers such as factories into satellite cities and by limiting agricultural practices such as burning crop waste within a certain distance of the city center (Feng, 2018). An interesting question is does pollution from the satellite cities and from rural areas get blown into the city on strong-wind days?</p>
 <p>To explore this, a library call ‘openair’ that allows for the creation of a “wind-rose” and “pollution-rose” to illustrate if a relationship exists is used.</p>
 <div id="wind-rose" class="section level3" number="2.8.1">
-<h3 number="2.8.1"><span class="header-section-number">2.8.1</span> Wind-Rose</h3>
+<h3><span class="header-section-number">2.8.1</span> Wind-Rose</h3>
 <pre class="r"><code>print(wind.Fall, split = c(1, 1, 2, 2))
 print(wind.Spring, split = c(2, 1, 2, 2), newpage = FALSE)
 print(wind.Summer, split = c(1, 2, 2, 2), newpage = FALSE)
@@ -1510,7 +1507,7 @@ print(wind.Winter, split = c(2, 2, 2, 2), newpage = FALSE)</code></pre>
 <p>The first wind-rose shows wind-strength partnered with wind-direction, by season. Some observations are that the Winter and Fall both have strong winds coming from the NW, while the Spring has strong winds from both the NW and the SW. The Summer only has strong winds from the SW. One possible explanation for this is that in late spring the prevailing winds switch from NW to SW and then switch back during the Fall. Analysis on wind direction and speed by day would need to be done to determine if that was the actual pattern in 2017.</p>
 </div>
 <div id="pollution-rose" class="section level3" number="2.8.2">
-<h3 number="2.8.2"><span class="header-section-number">2.8.2</span> Pollution-Rose</h3>
+<h3><span class="header-section-number">2.8.2</span> Pollution-Rose</h3>
 <pre class="r"><code>print(pol.Fall, split = c(1, 1, 2, 2))
 print(pol.Spring, split = c(2, 1, 2, 2), newpage = FALSE)
 print(pol.Summer, split = c(1, 2, 2, 2), newpage = FALSE)
@@ -1522,23 +1519,23 @@ print(pol.Winter, split = c(2, 2, 2, 2), newpage = FALSE)</code></pre>
 </div>
 </div>
 <div id="conclusion" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Conclusion</h1>
+<h1><span class="header-section-number">3</span> Conclusion</h1>
 <div id="known-issues-and-recommendations" class="section level2" number="3.1">
-<h2 number="3.1"><span class="header-section-number">3.1</span> Known Issues and Recommendations</h2>
+<h2><span class="header-section-number">3.1</span> Known Issues and Recommendations</h2>
 <p>Data integrity in China is an unknown. A study in 2016 by Liang et al. , suggests that official AQI counts in China have a range of reliability.</p>
 <p>According to Reuters (2018), PM2.5 levels for 2017 in Beijing fell by 39.6% from their 2016 values. Without data for the surrounding year, it is not possible to say if this was a trend, or an anomaly. A data-set that allows year-over-year changes should be analyzed to see if this trend continued.Overall,</p>
 </div>
 <div id="summary" class="section level2" number="3.2">
-<h2 number="3.2"><span class="header-section-number">3.2</span> Summary</h2>
+<h2><span class="header-section-number">3.2</span> Summary</h2>
 <p>Overall, this analysis has shown that in 2017 Beijing experienced mostly clear sky conditions, with haze and fog the other major weather conditions present. The observed occurrence of rain or other conditions was less than 1%. Around 53% of recorded AQI levels were in the “Moderate” range, with the other 47% being “Unhealthy for Some” or worse. AQI levels had the highest mean in the Spring, but the most extreme observations were recorded during the Winter. Sampling on the data demonstrated the validity of the Central Limit Theorem, and various sampling techniques were shown to follow the distribution of the population data. Finally, wind strength was shown to be the strongest from the NW throughout the year, with correlation to AQI levels unknown.</p>
 </div>
 </div>
 <div id="appendix-a" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Appendix A</h1>
+<h1><span class="header-section-number">4</span> Appendix A</h1>
 <p>###Project Requirements | | <strong>Example 1</strong> | <strong>Example 2</strong> | <strong>Example 3</strong> | |——————————————————————————————-|—————————|———————|:—————————————:| | Do the analysis for at least one categorical variable as in Module 3 | Weather Conditions | | | | Do the analysis for at least one numerical data as in Module 3 | AQI | Pollutants | | | Do the analysis as in Module 3 on at least one set of two+ variables | Weather &amp; Season | AQI &amp; Pollutants | AQI &amp; Sky Conditions | | Pick a variable with numerical data and examine the distribution | AQI | AQI &amp; Pollutants | | | Draw random samples of the data and compare to the central limit theory for that variable | AQI Central Limit Theorem | | | | Show how different sampling methods can be used. | SRSWOR | Systematic Sampling | Stratified Sampling | | Any feature not mentioned above. | OpenAir “windRose” | Rmarkdown | Correlation and linear regression line. |</p>
 </div>
 <div id="bibliography" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Bibliography</h1>
+<h1><span class="header-section-number">5</span> Bibliography</h1>
 <p>AirNow.gov. (n.d.). <em>AQI Basics | AirNow.gov</em>. Retrieved March 1, 2020, from <a href="https://www.airnow.gov/aqi/aqi-basics/" class="uri">https://www.airnow.gov/aqi/aqi-basics/</a></p>
 <p>Boguski, T. (2006, October). <em>Understanding Units of Measurement</em> (Issue 2). Center for Hazardous Substance Research - Kansas State University. <a href="https://cfpub.epa.gov/ncer_abstracts/index.cfm/fuseaction/display.files/fileid/14285" class="uri">https://cfpub.epa.gov/ncer_abstracts/index.cfm/fuseaction/display.files/fileid/14285</a></p>
 <p>Feng, E. (2018, April 2). China moves its factories back to the countryside. <em>Financial Times</em>. <a href="https://www.ft.com/content/fe86f76c-1215-11e8-8cb6-b9ccc4c4dbbb" class="uri">https://www.ft.com/content/fe86f76c-1215-11e8-8cb6-b9ccc4c4dbbb</a></p>

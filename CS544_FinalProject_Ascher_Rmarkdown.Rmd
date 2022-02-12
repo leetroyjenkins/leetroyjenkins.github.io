@@ -78,11 +78,11 @@ scipen <- 10
 # Grabs the names of the CSV files. 
 local.files <-
   list.files(
-    "C:/Users/troya/OneDrive/R/CS544_FinalProject_Ascher/Datasets/Dataverse/"
+    "C:/Users/home/OneDrive/R/CS544_FinalProject_Ascher/Datasets/Dataverse/"
   )
 
 local.dir <-
-  "C:/Users/troya/OneDrive/R/CS544_FinalProject_Ascher/Datasets/Dataverse/"
+  "C:/Users/home/OneDrive/R/CS544_FinalProject_Ascher/Datasets/Dataverse/"
 
 
 # Create variables names
