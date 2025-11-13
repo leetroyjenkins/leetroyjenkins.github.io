@@ -6,8 +6,8 @@ import Navigation from "@/components/Navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Troy Ascher - Portfolio",
-  description: "Portfolio website of Troy Ascher",
+  title: "Troy Ascher - Data Engineer | Snowflake, dbt, Python",
+  description: "Data engineer building reliable pipelines with Snowflake, dbt, and Python. Former HRIS analyst who spent three years in China, came back with a CS degree, and now builds data infrastructure that doesn't break at 2am.",
 };
 
 export default function RootLayout({
