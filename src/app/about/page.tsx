@@ -9,8 +9,9 @@ export default function About() {
         <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
           <div className="flex-1">
             <p className="text-xl leading-relaxed text-gray-800">
-              I'm a data engineer who loves building things that actually work. Currently at Sub-Zero Group in Madison, WI, 
-              I spend my days building data pipelines with Snowflake, dbt, and Python; migrating legacy systems to modern 
+              I'm a data engineer who loves building things that actually work. I'm drawn to data engineering because I love using my creativity 
+              to build efficient, maintainable, and scalable systems. Currently at Sub-Zero Group in Madison, WI, 
+              I spend my days building data pipelines with Snowflake, dbt, Terraform, and SQL; migrating legacy systems to modern 
               cloud architecture and making sure the data teams can actually trust what they're seeing.
             </p>
           </div>
@@ -20,6 +21,7 @@ export default function About() {
               alt="Troy in China" 
               width={300} 
               height={400}
+              sizes="(min-width: 768px) 300px, 70vw"
               className="rounded-lg shadow-lg object-cover"
             />
           </div>
@@ -28,25 +30,29 @@ export default function About() {
         <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">My Story</h2>
         <p className="text-lg mb-4 leading-relaxed text-gray-900">
           My path to data engineering has been anything but conventional. I spent nearly a decade in HR, working my way 
-          from benefits representative at Target to HRIS analyst at Ameriprise Financial, where I managed PeopleSoft databases, 
-          handled TOAD for Oracle, and was a subject matter expert on implementation projects. I was good at it. I worked with enterprise systems, 
+          from benefits representative at Target to HRIS analyst at Ameriprise Financial, where I managed PeopleSoft modules, 
+          handled TOAD for Oracle, and was a subject matter expert during a PeopleSoft to Workday implementation. I learned 
+          to manage without authority, keeping projects on track by coordinating between developers and business users, gathering 
+          requirements, and making sure everyone stayed aligned. I was good at it. I worked with enterprise systems, 
           solved complex problems, and even won a "Melonhead" award from the CEO for keeping things running during layoffs. 
           But something was missing.
         </p>
 
         <p className="text-lg mb-4 leading-relaxed text-gray-900">
-          I realized what I really wanted was to create and design;to build things from scratch and perfect them, not just 
-          administer what someone else had built. I wanted to be the one designing the solution, not just maintaining it. 
-          So in 2017, I did something most people thought was crazy. I walked away from a stable career and moved to China.
+          I realized what I really wanted was to use my creativity to design and build systems from the ground up, not just maintain what someone 
+          else had created. I wanted to architect solutions, make design decisions, and build something that was both elegant and functional.
+          So in 2017, I did something that seemed crazy to most people: I walked away from a stable career and moved 
+          to China to get my bachelor's degree in pursuit of a career transition. It was a goal I'd been thinking about for years, and I finally committed to it.
         </p>
         
         <p className="text-lg mb-4 leading-relaxed text-gray-900">
-          I spent five years split between Suzhou and Beijing. Three years getting my bachelor's 
-          degree in international business and Chinese language at Xi'an Jiaotong-Liverpool University, 
-          and then two more years studying at Boston University from my apartment in Beijing (thanks Covid). I studied 
-          Mandarin intensively (passed HSK3), and while I'm definitely not fluent, I can navigate everyday conversations. 
-          It wasn't just about learning a language or getting a degree; it was about proving to myself that I could change 
-          direction to pursue my goals, that I could adapt to anything, and that I was capable of more.
+          I spent five years in China, split between Suzhou and Beijing. I was accepted into the information systems program 
+          at Xi'an Jiaotong-Liverpool University, but switched to international business and Chinese language the week before 
+          classes started. It was probably my only real chance to learn Chinese, and I wasn't going to waste it. Mandarin didn't 
+          come easy. I crammed eight semesters into six and barely passed HSK3, but I finished my bachelor's in three years. 
+          Then came two more years getting my master's in Computer Information Systems from Boston University, this time from my 
+          apartment in Beijing during Covid. It wasn't just about the degrees; it was about proving I could change direction 
+          completely and pursue what I actually wanted.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
@@ -55,6 +61,7 @@ export default function About() {
             alt="Xi'an Jiaotong-Liverpool University campus" 
             width={400} 
             height={300}
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="rounded-lg shadow-md object-contain w-full h-64 bg-gray-100"
           />
           <Image 
@@ -62,15 +69,10 @@ export default function About() {
             alt="Park in Suzhou, China" 
             width={400} 
             height={300}
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="rounded-lg shadow-md object-cover w-full h-64"
           />
         </div>
-
-        <p className="text-lg mb-6 leading-relaxed text-gray-700">
-          After that, I went to Boston University for my Master's in Computer Information Systems, specializing in 
-          business intelligence and database management. That's where I fell in love with data engineering: the challenge 
-          of turning messy, real-world data into something useful.
-        </p>
 
         <p className="text-lg mb-8 leading-relaxed text-gray-700">
           Since graduating in 2022, I've been working as a data engineer. I started at UnitedHealth Group in their 
@@ -135,7 +137,7 @@ export default function About() {
             <p className="text-gray-700 leading-relaxed">
               Got into their competitive engineering rotation program. Spent two years migrating legacy pipelines to 
               Snowflake, building automation frameworks that cut compute costs by 38%, and implementing security patterns 
-              for HIPAA compliance. Also learned that healthcare data is complicated in ways you don't expect.
+              for HIPAA compliance. Learned what it takes to work with healthcare data at scale.
             </p>
           </div>
 
@@ -195,6 +197,7 @@ export default function About() {
                 alt="Playing guitar" 
                 width={300} 
                 height={300}
+                sizes="(min-width: 768px) 33vw, 100vw"
                 className="object-cover w-full h-full scale-125"
                 style={{ objectPosition: '50% 40%' }}
               />
@@ -207,6 +210,7 @@ export default function About() {
               alt="Coffee roasting" 
               width={300} 
               height={300}
+              sizes="(min-width: 768px) 33vw, 100vw"
               className="rounded-lg shadow-md object-cover w-full h-64"
             />
             <p className="mt-2 text-gray-600 font-medium">Coffee Roasting</p>
@@ -217,6 +221,7 @@ export default function About() {
               alt="Biking around Madison" 
               width={300} 
               height={300}
+              sizes="(min-width: 768px) 33vw, 100vw"
               className="rounded-lg shadow-md object-cover w-full h-64"
             />
             <p className="mt-2 text-gray-600 font-medium">Biking</p>
@@ -227,8 +232,8 @@ export default function About() {
           <p className="text-lg text-gray-800">
             <strong>What I'm looking for:</strong> I want to work on data infrastructure that actually matters, whether that's 
             improving healthcare systems, making financial services more accessible, or helping companies make better decisions. 
-            I care about writing code that's maintainable, building systems that are reliable, and working with people who give 
-            a damn about doing good work.
+            I care about writing code that's maintainable, building systems that are reliable, and working with people who care
+            about doing good work.
           </p>
         </div>
       </div>

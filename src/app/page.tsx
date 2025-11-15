@@ -11,7 +11,7 @@ export default function Home() {
         <h2 className="text-3xl font-semibold text-blue-600 mb-6">
           Data Engineer
         </h2>
-        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
           I build data pipelines that don't break at 2am. Former HRIS analyst who spent five years in China, 
           then came back and got really into data engineering. Now I work with Snowflake, dbt, and SQL to 
           make data infrastructure that actually works.
@@ -35,6 +35,19 @@ export default function Home() {
           >
             Get In Touch
           </Link>
+          <Link
+            href="/TroyAscherDataEngineer.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-100 transition font-semibold border-2 border-gray-300 shadow-lg hover:shadow-xl"
+          >
+            Download Resume
+          </Link>
+        </div>
+        <div className="text-gray-600 text-sm">
+          <a href="https://linkedin.com/in/troy-ascher" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-800">LinkedIn</a>
+          <span className="mx-2">•</span>
+          <a href="https://github.com/leetroyjenkins" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-800">GitHub</a>
         </div>
       </div>
 
@@ -43,7 +56,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">Stuff I'm Proud Of</h2>
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Some numbers from real projects; not vanity metrics, just things that actually mattered
+            Some numbers from real projects
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
@@ -70,7 +83,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">What I Work With</h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            The tools I use every day to build data infrastructure that actually works
+            The tools I use every day to build stable, performant data infrastructure
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             {['SQL', 'Snowflake', 'dbt', 'Python', 'Terraform', 'Azure', 'Fivetran', 'Git', 'Monte Carlo', 'R'].map((tech) => (

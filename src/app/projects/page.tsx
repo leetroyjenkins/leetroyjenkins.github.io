@@ -29,9 +29,9 @@ export default function Projects() {
     },
     {
       id: 4,
-      title: 'Legacy Pipeline Modernization',
-      description: 'Migrated legacy DataStage/Teradata/Unix pipelines to Snowflake and Azure. The old system was a mess. It was full of batch jobs that would fail constantly.',
-      technologies: ['Snowflake', 'Azure Data Factory', 'Python', 'SQL'],
+      title: 'Teradata to Snowflake Migration',
+      description: 'Migrated DataStage/Teradata/Unix pipelines to Snowflake; rebuilt ETL with Python and Azure Data Factory and improved reliability by reducing batch failures.',
+      technologies: ['Snowflake', 'Teradata', 'Azure Data Factory', 'Python', 'SQL'],
       link: '#',
       impact: '21% faster pipelines, 81% less manual work (Snowflake optimization)',
       company: 'UnitedHealth Group (Optum)',

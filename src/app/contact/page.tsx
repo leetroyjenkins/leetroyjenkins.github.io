@@ -21,6 +21,18 @@ export default function Contact() {
               </a>
             </div>
           </div>
+
+          <div className="flex items-center gap-4 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition">
+            <div className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <span className="text-white text-2xl">📄</span>
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-900 text-lg">Resume</h3>
+              <a href="/TroyAscherDataEngineer.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-medium">
+                Download PDF
+              </a>
+            </div>
+          </div>
           
           <div className="flex items-center gap-4 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition">
             <div className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -28,8 +40,8 @@ export default function Contact() {
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 text-lg">LinkedIn</h3>
-              <a href="https://linkedin.com/in/troyascher" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-medium">
-                linkedin.com/in/troyascher
+              <a href="https://linkedin.com/in/troy-ascher" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-medium">
+                linkedin.com/in/troy-ascher
               </a>
             </div>
           </div>

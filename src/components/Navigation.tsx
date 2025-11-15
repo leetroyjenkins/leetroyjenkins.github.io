@@ -11,6 +11,7 @@ export default function Navigation() {
     { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Resume', path: '/TroyAscherDataEngineer.pdf', external: true },
   ];
 
   return (
@@ -23,19 +24,24 @@ export default function Navigation() {
             </Link>
           </div>
           <div className="flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                href={item.path}
-                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                  pathname === item.path
-                    ? 'border-blue-500 text-gray-900'
-                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = pathname === item.path;
+              const className = `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                isActive ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+              }`;
+
+              return (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  className={className}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
