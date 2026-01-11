@@ -1,11 +1,11 @@
 export default function Contact() {
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">Let's Connect</h1>
-      
+      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">Let&apos;s Connect</h1>
+
       <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
         <p className="text-gray-700 mb-6 sm:mb-8 text-base sm:text-lg">
-          I'm always interested in discussing data engineering opportunities, collaboration on interesting projects, 
+          I&apos;m always interested in discussing data engineering opportunities, collaboration on interesting projects,
           or just connecting with fellow data professionals. Feel free to reach out!
         </p>
         
@@ -72,7 +72,7 @@ export default function Contact() {
 
         <div className="mt-8 pt-8 border-t border-gray-200">
           <p className="text-gray-600 text-center">
-            Currently working as an Associate Data Engineer at Sub-Zero Group, 
+            Currently working as an Data Engineer at Sub-Zero Group, 
             building modern data infrastructure with Snowflake, dbt, and Azure.
           </p>
         </div>
