@@ -12,9 +12,10 @@ export default function Home() {
           Data Engineer
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-          I build data pipelines that don't break at 2am. Former HRIS analyst who spent five years in China, 
-          then came back and got really into data engineering. Now I work with Snowflake, dbt, and SQL to 
-          make data infrastructure that actually works.
+          I design and build reliable data infrastructure with a focus on scalability and maintainability.
+          With a background in HRIS systems and five years of international experience in China, I transitioned
+          to data engineering to architect solutions using modern cloud platforms. I specialize in Snowflake, dbt,
+          and SQL to deliver data systems that drive business value.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-12 max-w-2xl mx-auto">
           <Link
@@ -54,25 +55,25 @@ export default function Home() {
       {/* Key Highlights Section */}
       <div className="py-12 sm:py-16 bg-gradient-to-r from-blue-50 to-purple-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-4">Stuff I'm Proud Of</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-4">Key Achievements</h2>
           <p className="text-center text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto">
-            Some numbers from real projects
+            Measurable impact from production data engineering projects
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">38%</div>
               <p className="text-gray-700 font-medium">Snowflake Cost Reduction</p>
-              <p className="text-sm text-gray-600 mt-2">Built a Python/Snowpark framework to automatically optimize queries</p>
+              <p className="text-sm text-gray-600 mt-2">Developed a Python/Snowpark framework for automated query optimization</p>
             </div>
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <div className="text-3xl sm:text-4xl font-bold text-green-600 mb-2">21%</div>
               <p className="text-gray-700 font-medium">Faster Pipelines</p>
-              <p className="text-sm text-gray-600 mt-2">Through refactoring legacy SQL and moving to modern architecture</p>
+              <p className="text-sm text-gray-600 mt-2">Achieved through refactoring legacy SQL and modernizing data architecture</p>
             </div>
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <div className="text-3xl sm:text-4xl font-bold text-purple-600 mb-2">5 Years</div>
               <p className="text-gray-700 font-medium">In China</p>
-              <p className="text-sm text-gray-600 mt-2">Learning Mandarin, getting two degrees, and figuring things out</p>
+              <p className="text-sm text-gray-600 mt-2">Earned two degrees while studying Mandarin and international business</p>
             </div>
           </div>
         </div>
@@ -81,9 +82,9 @@ export default function Home() {
       {/* Tech Stack Section */}
       <div className="py-12 sm:py-16">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">What I Work With</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Technical Expertise</h2>
           <p className="text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-            The tools I use every day to build stable, performant data infrastructure
+            Core technologies and platforms for building scalable, reliable data infrastructure
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {['SQL', 'Snowflake', 'dbt', 'Python', 'Terraform', 'Azure', 'Fivetran', 'Git', 'Monte Carlo', 'R'].map((tech) => (
@@ -98,17 +99,17 @@ export default function Home() {
       {/* CTA Section */}
       <div className="py-12 sm:py-16 text-center bg-gray-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-          Want to work together?
+          Let&apos;s Connect
         </h2>
         <p className="text-base sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          I'm interested in opportunities where the data work actually matters: improving healthcare, 
-          making systems more efficient, or just building infrastructure that helps people do their jobs better.
+          I&apos;m interested in opportunities where data engineering drives meaningful impact: improving healthcare outcomes,
+          optimizing business operations, or building infrastructure that enables data-driven decision making.
         </p>
         <Link
           href="/contact"
           className="inline-block bg-blue-600 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg hover:bg-blue-700 transition font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl"
         >
-          Let's Talk
+          Get in Touch
         </Link>
       </div>
     </div>

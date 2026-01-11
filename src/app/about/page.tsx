@@ -9,10 +9,10 @@ export default function About() {
         <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
           <div className="flex-1">
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-gray-800">
-              I'm a data engineer who loves building things that actually work. I'm drawn to data engineering because I love using my creativity 
-              to build efficient, maintainable, and scalable systems. Currently at Sub-Zero Group in Madison, WI, 
-              I spend my days building data pipelines with Snowflake, dbt, Terraform, and SQL; migrating legacy systems to modern 
-              cloud architecture and making sure the data teams can actually trust what they're seeing.
+              I&apos;m a data engineer focused on building efficient, maintainable, and scalable systems. I&apos;m drawn to data engineering
+              because it combines technical problem-solving with creative architectural design. Currently, I&apos;m at Sub-Zero Group in Madison, WI
+              where I&apos;m one of two data engineers managing data pipelines with Snowflake, dbt, Terraform, and SQL. We are migrating legacy
+              systems to modern cloud architecture and ensuring data reliability across the organization.
             </p>
           </div>
           <div className="flex-shrink-0 w-full md:w-auto">
@@ -29,30 +29,28 @@ export default function About() {
         
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-8 sm:mt-12 mb-4 sm:mb-6">My Story</h2>
         <p className="text-base sm:text-lg mb-4 leading-relaxed text-gray-900">
-          My path to data engineering has been anything but conventional. I spent nearly a decade in HR, working my way 
-          from benefits representative at Target to HRIS analyst at Ameriprise Financial, where I managed PeopleSoft modules, 
-          handled TOAD for Oracle, and was a subject matter expert during a PeopleSoft to Workday implementation. I learned 
-          to manage without authority, keeping projects on track by coordinating between developers and business users, gathering 
-          requirements, and making sure everyone stayed aligned. I was good at it. I worked with enterprise systems, 
-          solved complex problems, and even won a "Melonhead" award from the CEO for keeping things running during layoffs. 
-          But something was missing.
+          My path to data engineering is unconventional. I spent nearly a decade in HR, advancing from benefits representative
+          at Target to HRIS analyst at Ameriprise Financial, where I managed PeopleSoft modules, utilized TOAD for Oracle, and served
+          as a subject matter expert during a PeopleSoft to Workday implementation. I developed strong skills in project coordination,
+          bridging technical teams and business stakeholders, gathering requirements, and maintaining alignment across complex initiatives.
+          I worked with enterprise systems and solved complex problems, even receiving an individual award from our CEO for maintaining business
+          continuity during organizational changes. However, I wanted to do more than maintain existing systems.
         </p>
 
         <p className="text-base sm:text-lg mb-4 leading-relaxed text-gray-900">
-          I realized what I really wanted was to use my creativity to design and build systems from the ground up, not just maintain what someone 
-          else had created. I wanted to architect solutions, make design decisions, and build something that was both elegant and functional.
-          So in 2017, I did something that seemed crazy to most people: I walked away from a stable career and moved 
-          to China to get my bachelor's degree in pursuit of a career transition. It was a goal I'd been thinking about for years, and I finally committed to it.
+          I realized I wanted to design and build systems from the ground up, not just maintain existing ones. I wanted to architect
+          solutions, make strategic design decisions, and create systems that were both elegant and functional. In 2017, I made a
+          significant career pivot: I left my stable position and moved to China to pursue a bachelor&apos;s degree and transition into
+          technology. This was a goal I had considered for years, and I committed fully to making it happen.
         </p>
         
         <p className="text-base sm:text-lg mb-4 leading-relaxed text-gray-900">
-          I spent five years in China, split between Suzhou and Beijing. I was accepted into the information systems program 
-          at Xi'an Jiaotong-Liverpool University, but switched to international business and Chinese language the week before 
-          classes started. It was probably my only real chance to learn Chinese, and I wasn't going to waste it. Mandarin didn't 
-          come easy. I crammed eight semesters into six and barely passed HSK3, but I finished my bachelor's in three years. 
-          Then came two more years getting my master's in Computer Information Systems from Boston University, this time from my 
-          apartment in Beijing during Covid. It wasn't just about the degrees; it was about proving I could change direction 
-          completely and pursue what I actually wanted.
+          I spent five years in China, based in Suzhou and Beijing. Initially accepted into the information systems program at
+          Xi&apos;an Jiaotong-Liverpool University, I switched to International Business and Chinese language,
+          recognizing that I had a unique opportunity to fully immerse myself in the culture through language study. In three years of school I
+          completed four years of language courses, achieved HSK3 certification, and earned my bachelor&apos;s degree. I then pursued a master&apos;s
+          degree in Computer Information Systems from Boston University remotely from Beijing during the pandemic. My experience in China
+          and as an unconventional student taught me that when I set goals and push myself I&apos;m capable of adapting to any situation.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
@@ -75,10 +73,11 @@ export default function About() {
         </div>
 
         <p className="text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed text-gray-700">
-          Since graduating in 2022, I've been working as a data engineer. I started at UnitedHealth Group in their 
-          Technology Development Rotation Program, where I migrated legacy DataStage/Teradata pipelines to Snowflake, 
-          built performance optimization frameworks, and learned what it takes to handle HIPAA-compliant data at scale. 
-          Now at Sub-Zero Group, I'm building the data infrastructure that supports their SAP migration and analytics needs.
+          Since graduating in 2022, I have worked as a data engineer with increasing responsibilities. I began at UnitedHealth
+          Group in their competitive Technology Development Rotation Program, where I migrated legacy DataStage/Teradata pipelines
+          to Snowflake, developed performance optimization frameworks, and gained expertise in HIPAA-compliant data handling at
+          enterprise scale. Currently at Sub-Zero Group, I build the data infrastructure supporting their SAP migration and
+          analytics platform and have a voice in the ongoing data architecture decisions being made to support our business.
         </p>
 
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-8 sm:mt-12 mb-4 sm:mb-6">What I Actually Do</h2>
@@ -86,9 +85,8 @@ export default function About() {
           <div className="bg-gradient-to-br from-blue-50 to-white p-5 sm:p-6 rounded-lg shadow-md border border-blue-100">
             <h3 className="font-bold text-base sm:text-lg mb-3 text-blue-900">Data Platforms</h3>
             <ul className="space-y-1 text-sm sm:text-base text-gray-700">
-              <li>• Snowflake (my daily driver)</li>
+              <li>• Snowflake</li>
               <li>• dbt for transformations</li>
-              <li>• Azure Data Factory</li>
               <li>• Fivetran for ingestion</li>
               <li>• Terraform for IaC</li>
               <li>• Monte Carlo for monitoring</li>
@@ -98,12 +96,12 @@ export default function About() {
           <div className="bg-gradient-to-br from-green-50 to-white p-5 sm:p-6 rounded-lg shadow-md border border-green-100">
             <h3 className="font-bold text-base sm:text-lg mb-3 text-green-900">Languages & Tools</h3>
             <ul className="space-y-1 text-sm sm:text-base text-gray-700">
-              <li>• SQL (lots of SQL)</li>
-              <li>• Python (Snowpark, Pandas)</li>
+              <li>• SQL</li>
+              <li>• Python (Snowpark, Pandas, Streamlit)</li>
               <li>• Git & Azure DevOps</li>
               <li>• Bash scripting</li>
               <li>• Power BI</li>
-              <li>• R (for fun)</li>
+              <li>• R</li>
             </ul>
           </div>
           
@@ -111,11 +109,11 @@ export default function About() {
             <h3 className="font-bold text-base sm:text-lg mb-3 text-purple-900">What I Focus On</h3>
             <ul className="space-y-1 text-sm sm:text-base text-gray-700">
               <li>• Building reliable pipelines</li>
-              <li>• Data modeling (star schema)</li>
+              <li>• Data modeling</li>
               <li>• Performance optimization</li>
               <li>• Data quality & governance</li>
-              <li>• Making things faster & cheaper</li>
-              <li>• Actually documenting stuff</li>
+              <li>• Cost & performance optimization</li>
+              <li>• Documentation & knowledge transfer</li>
             </ul>
           </div>
         </div>
@@ -124,10 +122,10 @@ export default function About() {
         <div className="space-y-6 mb-6 sm:mb-8">
           <div className="border-l-4 border-blue-500 pl-4 sm:pl-6 py-2">
             <h3 className="font-bold text-lg sm:text-xl mb-2 text-gray-900">Sub-Zero Group</h3>
-            <p className="text-sm sm:text-base text-gray-600 mb-2">Associate Data Engineer • Madison, WI • July 2024 - Present</p>
+            <p className="text-sm sm:text-base text-gray-600 mb-2">Data Engineer • Madison, WI • July 2024 - Present</p>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-              Building data pipelines for their ERP migration from Infor XA to SAP. Working with dbt, Fivetran, Snowflake, 
-              and Terraform to create the infrastructure that'll support their analytics for years to come.
+              Building data pipelines for the enterprise ERP migration from Infor XA to SAP. Utilizing dbt, Fivetran, Snowflake,
+              and Terraform to create scalable analytics infrastructure designed for long-term organizational needs.
             </p>
           </div>
 
@@ -135,9 +133,9 @@ export default function About() {
             <h3 className="font-bold text-lg sm:text-xl mb-2 text-gray-900">UnitedHealth Group (Optum)</h3>
             <p className="text-sm sm:text-base text-gray-600 mb-2">Data Engineer • Austin, TX • July 2022 - July 2024</p>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-              Got into their competitive engineering rotation program. Spent two years migrating legacy pipelines to 
-              Snowflake, building automation frameworks that cut compute costs by 38%, and implementing security patterns 
-              for HIPAA compliance. Learned what it takes to work with healthcare data at scale.
+              Selected for the competitive engineering rotation program. Migrated legacy pipelines to Snowflake over two years,
+              developed automation frameworks that reduced compute costs by 38%, and implemented security patterns for HIPAA
+              compliance. Gained expertise in managing healthcare data at enterprise scale.
             </p>
           </div>
 
@@ -145,8 +143,9 @@ export default function About() {
             <h3 className="font-bold text-lg sm:text-xl mb-2 text-gray-900">Ameriprise Financial</h3>
             <p className="text-sm sm:text-base text-gray-600 mb-2">Senior HRIS Analyst • Minneapolis, MN • 2015 - 2017</p>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-              Where I learned how enterprise systems actually work. Managed PeopleSoft integrations, handled security, 
-              ran UAT cycles, and gathered requirements. This is where I first realized I wanted to work more directly with data.
+              Developed expertise in enterprise system operations. Managed PeopleSoft integrations, security administration,
+              UAT coordination, and requirements gathering. This role crystallized my interest in working directly with data
+              systems and architecture.
             </p>
           </div>
         </div>
@@ -154,12 +153,12 @@ export default function About() {
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-8 sm:mt-12 mb-4 sm:mb-6">Education</h2>
         <div className="space-y-6 mb-6 sm:mb-8">
           <div className="flex items-start gap-3 sm:gap-4">
-            <Image 
-              src="/images/bostonuniversity.jpg" 
-              alt="Boston University" 
-              width={80} 
+            <Image
+              src="/images/bostonuniversity.jpg"
+              alt="Boston University"
+              width={80}
               height={80}
-              className="rounded object-cover flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20"
+              className="rounded object-contain flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20"
             />
             <div>
               <h3 className="font-bold text-base sm:text-lg text-gray-900">Master of Science, Computer Information Systems</h3>
@@ -169,24 +168,25 @@ export default function About() {
           </div>
           <div className="flex items-start gap-3 sm:gap-4">
             <Image 
-              src="/images/liverpool.png" 
-              alt="University of Liverpool" 
+              src="/images/xjtlu-shield.jpg" 
+              alt="XJTLU Shield with Liver Birds" 
               width={80} 
               height={80}
               className="rounded object-contain flex-shrink-0 bg-white"
             />
             <div>
               <h3 className="font-bold text-lg text-gray-900">Bachelor of Arts, International Business & Chinese Language</h3>
-              <p className="text-gray-600">Xi'an Jiaotong-Liverpool University • Suzhou, China • 2020</p>
-              <p className="text-gray-600 text-sm">University of Liverpool degree, taught in English, in China. It was an experience.</p>
+              <p className="text-gray-600">Xi&apos;an Jiaotong-Liverpool University • Suzhou, China • 2020</p>
+              <p className="text-gray-600 text-sm">University of Liverpool degree program delivered in English at a joint venture campus in China</p>
             </div>
           </div>
         </div>
 
         <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Outside of Work</h2>
         <p className="text-lg mb-6 leading-relaxed text-gray-700">
-          When I'm not writing SQL, I play guitar, roast my own coffee, bike around Madison, and tinker with side projects. 
-          I'm also trying to keep up my Mandarin (with mixed success), though it's definitely gotten rusty since leaving China.
+          Outside of work, I play guitar, roast coffee, bike around Madison, and work on personal technical projects like this website.
+          Lately, I&apos;ve been enjoying learning while building things with Claude code.
+          I continue to maintain my Mandarin language skills, though my proficiency has declined somewhat since returning from China.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -230,10 +230,9 @@ export default function About() {
 
         <div className="mt-12 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
           <p className="text-lg text-gray-800">
-            <strong>What I'm looking for:</strong> I want to work on data infrastructure that actually matters, whether that's 
-            improving healthcare systems, making financial services more accessible, or helping companies make better decisions. 
-            I care about writing code that's maintainable, building systems that are reliable, and working with people who care
-            about doing good work.
+            <strong>What I&apos;m looking for:</strong> I&apos;m seeking opportunities to work on data infrastructure that drives meaningful impact,
+            whether improving healthcare systems, enhancing financial services accessibility, or enabling better business decision-making.
+            I prioritize writing maintainable code, building reliable systems, and collaborating with teams committed to technical excellence.
           </p>
         </div>
       </div>
